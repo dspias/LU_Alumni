@@ -8,8 +8,8 @@ use App\Models\Clubs\Clubs;
 
 class ClubsContrller extends Controller
 {
-    $clubs;
-     public function __construct(){
+    public $clubs = null;
+    public function __construct(){
         
         $this->middleware('auth');
         $this->clubs = new Clubs();

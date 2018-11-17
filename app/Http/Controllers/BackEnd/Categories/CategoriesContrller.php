@@ -11,7 +11,7 @@ use App\Models\Categories\Categories;
 class CategoriesContrller extends Controller
 {
     // add instance variable
-    $categories;
+    public $categories = null;
     // Added to Auth constructor
     public function __construct(){
         $this->middleware('auth', ['only' => 'index']);
