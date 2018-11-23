@@ -23,6 +23,11 @@ p{
 	color: #555;
 	text-align: justify;
 }
+.title-heading{
+	/* padding-top: 70px; */
+	/* padding-bottom: 70px; */
+	font-family: 'Kurale', serif;
+}
 
 /*===================< Navbar Part Starts >==============*/
 nav.fixed-top{
@@ -138,8 +143,6 @@ nav.fixed-top{
 /*===================< About Part Starts >==============*/
 .about-part{
 	padding-top: 70px;
-	padding-bottom: 70px;
-	font-family: 'Kurale', serif;
 	box-shadow: 0px -40px 40px rgba(50, 50, 50, 0.08);
 }
 .about-part .about-image img{
@@ -215,11 +218,11 @@ nav.fixed-top{
 	padding-top: 70px;
 	padding-bottom: 70px;
 	font-family: 'Kurale', serif;
-	background-color: #f1f1f1;
+	background-color: #fafafa;
 }
-.card-img-top {
+.latest-news-part .card-img-top {
 	width: 86%;
-	height: 140px;
+	height: 160px;
 	overflow: hidden;
     background: #999;
     position: absolute;
@@ -227,14 +230,21 @@ nav.fixed-top{
 	bottom: 144px;
 	border-radius: 3px;
 }
-.card-body {
-	padding: 8rem 1rem 2rem;
+.latest-news-part .card-body {
+	padding: 9rem 1rem 1rem;
 	text-align: center;
 }
-.card-body h4 a{
+.latest-news-part .card-body h4{
+	margin-bottom: 0px;
+}
+.latest-news-part .card-body h4 a{
 	color: #a3c624;
 }
-.card-body p{
+.latest-news-part .card-body span.date{
+	font-size: 12px;
+	opacity: 0.5;
+}
+.latest-news-part .card-body p{
 	font-size: 16px;
 }
 .btn-custom-details{
@@ -247,16 +257,16 @@ nav.fixed-top{
 	border-radius: 50px;
 	color: #a3c624;
 }
-.card:hover{
+.latest-news-part .card:hover{
 	border-color: #a3c624;
 	box-shadow: 0px 0px 11px 1px rgba(0,0,0,0.1);
 	transition: all 0.4s ease-in-out;
 }
-.card:hover .card-img-top{
+.latest-news-part .card:hover .card-img-top{
 	box-shadow: 0px 0px 11px 1px rgba(0,0,0,0.1);
 	transition: all 0.4s ease-in-out;
 }
-.card:hover .btn-outline-primary{
+.latest-news-part .card:hover .btn-outline-primary{
 	background-color: #a3c624;
 	border-color: #a3c624;
 	color: #fff;
@@ -264,11 +274,51 @@ nav.fixed-top{
 }
 /*====================< Latest-News Part Ends >===============*/
 
-/*===================<  Part Starts >==============*/
-/*====================<  Part Ends >===============*/
+/*===================< Event  Part Starts >==============*/
+.event-part{
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+.event-details {
+    padding-top: 70px;
+}
+.owl-prev{
+	position: absolute;
+	left: -24px;
+	bottom: 160px;
+	padding: 6px 15px !important;
+    background: #a3c624 !important;
+}
+.owl-next{
+	position: absolute;
+	right: -24px;
+    bottom: 160px;
+	padding: 6px 15px !important;
+    background: #a3c624 !important;
+}
+p.date {
+    font-size: 14px;
+    opacity: 0.8;
+	margin-bottom: 10px;
+}
+/*====================<  Event Part Ends >===============*/
 
-/*===================<  Part Starts >==============*/
-/*====================<  Part Ends >===============*/
+/*===================< Successful-Story Part Starts >==============*/
+.successful-story-part{
+	/* padding: 70px 0; */
+	background-image: url('../images/back.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.successful-story-part .title-heading{
+	padding: 50px 0px;
+}
+.successful-story-part .layout{
+	min-height: 460px;
+	background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0.71));
+	padding-bottom: 50px;
+}
+/*====================< Successful-Story Part Ends >===============*/
 
 /*===================<  Part Starts >==============*/
 /*====================<  Part Ends >===============*/
@@ -295,7 +345,7 @@ nav.fixed-top{
 	font: bold 16px sans-serif;
 
 	padding: 55px 50px;
-	margin-top: 80px;
+	/* margin-top: 80px; */
 }
 
 .footer-distributed .footer-left,
