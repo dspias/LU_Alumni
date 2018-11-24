@@ -24,9 +24,23 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         =>  'required|string|max:191',
-            'cat_id'        =>  'required|integer',
-            'body'          =>  'required|string',
+            // 'title'         =>  'required|string|max:191',
+            // 'cat_id'        =>  'required|integer',
+            // 'body'          =>  'required|string',
+        ];
+    }
+
+    /**
+     * Custom message for validation
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'title.required' => 'title is required!',
+            'cat_id.required' => 'category name is required!',
+            'body.required' => 'body is required!'
         ];
     }
 }
