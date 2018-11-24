@@ -42,9 +42,24 @@ Route::group([
 });
 
     Route::prefix('admin')->group(function () {
-    Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
     Route::get('login', 'Auth\AdminLoginController@login')->name('admin.auth.login');
     Route::post('login', 'Auth\AdminLoginController@loginAdmin')->name('admin.auth.loginAdmin');
     Route::post('logout', 'Auth\AdminLoginController@logout')->name('admin.auth.logout');
+});
+
+Route::group([
+    // 'middleware' => 'auth:admin'
+], function() {
+    
+    include_once 'admin/admin_profile.php';
+    include_once 'admin/alumni.php';
+    include_once 'admin/clubs.php';
+    include_once 'admin/currentstd.php';
+    include_once 'admin/dashboard.php';
+    include_once 'admin/department.php';
+    include_once 'admin/event.php';
+    include_once 'admin/map.php';
+    include_once 'admin/notifications.php';
+    include_once 'admin/users_post.php';
+
 });

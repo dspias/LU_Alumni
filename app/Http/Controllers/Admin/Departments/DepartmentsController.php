@@ -1,13 +1,12 @@
 <?php
-namespace App\Http\Controllers;
+
+namespace App\Http\Controllers\Admin\Departments;
+
 use Illuminate\Http\Request;
-use App\Admin;
-class AdminController extends Controller
+use App\Http\Controllers\Controller;
+
+class DepartmentsController extends Controller
 {
-    public function __construct()
-   {
-       $this->middleware('guest:admin')->except('logout');
-   }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +14,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.backend.dashboard.index');
+        //return a view and pass in the above variable
+        return view('admin.backend.department.index');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,8 +25,10 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.auth.register');
+        //return a view and pass in the above variable
+        return view('admin.backend.clubs.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -34,21 +37,9 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        // validate the data
-        $this->validate($request, [
-          'name'          => 'required',
-          'email'         => 'required',
-          'password'      => 'required'
-        ]);
-        // store in the database
-        $admins = new Admin();
-        $admins->name = $request->name;
-        $admins->email = $request->email;
-        $admins->password=bcrypt($request->password);
-        $admins->save();
-        
-        return $this->index();
+        //
     }
+
     /**
      * Display the specified resource.
      *
@@ -59,6 +50,7 @@ class AdminController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -69,6 +61,7 @@ class AdminController extends Controller
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -80,6 +73,7 @@ class AdminController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *
