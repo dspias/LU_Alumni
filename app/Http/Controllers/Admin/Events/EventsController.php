@@ -26,7 +26,7 @@ class EventsController extends Controller
     public function create()
     {
         //return a view and pass in the above variable
-        return view('admin.backend.clubs.create');
+        return view('admin.backend.event.create');
     }
 
     /**
