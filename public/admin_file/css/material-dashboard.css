@@ -39,7 +39,7 @@ html {
 }
 a, a:hover, a:active, a:focus{
 	text-decoration: none !important;
-	color: #fff !important;
+	color: #fff;
 }
 article,
 aside,

@@ -35,22 +35,24 @@ Route::group([
     include_once 'Backend/user.php';
 
 
-
     include_once 'frontend/departments.php';
 
 
 });
 
-    Route::prefix('admin')->group(function () {
-    Route::get('login', 'Auth\AdminLoginController@login')->name('admin.auth.login');
-    Route::post('login', 'Auth\AdminLoginController@loginAdmin')->name('admin.auth.loginAdmin');
-    Route::post('logout', 'Auth\AdminLoginController@logout')->name('admin.auth.logout');
+
+Route::group([
+    'middleware' => 'guest:admin'
+], function() {
+    
+    include_once 'admin/admin_auth.php';
+
 });
 
 Route::group([
-    // 'middleware' => 'auth:admin'
+    'middleware' => 'auth:admin'
 ], function() {
-    
+
     include_once 'admin/admin_profile.php';
     include_once 'admin/alumni.php';
     include_once 'admin/clubs.php';

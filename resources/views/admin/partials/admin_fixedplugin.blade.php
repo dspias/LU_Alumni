@@ -20,22 +20,22 @@
         <li class="header-title">Images</li>
         <li>
           <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('admin/img/sidebar-1.jpg') }}" alt="">
+            <img src="{{ asset('admin_file/img/sidebar-1.jpg') }}" alt="">
           </a>
         </li>
         <li class="active">
           <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('admin/img/sidebar-2.jpg') }}" alt="">
+            <img src="{{ asset('admin_file/img/sidebar-2.jpg') }}" alt="">
           </a>
         </li>
         <li>
           <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('admin/img/sidebar-3.jpg') }}" alt="">
+            <img src="{{ asset('admin_file/img/sidebar-3.jpg') }}" alt="">
           </a>
         </li>
         <li>
           <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{ asset('admin/img/sidebar-4.jpg') }}" alt="">
+            <img src="{{ asset('admin_file/img/sidebar-4.jpg') }}" alt="">
           </a>
         </li>
       </ul>

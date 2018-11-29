@@ -47,7 +47,8 @@ class AlumniController extends Controller
      */
     public function show($id)
     {
-        //
+        //return a view and pass in the above variable
+        return view('admin.backend.alumni.show');
     }
 
     /**

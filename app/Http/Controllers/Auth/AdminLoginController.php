@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// use 
 
 class AdminLoginController extends Controller
 {
-	protected $redirectTo = '/';
+	protected $redirectTo = 'admin/dashboard';
 
 	public function __construct()
     {

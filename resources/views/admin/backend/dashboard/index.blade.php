@@ -2,7 +2,7 @@
 
 @section('title', '| Dashboard')
 
-@section('navhead', 'Admin Dashboard')
+@section('navhead','Dashboard')
 
 @section('content')
 	<!-- Start content -->			

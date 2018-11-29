@@ -3,7 +3,7 @@
     <div class="container-fluid">
         
         <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">@yield('navhead')</a>
+            <a class="navbar-brand" href="javascript:void(0)">{{ Auth()->guard('admin')->user()->name }} | @yield('navhead')</a>
         </div>
         
 	
