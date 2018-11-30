@@ -36,6 +36,7 @@ Route::group([
 
 
     include_once 'frontend/departments.php';
+    include_once 'frontend/career_advice.php';
 
 
 });

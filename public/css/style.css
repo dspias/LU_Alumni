@@ -320,8 +320,48 @@ p.date {
 }
 /*====================< Successful-Story Part Ends >===============*/
 
-/*===================<  Part Starts >==============*/
-/*====================<  Part Ends >===============*/
+/*===================< Career Advice Part Starts >==============*/
+.career-advice-part{
+	margin-top: 100px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+.nav-pills .nav-link, .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+	text-align: center;
+	padding: 20px;
+}
+strong.post-time-date {
+    font-size: 12px;
+    opacity: 0.5;
+}
+.card-body.post-comment {
+	border-top: 1px solid #e0e0e0;
+	display: none;
+}
+textarea.form-control {
+    height: auto;
+	background: #fff;
+	border-radius: 5px;
+}
+.btn-comment{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.user-comments {
+    border-top: 1px solid #efefef;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.comnt {
+    padding-top: 10px;
+    padding-left: 63px;
+    text-align: justify;
+}
+.card{
+	margin-bottom: 20px;
+}
+
+/*====================< Career Advice Part Ends >===============*/
 
 /*===================<  Part Starts >==============*/
 /*====================<  Part Ends >===============*/

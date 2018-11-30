@@ -22,7 +22,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Career & Networking</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Career Advice</a>
+                        <a class="dropdown-item" href="{{ route('career_advice.index') }}">Career Advice</a>
                         <a class="dropdown-item" href="#">Study Abroad</a>
                         <a class="dropdown-item" href="#">General Advice</a>
                     </div>
