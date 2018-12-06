@@ -26,6 +26,9 @@
                                             POST TITLE
                                         </th>
                                         <th>
+                                            POST TIME
+                                        </th>
+                                        <th>
                                             ACTION
                                         </th>
 
@@ -34,20 +37,24 @@
                                         <tr>
                                             @foreach($posts as $post)
                                             <td>
-                                            <a href="#">{{ $post->first_name }}</a>
+                                            <a href="{{ route('show', ['id' => $post->user_id]) }}" target="_blank">{{ $post->first_name }}</a>
                                             </td>
                                             <td>
-                                                <a href="#">{{ $post->title }}</a>
+                                                {{ $post->title }}
+                                            </td>
+                                            <td>
+                                                {{ $post->updated_at }}
+                                                {{-- {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('Y-m-d') }} --}}
                                             </td>
                                             <td>
                                                 
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                         <a href="#" class="btn btn-danger btn-sm">
+                                                <a href="{{ route('admin.userspost.destroy', ['id' => $post->id]) }}" class="btn btn-danger btn-sm">
                                                             <i class="fas fa-trash"></i> 
                                                             Delete
                                                         </a> 
                             
-                                                        <a href="#" class="btn btn-info btn-sm">
+                                                    <a href="{{ route('admin.userspost.show', ['id' => $post->id]) }}" class="btn btn-info btn-sm">
                                                             <i class="fas fa-info-circle"></i> 
                                                             Details
                                                         </a>
