@@ -26,7 +26,7 @@
                                             POST TITLE
                                         </th>
                                         <th>
-                                            POST TIME
+                                            POST DATE
                                         </th>
                                         <th>
                                             ACTION
@@ -43,22 +43,22 @@
                                                 {{ $post->title }}
                                             </td>
                                             <td>
-                                                {{ $post->updated_at }}
-                                                {{-- {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('Y-m-d') }} --}}
+                                                {{-- {{ $post->updated_at }} --}}
+                                                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('Y-m-d') }}
                                             </td>
                                             <td>
                                                 
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="{{ route('admin.userspost.destroy', ['id' => $post->id]) }}" class="btn btn-danger btn-sm">
-                                                            <i class="fas fa-trash"></i> 
-                                                            Delete
-                                                        </a> 
+                                                    <a href="{{ route('admin.userspost.destroy', ['id' => $post->id]) }}" class="btn btn-danger btn-sm">
+                                                    <i class="far fa-trash-alt"></i>
+                                                        Delete
+                                                    </a> 
                             
                                                     <a href="{{ route('admin.userspost.show', ['id' => $post->id]) }}" class="btn btn-info btn-sm">
-                                                            <i class="fas fa-info-circle"></i> 
-                                                            Details
-                                                        </a>
-                                                    </div>
+                                                        <i class="far fa-question-circle"></i>
+                                                        Details
+                                                    </a>
+                                                </div>
 
                                             </td>
                                         @endforeach
