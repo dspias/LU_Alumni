@@ -32,23 +32,29 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            @foreach($posts as $post)
                                             <td>
-                                                <a href="#">Student Name</a>
+                                            <a href="#">{{ $post->first_name }}</a>
                                             </td>
                                             <td>
-                                                <a href="#">This Is a Post Title</a>
+                                                <a href="#">{{ $post->title }}</a>
                                             </td>
                                             <td>
-                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                    <label class="btn btn-danger btn-sm">
-                                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>Delete
-                                                    </label>
-                                                    <label class="btn btn-info btn-sm">
-                                                        <input type="radio" name="options" id="option2" autocomplete="off">Details
-                                                    </label>
-                                                </div>
-                                            </td>
+                                                
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                         <a href="#" class="btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash"></i> 
+                                                            Delete
+                                                        </a> 
+                            
+                                                        <a href="#" class="btn btn-info btn-sm">
+                                                            <i class="fas fa-info-circle"></i> 
+                                                            Details
+                                                        </a>
+                                                    </div>
 
+                                            </td>
+                                        @endforeach
                                         </tr>
 
                                     </tbody>
@@ -57,6 +63,8 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- paginate --}}
 
             </div>
         </div>

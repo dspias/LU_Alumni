@@ -15,11 +15,13 @@ Route::group([
 
     Route::post('', ['uses' => 'ProfileController@store', 'as' => 'admin.profile.store']);
 
+    Route::post('/{id}', ['uses' => 'ProfileController@imageStore', 'as' => 'admin.profile.imagestore']);
+
     Route::get('show/{id}', ['uses' => 'ProfileController@show', 'as' => 'admin.profile.show']);
 
     Route::get('edit/{id}', ['uses' => 'ProfileController@edit', 'as' => 'admin.profile.edit']);
 
-    Route::put('update/{id}', ['uses' => 'ProfileController@update', 'as' => 'admin.profile.update']);
+    Route::post('update/{id}', ['uses' => 'ProfileController@update', 'as' => 'admin.profile.update']);
 
     Route::post('destroy/{id}', ['uses' => 'ProfileController@destroy', 'as' => 'admin.profile.destroy']);
 });

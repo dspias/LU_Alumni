@@ -5,8 +5,16 @@ namespace App\Http\Controllers\Admin\UsersPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+//use impoortant Model and controller for this controller
+use DB;
+use App\Models\Posts\Posts;
+
 class UsersPostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +22,14 @@ class UsersPostController extends Controller
      */
     public function index()
     {
+        $posts = DB::table('posts')
+                ->join('users', 'posts.user_id', '=', 'users.id')
+                ->join('categories', 'posts.cat_id', '=', 'categories.id')
+                ->paginate(10);
+
+        // dd($posts);
         //return a view and pass in the above variable
-        return view('admin.backend.users_post.index');
+        return view('admin.backend.users_post.index')->withPosts($posts);
     }
 
     /**

@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Admin\Alumni;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class AlumniController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +19,7 @@ class AlumniController extends Controller
      */
     public function index()
     {
+        
         //return a view and pass in the above variable
         return view('admin.backend.alumni.index');
     }

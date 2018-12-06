@@ -76,8 +76,8 @@
                         </div>
                        
 
-                        <div class="wrap-input100 validate-input" data-validate = "Student ID is required: 1512020201">
-                            <input id="uniStudentId" class="input100 form-control{{ $errors->has('uniStudentId') ? ' is-invalid' : '' }} " type="text" name="uniStudentId" placeholder="Student ID" value="{{ old('uniStudentId') }}" required autofocus >
+                        <div class="wrap-input100 ">
+                            <input id="uniStudentId" class="input100 form-control{{ $errors->has('uniStudentId') ? ' is-invalid' : '' }} " type="text" name="uniStudentId" placeholder="Student ID 'If you know'" value="{{ old('uniStudentId') }}">
 
                             <span class="focus-input100"></span>
 
@@ -89,11 +89,10 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('uniStudentId') }}</strong>
                                 </span>
-                            @endif
-
-                            
+                            @endif                            
 
                         </div>
+                        
 
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -112,7 +111,7 @@
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                            <input id="password" class="input100 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" placeholder="Password" required autofocus >
+                            <input id="password" class="input100 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" placeholder="Password" value="{{ old('password') }}" required autofocus >
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
@@ -128,7 +127,7 @@
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                            <input id="password-confirm" class="input100 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password_confirmation" placeholder="Re-enter Password" required autofocus>
+                            <input id="password-confirm" class="input100 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password_confirmation" placeholder="Re-enter Password" value="{{ old('password') }}" required autofocus>
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
