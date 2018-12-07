@@ -16,10 +16,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6" style="border-left: 1px solid #ddd; border-right: 1px solid #ddd;">
+            <div class="col-md-6" style="border-left: 1px solid #eeeeee88; border-right: 1px solid #eeeeee88;">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="nav-itJob" role="tabpanel" aria-labelledby="nav-itJob-tab">
-                        <div class="card gedf-card alumni-post">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item">Career & Networking</li>
+                                <li class="breadcrumb-item"><a href="#">Career Advice</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">IT-Jobs</li>
+                            </ol>
+                        </nav>
+                        <hr>
+                        <div class="posts card gedf-card alumni-post">
                             <div class="card-header">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -86,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card gedf-card alumni-post">
+                        <div class="posts card gedf-card alumni-post">
                             <div class="card-header">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -160,17 +169,25 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="suggested-alumni">
-                    <h2>Suggested Alumni</h2>
-                    <hr>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="{{ asset('images/profile_pic.jpg') }}" alt="Card image cap">
-                        <div class="card-body">
-                          <h5 class="card-title" style="margin-bottom: 0px;"><a href="#">Sabbir Ahmed</a></h5>
-                          <p class="card-text" style="font-size: 14px; font-weight: bold; color: #666;">32nd Batch, CSE Department</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h3 class="color-two">Suggested Alumni</h3>
+                <hr>
+                <div class="owl-carousel owl-theme suggested-alumni text-center" id="sugestedAlumni">
+                    {{--  @@foreach ($collection as $item)  --}}
+                    <div class="item team-member ">
+                        <div class="card text-center" style="width: 18rem;">
+                            <a href="#"><img class="card-img-top" src="{{ asset('images/profile_pic.jpg') }}" alt="Card image cap"></a>
+                            <div class="card-body">
+                                <h5 class="card-title color-two" style="margin-bottom: 0px;"><a href="#" class="user-title">Sabbir Ahmed</a></h5>
+                                <p class="card-text text-center" style="font-size: 14px; font-weight: bold; color: #666;">32nd Batch, CSE Department</p>
+                                <ul class="social-list">
+                                    <li><a href="#" target="_blank"<i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"<i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"<i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    </div>                        
+                    {{--  @endforeach --}}
                 </div>
             </div>
         </div>
@@ -179,13 +196,4 @@
 
 @endsection @section('scripts')
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("a.comment").click(function() {
-            $(".post-comment").slideToggle();
-            return false
-        });
-    });
-</script>
 @endsection

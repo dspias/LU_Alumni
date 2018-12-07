@@ -1,4 +1,12 @@
-// ============< Navbar Part >===========
+// Slide Toggle
+$(document).ready(function() {
+    $("a.comment").click(function() {
+        $(".post-comment").slideToggle();
+        return false
+    });
+});
+
+// ============< Event Part >===========
 
 $(document).ready(function(){
     $('#event').owlCarousel({
@@ -22,7 +30,10 @@ $(document).ready(function(){
             }
         }
     });
+});
     
+// ============< story Part >===========
+$(document).ready(function(){
     $('#story').owlCarousel({
         loop:true,
         margin:10,
@@ -42,5 +53,19 @@ $(document).ready(function(){
             }
         }
     });
-  });
-// ============< Navbar Part >===========
+});
+
+// ============< Suggested Alumni Part >===========
+$(document).ready(function(){
+    $('#sugestedAlumni').owlCarousel({
+        items: 1,
+        margin: 0,
+        loop: true,
+        dots: false,
+        nav: false,
+        // navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        autoplay: true,
+        smartSpeed: 1200,
+        autoplayTimeout: 3000
+      })
+});

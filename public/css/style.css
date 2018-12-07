@@ -322,13 +322,30 @@ p.date {
 
 /*===================< Career Advice Part Starts >==============*/
 .career-advice-part{
-	margin-top: 100px;
+	/* margin-top: 100px; */
 	padding-top: 100px;
 	padding-bottom: 100px;
+}
+.nav-pills .nav-link{
+	color: #292c2f;
+	transition: 0.3s all ease-in-out;
+}
+.nav-pills .nav-link:hover{
+	color: #a3c624;
+	transition: 0.3s all ease-in-out;
 }
 .nav-pills .nav-link, .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
 	text-align: center;
 	padding: 20px;
+    background-color: transparent;
+	border-radius: 50px;
+	font-weight: bold;
+	transition: 0.3s all ease-in-out;
+}
+.nav-pills .nav-link.active{
+	color: #a3c624;
+	box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+	transition: 0.3s all ease-in-out;
 }
 strong.post-time-date {
     font-size: 12px;
@@ -360,7 +377,80 @@ textarea.form-control {
 .card{
 	margin-bottom: 20px;
 }
-
+.suggested-alumni .social-list{
+	padding-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+.suggested-alumni .social-list li{
+	padding-right: 0px;
+}
+.suggested-alumni .card-body {
+    padding: .9rem 1.25rem;
+}
+ol.breadcrumb {
+	box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+    background: transparent;
+    border-radius: 50px;
+}
+li.breadcrumb-item{
+	font-weight: 600;
+}
+li.breadcrumb-item{
+	color: #a3c624a3 !important;
+}
+li.breadcrumb-item a{
+	color: #a3c624;
+}
+.breadcrumb-item+.breadcrumb-item::before{
+	color: #a3c624;
+}
+hr{
+	border-top: 1px solid #eeeeee88;
+}
+.posts.card {
+    border: 1px solid rgba(0, 0, 0, 0.03);
+	border-radius: 1.25rem;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+}
+.posts .card-header {
+	background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+.posts .card-header:first-child {
+    border-radius: calc(1.25rem - 1px) calc(1.25rem - 1px) 0 0;
+}
+.posts .card-footer {
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+    border-radius: 0 0 calc(1.25rem - 1px) calc(1.25rem - 1px);
+}
+h5.card-title {
+    color: #292c2f;
+	transition: 0.3s all ease-in-out;
+}
+h5.card-title:hover {
+    color: #a6c82c;
+	transition: 0.3s all ease-in-out;
+}
+a.card-link{
+	color: #999;
+	transition: 0.3s all ease-in-out;
+}
+a.card-link:hover,
+a.card-link:active,
+a.card-link:focus{
+	color: #a3c624;
+	transition: 0.3s all ease-in-out;
+}
+a.user-title{
+	color: #252733;
+	transition: 0.3s all ease-in-out;
+}
+a.user-title:hover{
+	color: #a3c624;
+	transition: 0.3s all ease-in-out;
+}
 /*====================< Career Advice Part Ends >===============*/
 
 /*===================<  Part Starts >==============*/
