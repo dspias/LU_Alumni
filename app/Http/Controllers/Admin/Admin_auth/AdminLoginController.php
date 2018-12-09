@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Admin_auth;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Admin\Dashboard\DashboardController;
 
 class AdminLoginController extends Controller
 {
@@ -19,12 +18,18 @@ class AdminLoginController extends Controller
 
    public function login(Request $request){
 
+    //data validation
+    $this->validate($request, [
+        'email'     => 'required|email',
+        'password'  => 'required|min:8'
+    ]);
+
     // return $request;
 
      if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             return redirect()->route('admin.dashboard.index');
      } else {
-        return "email or password is not match please try again!!!";
+        return redirect()->back()->withInput( $request->only('email', 'remember'));
      }
 
    }
@@ -37,6 +42,19 @@ class AdminLoginController extends Controller
     public function showLoginForm()
     {
         return view('admin.auth.login');
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->flush();
+        return redirect()->guest(route('admin.index'));
     }
    
 }

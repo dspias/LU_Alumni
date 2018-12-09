@@ -34,8 +34,9 @@
 
                                     </thead>
                                     <tbody>
+                                        @foreach($posts as $post)
                                         <tr>
-                                            @foreach($posts as $post)
+                                            
                                             <td>
                                             <a href="{{ route('show', ['id' => $post->user_id]) }}" target="_blank">{{ $post->first_name }}</a>
                                             </td>
@@ -61,8 +62,9 @@
                                                 </div>
 
                                             </td>
-                                        @endforeach
+                                        
                                         </tr>
+                                        @endforeach
 
                                     </tbody>
                                 </table>
@@ -81,4 +83,5 @@
 @endsection
 
 @section('scripts')
+
 @endsection

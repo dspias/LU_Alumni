@@ -51,6 +51,14 @@ Route::group([
 });
 
 Route::group([
+    'middleware' => 'auth:admin',
+    'namespace' => 'Admin\Admin_auth',
+    'prefix' => 'admin'
+], function() {    
+    Route::get('/logout', ['uses' => 'AdminLoginController@logout', 'as' => 'admin.logout']);
+});
+
+Route::group([
     'middleware' => 'auth:admin'
 ], function() {
 

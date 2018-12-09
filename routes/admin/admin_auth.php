@@ -13,6 +13,7 @@ Route::group([
     Route::get('/login', ['uses' => 'AdminLoginController@showLoginForm', 'as' => 'admin.index']);
     Route::post('/login', ['uses' => 'AdminLoginController@login', 'as' => 'admin.login']);
 
+
     // Route::get('/register', ['uses' => 'RegisterController@showRegistrationForm', 'as' => 'admin.register']);
     // Route::post('/register', ['uses' => 'RegisterController@login', 'as' => 'admin.register']);
 

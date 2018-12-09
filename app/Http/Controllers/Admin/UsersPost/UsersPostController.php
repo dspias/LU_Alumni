@@ -25,7 +25,9 @@ class UsersPostController extends Controller
         $posts = DB::table('posts')
                 ->join('users', 'posts.user_id', '=', 'users.id')
                 ->join('categories', 'posts.cat_id', '=', 'categories.id')
+                ->select('posts.*', 'users.first_name', 'categories.category_name')
                 ->paginate(10);
+        
 
         // dd($posts);
         //return a view and pass in the above variable
@@ -95,6 +97,13 @@ class UsersPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Posts::find($id);
+
+        // dd($post);
+
+        $post->delete();
+
+        return redirect()->back();
+        
     }
 }
