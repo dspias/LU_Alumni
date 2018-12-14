@@ -9,6 +9,9 @@ a:active{
 	text-decoration: none !important;
 	outline: none !important;
 }
+img{
+	max-width: 100%;
+}
 .color-one{
 	color: #017bae;
 }
@@ -453,8 +456,117 @@ a.user-title:hover{
 }
 /*====================< Career Advice Part Ends >===============*/
 
-/*===================<  Part Starts >==============*/
-/*====================<  Part Ends >===============*/
+/*===================< Profile Part Starts >==============*/
+.profile-part{
+	background-color: #eeeeee;
+}
+.profile-part .user-profile{
+	min-height: 100vh;
+	background-color: #ffffff;
+	margin-top: 100px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+.profile-part .user-profile .profile-pic{
+	margin-bottom: 0px;
+}
+.profile-part .user-profile .profile-pic img{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: 1px solid #343a40;
+	border-bottom: 0px solid #343a40;
+}
+.profile-part .user-profile .btn-group{
+	width: 100.5%;
+}
+.profile-part .user-profile .btn-group .btn-add-post,
+.profile-part .user-profile .btn-group .btn-edit-profile{
+	width: 50% !important;
+	border-radius: 0px;
+}
+/* a.btn.btn-outline-dark.btn-add-post{
+	border-bottom-left-radius: 10px !important;
+}
+a.btn.btn-outline-dark.btn-edit-profile{
+	border-bottom-right-radius: 10px !important;
+} */
+.btn-outline-dark:not(:disabled):not(.disabled).active:focus, 
+.btn-outline-dark:not(:disabled):not(.disabled):active:focus, 
+.show>.btn-outline-dark.dropdown-toggle:focus, .btn-outline-dark.focus, .btn-outline-dark:focus{
+	box-shadow: none;
+}
+.profile-part .user-profile .work-link{
+	padding: 10px;
+	padding-top: 40px;
+}
+.profile-part .user-profile .work-link h6{
+	padding-bottom: 10px;
+	padding-left: 15px;
+	font-weight: bold;
+}
+
+.table-bordered td, .table-bordered th {
+	border: 1px solid #dee2e617;
+	font-size: 14px;
+	color: #252733;
+}
+.table-bordered td{
+	text-align: right !important;
+}
+.table-bordered td a{
+	font-weight: bold;
+	color: #252733;
+}
+
+.profile-part .user-profile .skills{
+	padding: 10px;
+	padding-top: 40px;
+}
+.profile-part .user-profile .skills h6{
+	padding-bottom: 10px;
+	padding-left: 15px;
+	font-weight: bold;
+}
+
+
+.profile-part .profile-details{
+	min-height: 100vh;
+	background-color: #ffffff;
+	margin-top: 100px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+.hide {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  }
+  
+  label[for="upload"] {
+	display: inline-block;
+    cursor: pointer;
+    padding: 10px 30px;
+    background-color: #ffffff;
+    color: #888888;
+    /* box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25), 0 2px 10px 0 rgba(0, 0, 0, 0.2); */
+    border-radius: 30px;
+    border: 1px solid #e6e6e6;
+    margin-top: 10px;
+    transition: all 0.3s;
+  }
+  label[for="upload"]:hover {
+    border: 1px solid #666;
+  }
+  .btn-share{
+	  margin-top: 10px;
+	  padding: 10px 50px;
+	  border-radius: 30px;
+  }
+/*====================< Profile Part Ends >===============*/
 
 /*===================<  Part Starts >==============*/
 /*====================<  Part Ends >===============*/
