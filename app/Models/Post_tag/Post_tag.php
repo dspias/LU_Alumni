@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Post_tag;
+namespace App\Models\Post_Tag;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post_tag extends Model
+class Post_Tag extends Model
 {
     //
 }

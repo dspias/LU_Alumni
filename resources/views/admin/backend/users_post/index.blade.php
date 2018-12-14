@@ -38,7 +38,7 @@
                                         <tr>
                                             
                                             <td>
-                                            <a href="{{ route('show', ['id' => $post->user_id]) }}" target="_blank">{{ $post->first_name }}</a>
+                                            <a href="{{ route('show', ['id' => $post->user->id]) }}" target="_blank">{{ $post->user->first_name }}</a>
                                             </td>
                                             <td>
                                                 {{ $post->title }}

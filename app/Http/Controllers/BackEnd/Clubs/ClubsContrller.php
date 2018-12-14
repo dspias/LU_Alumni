@@ -4,7 +4,7 @@ namespace App\Http\Controllers\BackEnd\Clubs;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Clubs\Clubs;
+use App\Models\Club\Club;
 
 class ClubsContrller extends Controller
 {
@@ -12,7 +12,7 @@ class ClubsContrller extends Controller
     public function __construct(){
         
         $this->middleware('auth');
-        $this->clubs = new Clubs();
+        $this->clubs = new Club();
 
     }
     /**

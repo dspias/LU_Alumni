@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 
 //use impoortant Model and controller for this controller
 use DB;
-use App\Models\Posts\Posts;
+use App\Models\Post\Post;
+use App\Models\User\User;
+use App\Models\Category\Category;
 
 class UsersPostController extends Controller
 {
@@ -22,11 +24,12 @@ class UsersPostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')
-                ->join('users', 'posts.user_id', '=', 'users.id')
-                ->join('categories', 'posts.cat_id', '=', 'categories.id')
-                ->select('posts.*', 'users.first_name', 'categories.category_name')
-                ->paginate(10);
+        // $posts = DB::table('posts')
+        //         ->join('users', 'posts.user_id', '=', 'users.id')
+        //         ->join('categories', 'posts.cat_id', '=', 'categories.id')
+        //         ->select('posts.*', 'users.first_name', 'categories.category_name')
+        //         ->paginate(10);
+        $posts = Post::with(['user', 'category'])->get();
         
 
         // dd($posts);
@@ -97,7 +100,7 @@ class UsersPostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Posts::find($id);
+        $post = Post::find($id);
 
         // dd($post);
 

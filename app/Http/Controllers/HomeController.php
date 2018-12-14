@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categories\Categories;
+use App\Models\Category\Category;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Categories::all();
+        $categories = Category::all();
         // $tags = Tags::all();
         
         return view('welcome')->withCategories($categories);

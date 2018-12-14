@@ -9,9 +9,9 @@ use Intervention\Image\ImageServiceProvider;
 use Illuminate\Support\Facades\Storage;
 
 // use Important Models
-use App\Models\Posts\Posts;
-use App\Models\Categories\Categories;
-use App\Models\Tags\Tags;
+use App\Models\Post\Post;
+use App\Models\Category\Category;
+use App\Models\Tag\Tag;
 use Session;
 use Auth;
 use Image;
@@ -29,7 +29,7 @@ class PostsContrller extends Controller
         $this->middleware('auth');
 
         $this->request = $request;
-        $this->model = new Posts();
+        $this->model = new Post();
 
     }
 
@@ -55,7 +55,7 @@ class PostsContrller extends Controller
     public function create()
     {
 
-        $categories = Categories::all();
+        $categories = Category::all();
         // $tags = Tags::all();
         return view('backend.posts.create')->withCategories($categories);
     }
@@ -109,7 +109,7 @@ class PostsContrller extends Controller
         
         
         //create post model object
-        $post = new Posts();
+        $post = new Post();
 
         //set request data to post data        
         $post->user_id = Auth::user()->id;
@@ -151,8 +151,8 @@ class PostsContrller extends Controller
     public function edit($id)
     {
         //find the post in database and save as a variable
-        $post = Posts::find($id);
-        $categories = Categories::all();
+        $post = Post::find($id);
+        $categories = Category::all();
 
         return view('backend.posts.edit')->withPost($post)->withCategories($categories);
 
@@ -238,7 +238,7 @@ class PostsContrller extends Controller
      */
     public function destroy($id)
     {
-        $post = Posts::find($id);
+        $post = Post::find($id);
         if(Auth::user()->id == $post->user_id) { 
             $post->delete();
             Session::flash('success', "This post was successfully deleted");

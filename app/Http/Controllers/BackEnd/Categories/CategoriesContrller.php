@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 // use Important Medels
-use App\Models\Categories\Categories;
+use App\Models\Category\Category;
 
 class CategoriesContrller extends Controller
 {
@@ -15,7 +15,7 @@ class CategoriesContrller extends Controller
     // Added to Auth constructor
     public function __construct(){
         $this->middleware('auth', ['only' => 'index']);
-        $this->categories = new Categories();
+        $this->categories = new Category();
     }
 
     /**
@@ -53,7 +53,7 @@ class CategoriesContrller extends Controller
             'name' => 'required|max:191'
         ));
 
-        $category = new Categories();
+        $category = new Category();
         $category->name = $request->name;
 
         $category->save();
@@ -103,7 +103,7 @@ class CategoriesContrller extends Controller
             'name' => 'required|max:191'
         ));
 
-        $category = new Categories();
+        $category = new Category();
         $category->name = $request->name;
 
         $category->save();

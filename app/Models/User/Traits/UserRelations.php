@@ -4,15 +4,14 @@ namespace App\Models\User\Traits;
 use App\Models\User\User;
 
 trait UserRelations
-{
-    
+{   
 
     /**
      * Get the posts for the blog user.
      */
     public function posts()
     {
-        return $this->hasMany('App\Models\Posts');
+        return $this->hasMany('App\Models\Post\Post');
     }
 
     /**
@@ -20,7 +19,7 @@ trait UserRelations
      */
     public function comments()
     {
-        return $this->hasMany('App\Models\Comments');
+        return $this->hasMany('App\Models\Comment\Comment');
     }
 
     /**
@@ -28,7 +27,7 @@ trait UserRelations
      */
     public function events()
     {
-        return $this->hasMany('App\Models\Events');
+        return $this->hasMany('App\Models\Event\Event');
     }
 
 }
