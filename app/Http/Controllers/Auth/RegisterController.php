@@ -48,22 +48,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        if($data['uniStudentId']){
-            return Validator::make($data, [
-
-                'first_name' => 'required|string|max:191',                          /*=== Validation First name ===*/
-                'last_name' => 'required|string|max:191',                           /*=== Validation Last name ===*/
-                'uniStudentId' => 'string|min:10|max:10|unique:users',     /*=== Validation University Student Id ===*/
-                'email' => 'required|string|email|max:191|unique:users',            /*=== Validation eamil ===*/
-                'password' => 'required|string|min:8|confirmed',                    /*=== Validation password ===*/
-    
-            ]);
-        }
         return Validator::make($data, [
 
             'first_name' => 'required|string|max:191',                          /*=== Validation First name ===*/
             'last_name' => 'required|string|max:191',                           /*=== Validation Last name ===*/
-            // 'uniStudentId' => 'string|min:10|max:10|unique:users',     /*=== Validation University Student Id ===*/
+            'uniStudentId' => 'string|min:10|max:10|unique:users',     /*=== Validation University Student Id ===*/
             'email' => 'required|string|email|max:191|unique:users',            /*=== Validation eamil ===*/
             'password' => 'required|string|min:8|confirmed',                    /*=== Validation password ===*/
 
@@ -79,15 +68,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         
-        if($data['uniStudentId'] == null){
-            return User::create([
-                'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],
-                'uniStudentId' => 0,
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-        }
+
+        $year ="20".substr($data['uniStudentId'],0,2);
+
+        $year = (string)((int)$year + 3);
 
         return User::create([
             'first_name' => $data['first_name'],
@@ -95,6 +79,7 @@ class RegisterController extends Controller
             'uniStudentId' => $data['uniStudentId'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'graduation_year' => $year,
         ]);
     }
 }

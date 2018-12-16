@@ -29,41 +29,42 @@
 
                                     <th>Graduation year</th>
 
-                                    <th>View More</th>
+                                    <th>Action</th>
                                 </thead>
 
                                 <tbody>
+                                @foreach ($alumnis as $key => $alumni)
+                                    
                                     <tr>
-                                        <td>01</td>
+                                        <td>{{ $key+1 }}</td>
 
-                                        <td>Raju Deb Rupok</td>
+                                        <td>{{ $alumni->first_name." ".$alumni->last_name }}</td>
 
-                                        <td>CSE</td>
+                                        <td>{{ $alumni->department }}</td>
 
-                                        <td>1512020204</td>
+                                        <td>{{ $alumni->uniStudentId }}</td>
 
-                                        <td>2017</td>
+                                        <td>{{ $alumni->graduation_year }}</td>
 
                                         <td class="text-primary">
-                                            <a href="{{ route('admin.alumni.show', ['id' => 1]) }}" class="btn btn-info btn-sm">View</a>
+
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="{{ route('admin.alumni.show', ['id' => $alumni->id]) }}" class="btn btn-info btn-sm">
+                                                        <i class="far fa-question-circle"></i>
+                                                        view
+                                                    </a>
+                                                <a href="{{ route('admin.alumni.destroy', ['id' => $alumni->id]) }}" class="btn btn-danger btn-sm" onclick="confirm('Are You Sure to Delete This User...?')">
+                                                <i class="far fa-trash-alt"></i>
+                                                    Delete
+                                                </a> 
+                        
+                                                
+                                            </div>
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td>01</td>
+                                @endforeach
 
-                                        <td>Raju Deb Rupok</td>
-
-                                        <td>CSE</td>
-
-                                        <td>1512020204</td>
-
-                                        <td>2017</td>
-
-                                        <td class="text-primary">
-                                            <a href="{{ route('admin.alumni.show', ['id' => 2]) }}" class="btn btn-info btn-sm">View</a>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>

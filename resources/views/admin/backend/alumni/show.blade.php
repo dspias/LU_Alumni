@@ -1,8 +1,8 @@
 @extends('admin.layouts.admin_format')
 
-@section('title', '| Alumni List')
+@section('title', '| Alumni')
 
-@section('navhead', 'ALumni List')
+@section('navhead', 'ALumni')
 
 @section('content')
 	<!-- Start content -->			
@@ -15,73 +15,68 @@
                   <h4 class="card-title">Alumni Profile</h4>
                 </div>
                 <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Name</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">University ID</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Department</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Graduation Year</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Current Company</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Current Position</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <div class="form-group">
-                            <label class="bmd-label-floating">Something About Him / Her</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                    <div class="clearfix"></div>
-                  </form>
+                  <div class="user-details">
+                      <table class="table table-bordered">
+                          <tbody>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Name:</th>
+                                  <td style="text-align: left !important; border-top: 1px solid #b4b4b41a;">{{ $alumni->first_name." ".$alumni->last_name }}</td>
+                              </tr>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Student ID:</th>
+                                  <td style="text-align: left !important;">{{ $alumni->uniStudentId }}</td>
+                              </tr>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Department:</th>
+                                  <td style="text-align: left !important;">{{ $alumni->department }}</td>
+                              </tr>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Student ID:</th>
+                                  <td style="text-align: left !important;">{{ $alumni->email }}</td>
+                              </tr>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Graduation Year:</th>
+                                  <td style="text-align: left !important;">{{ $alumni->graduation_year }}</td>
+                              </tr>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Designation:</th>
+                                  <td style="text-align: left !important;">{{ $alumni->designation }}</td>
+                              </tr>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Company:</th>
+                                  <td style="text-align: left !important;">{{ $alumni->company_name }}</td>
+                              </tr>
+                              <tr>
+                                  <th style="text-align: left !important; width:30%;">Address:</th>
+                                  <td style="text-align: left !important;">
+                                      {{ $alumni->bio }}
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card card-profile">
                 <div class="card-avatar">
-                  <a href="#pablo" type="button" data-toggle="modal" data-target="#exampleModal">
-                    <img class="img" src="{{ asset('admin/img/faces/avatar.jpg') }}" />
+                  <a href="#pablo">
+                    @if(isset($alumni->avatar))
+                      <img class="img" src="{{ asset('images/'.$alumni->avatar) }}" />
+                    @else
+                    <img class="img" src="{{ asset('admin_file/img/faces/avatar.jpg') }}" />
+                    @endif
+                    
                   </a>
                   
                 </div>
                 
                 <div class="card-body">
                   <h6 class="card-category">Alumni</h6>
-                  <h4 class="card-title">Mashiyat Nush</h4>
+                  <h4 class="card-title">{{ $alumni->first_name.' '.$alumni->last_name }}</h4>
                   <p class="card-description">
-                    She is pretty enough...
+                      He is a fantastic Guy...
                   </p>
                 </div>
               </div>
@@ -89,32 +84,6 @@
           </div>
         </div>
       </div>
-      
-      <!--==============add modal=====================-->
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <span class="modal-title" id="exampleModalLabel">change your profile pictue</span>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-      <!--==============close modal================-->
     <!-- close content-->
 @endsection
 

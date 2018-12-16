@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Admin\Alumni;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\User\User;
+use Auth;
 
 class AlumniController extends Controller
 {
+    private $alumni;
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->alumni = new User();
     }
     /**
      * Display a listing of the resource.
@@ -19,9 +22,11 @@ class AlumniController extends Controller
      */
     public function index()
     {
-        
+        $year = date('Y');
+        $alumnis = $this->alumni->where('graduation_year','<',$year )->get();
+
         //return a view and pass in the above variable
-        return view('admin.backend.alumni.index');
+        return view('admin.backend.alumni.index')->withAlumnis($alumnis);
     }
 
     /**
@@ -53,8 +58,10 @@ class AlumniController extends Controller
      */
     public function show($id)
     {
+        $alumni = $this->alumni->find($id);
         //return a view and pass in the above variable
-        return view('admin.backend.alumni.show');
+        // dd($alumni);
+        return view('admin.backend.alumni.show')->withAlumni($alumni);
     }
 
     /**
@@ -88,6 +95,10 @@ class AlumniController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alumni = $this->alumni->find($id);
+
+        $alumni->delete();
+
+        redirect()->back();
     }
 }

@@ -21,5 +21,5 @@ Route::group([
 
     Route::put('update/{id}', ['uses' => 'AlumniController@update', 'as' => 'admin.alumni.update']);
 
-    Route::post('destroy/{id}', ['uses' => 'AlumniController@destroy', 'as' => 'admin.alumni.destroy']);
+    Route::get('destroy/{id}', ['uses' => 'AlumniController@destroy', 'as' => 'admin.alumni.destroy']);
 });

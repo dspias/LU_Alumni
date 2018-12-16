@@ -17,13 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('uniStudentId')->unique()->nullable();
+            $table->string('uniStudentId')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('department')->nullable();
             $table->string('university_batch')->nullable();
-            $table->year('graduation_year')->nullable();
+            $table->year('graduation_year');
             $table->string('designation')->nullable();
             $table->string('company_name')->nullable();
             $table->string('bio')->nullable();
