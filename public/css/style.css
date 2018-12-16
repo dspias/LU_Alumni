@@ -361,7 +361,7 @@ strong.post-time-date {
 textarea.form-control {
     height: auto;
 	background: #fff;
-	border-radius: 5px;
+	border-radius: 30px;
 }
 .btn-comment{
 	margin-top: 10px;
@@ -531,7 +531,7 @@ a.btn.btn-outline-dark.btn-edit-profile{
 
 .profile-part .profile-details{
 	min-height: 100vh;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	margin-top: 100px;
 	margin-bottom: 20px;
 	border-radius: 10px;
@@ -549,7 +549,7 @@ a.btn.btn-outline-dark.btn-edit-profile{
   label[for="upload"] {
 	display: inline-block;
     cursor: pointer;
-    padding: 10px 30px;
+    padding: 10px 50px;
     background-color: #ffffff;
     color: #888888;
     /* box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25), 0 2px 10px 0 rgba(0, 0, 0, 0.2); */
@@ -557,14 +557,39 @@ a.btn.btn-outline-dark.btn-edit-profile{
     border: 1px solid #e6e6e6;
     margin-top: 10px;
     transition: all 0.3s;
+	transition: 0.5s all ease-in-out;
   }
   label[for="upload"]:hover {
-    border: 1px solid #666;
+	border: 1px solid #eee;
+	background-color: #eee;
+	transition: 0.5s all ease-in-out;
   }
   .btn-share{
 	  margin-top: 10px;
 	  padding: 10px 50px;
 	  border-radius: 30px;
+  }
+
+  .card-file a{
+	border: 1px solid #eee;
+    color: #666;
+    border-radius: 30px;
+	transition: all 0.5s ease-in-out;
+  }
+  .card-file a:hover{
+	background-color: #eee;
+	transition: all 0.5s ease-in-out;
+  }
+  .btn.focus, .btn:focus{
+	  box-shadow: none !important;
+  }
+  .edit-btn button{
+	position: absolute;
+    right: 20px;
+	top: 20px;
+	border: 1px solid #eee;
+    color: #666;
+    border-radius: 30px;
   }
 /*====================< Profile Part Ends >===============*/
 
@@ -765,7 +790,7 @@ a.btn.btn-outline-dark.btn-edit-profile{
     font-size: 0.9rem;
     line-height: 1.6;
     color: #495057;
-    background-color: #e6e6e6;
+    background-color: #ffffff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 1.25rem;
@@ -773,4 +798,13 @@ a.btn.btn-outline-dark.btn-edit-profile{
     transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+.form-control:focus{
+	box-shadow: none !important;
+}
+.nice-select{
+	width: 100%;
+	border-radius: 30px;
+	height: 44px;
+	border: 1px solid #ced4da;
 }
