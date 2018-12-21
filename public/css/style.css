@@ -518,11 +518,11 @@ a.btn.btn-outline-dark.btn-edit-profile{
 	color: #252733;
 }
 
-.profile-part .user-profile .skills{
+.profile-part .user-profile .personal-info{
 	padding: 10px;
 	padding-top: 40px;
 }
-.profile-part .user-profile .skills h6{
+.profile-part .user-profile .personal-info h6{
 	padding-bottom: 10px;
 	padding-left: 15px;
 	font-weight: bold;

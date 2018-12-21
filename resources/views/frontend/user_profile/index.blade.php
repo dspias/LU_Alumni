@@ -45,24 +45,32 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="skills">
-                        <h6 class="text-muted">SKILLS</h6>
+                    <div class="personal-info">
+                        <h6 class="text-muted">PERSONAL INFO</h6>
                         <table class="table table-bordered">
                             <tr>
-                                <th class="text-muted">HTML</th>
-                                <td><a href="#">100%</a></td>
+                                <th class="text-muted">Hometown</th>
+                                <td><a href="#">Sylhet</a></td>
                             </tr>
                             <tr>
-                                <th class="text-muted">CSS</th>
-                                <td><a href="#">98%</a></td>
+                                <th class="text-muted">Department</th>
+                                <td><a href="#">CSE</a></td>
                             </tr>
                             <tr>
-                                <th class="text-muted">PHP</th>
-                                <td><a href="#">90%</a></td>
+                                <th class="text-muted">Batch</th>
+                                <td><a href="#">32nd</a></td>
                             </tr>
                             <tr>
-                                <th class="text-muted">Java</th>
-                                <td><a href="#">74%</a></td>
+                                <th class="text-muted">Passing Year</th>
+                                <td><a href="#">2016</a></td>
+                            </tr>
+                            <tr>
+                                <th class="text-muted">Email</th>
+                                <td><a href="#">sabbir.lu32@gmail.com</a></td>
+                            </tr>
+                            <tr>
+                                <th class="text-muted">Mobile</th>
+                                <td><a href="#">+880 1712 34567</a></td>
                             </tr>
                         </table>
                     </div>
