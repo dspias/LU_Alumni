@@ -5,8 +5,18 @@ namespace App\Http\Controllers\Admin\CurrentStd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
+use App\Models\User\User;
+use Auth;
+
 class CurrentStdController extends Controller
 {
+    private $current;
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->current = new User();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +24,10 @@ class CurrentStdController extends Controller
      */
     public function index()
     {
+        $year = date('Y');
+        $currents = $this->current->where('graduation_year','>=',$year )->get();
         //return a view and pass in the above variable
-        return view('admin.backend.currentstd.index');
+        return view('admin.backend.currentstd.index')->withCurrents($currents);
     }
 
     /**
@@ -47,8 +59,9 @@ class CurrentStdController extends Controller
      */
     public function show($id)
     {
+        $current = $this->current->find($id);
         //return a view and pass in the above variable
-        return view('admin.backend.currentstd.show');
+        return view('admin.backend.currentstd.show')->withCurrent($current);
     }
 
     /**
@@ -82,6 +95,10 @@ class CurrentStdController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $current = $this->current->find($id);
+
+        $current->delete();
+
+        redirect()->back();
     }
 }

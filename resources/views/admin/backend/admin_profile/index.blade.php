@@ -40,7 +40,6 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>About Me</label>
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Tell something about you</label>
                                             <textarea class="form-control" rows="5" name="description" required>{{ $admin->description }}</textarea>

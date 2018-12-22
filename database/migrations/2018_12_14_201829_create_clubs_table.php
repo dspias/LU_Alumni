@@ -16,8 +16,10 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('club_name');
+            $table->string('club_moto');
+            $table->string('club_fb_link');
+            $table->text('club_details');
             $table->binary('club_logo');
-            $table->string('club_info');
             $table->timestamps();
             $table->softDeletes();
         });

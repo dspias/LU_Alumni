@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table text-center">
                       <thead class=" text-primary">
                         <th>SL.No.</th>
 
@@ -29,42 +29,40 @@
 
                         <th>Graduation year</th>
 
-                        <th>View More</th>
+                        <th>Action</th>
 
                       </thead>
                       <tbody>
+                @foreach ($currents as $key => $current)
                         <tr>
-                          <td>01</td>
+                          <td>{{ $key+1 }}</td>
 
-                          <td>Raju Deb Rupok</td>
+                          <td>{{ $current->first_name." ".$current->last_name }}</td>
 
-                          <td>CSE</td>
+                          <td>{{ $current->department }}</td>
 
-                          <td>1512020204</td>
+                          <td>{{ $current->uniStudentId }}</td>
 
-                          <td>2017</td>
+                          <td>{{ $current->graduation_year }}</td>
+
+
                           <td class="text-primary">
-                            <a href="{{ route('admin.currentstd.show', ['id' => 1]) }}" class="btn btn-info btn-sm">View</a>
+
+                              <div class="btn-group" role="group" aria-label="Basic example">
+                                  <a href="{{ route('admin.currentstd.show', ['id' => $current->id]) }}" class="btn btn-info btn-sm">
+                                          <i class="far fa-question-circle"></i>
+                                          view
+                                      </a>
+                                  <a href="{{ route('admin.currentstd.destroy', ['id' => $current->id]) }}" class="btn btn-danger btn-sm" onclick="confirm('Are You Sure to Delete This User...?')">
+                                  <i class="far fa-trash-alt"></i>
+                                      Delete
+                                  </a> 
+          
+                                  
+                              </div>
                           </td>
-
                         </tr>
-
-                        <tr>
-                          <td>01</td>
-
-                          <td>Raju Deb Rupok</td>
-
-                          <td>CSE</td>
-
-                          <td>1512020204</td>
-
-                          <td>2017</td>
-                          <td class="text-primary">
-                            <a href="{{ route('admin.currentstd.show', ['id' => 2]) }}" class="btn btn-info btn-sm">View</a>
-                          </td>
-
-                        </tr>
-
+                @endforeach
                       </tbody>
                     </table>
                   </div>

@@ -68,6 +68,8 @@ class ProfileController extends Controller
         $avatar = $request->file('avatar');
         $mime = $avatar->getMimeType();
 
+        // dd($request);
+
         if ($mime == "image/jpeg" || $mime == "image/png" || $mime == "image/svg+xml") {
             $this->validate($request,array(
                 'avatar'    =>  'image|mimes:jpeg,png,jpg,svg|max:1024',

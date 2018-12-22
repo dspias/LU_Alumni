@@ -1,8 +1,8 @@
 @extends('admin.layouts.admin_format')
 
-@section('title', '| Clubs')
+@section('title', '| users post')
 
-@section('navhead', '')
+@section('navhead', 'Users Post')
 
 @section('content')
 	<!-- Start content -->			
@@ -12,21 +12,21 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h2 class="card-title float-left">Popular Clubs</h2>
-                            <a href="{{ route('admin.club.create') }}"><button class="btn btn-info float-right">Add New Club</button></a>
+                            <h4 class="card-title ">User's Post</h4>
+                            <p class="card-category"></p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table text-center">
                                     <thead class=" text-primary">
                                         <th>
-                                            Club Logo
+                                            USERNAME
                                         </th>
                                         <th>
-                                            CLUB NAME
+                                            POST TITLE
                                         </th>
                                         <th>
-                                            CLUB MOTO
+                                            POST DATE
                                         </th>
                                         <th>
                                             ACTION
@@ -34,38 +34,37 @@
 
                                     </thead>
                                     <tbody>
-                                @foreach($clubs as $club)
+                                        @foreach($posts as $post)
                                         <tr>
+                                            
                                             <td>
-                                                    @if($club->club_logo)
-                                                    <img class="img" src="{{ asset('images/'.$club->club_logo) }}" height="50px" width="50px" style="border-radius:100%;"/>
-                                                    @else
-                                                    <img class="img" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" height="50px" width="50px" style="border-radius:100%;"/>
-                                                    @endif
+                                            <a href="{{ route('show', ['id' => $post->user->id]) }}" target="_blank">{{ $post->user->first_name }}</a>
                                             </td>
                                             <td>
-                                                {{ $club->club_name }}
+                                                {{ $post->title }}
                                             </td>
                                             <td>
-                                                {{ $club->club_moto }}
+                                                {{-- {{ $post->updated_at }} --}}
+                                                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('Y-m-d') }}
                                             </td>
-                                            <td class="text-primary">
-
+                                            <td>
+                                                
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ route('admin.club.show', ['id' => $club->id]) }}" class="btn btn-info btn-sm">
-                                                            <i class="far fa-question-circle"></i>
-                                                            view
-                                                        </a>
-                                                    <a href="{{ route('admin.club.destroy', ['id' => $club->id]) }}" class="btn btn-danger btn-sm" onclick="confirm('Are You Sure to Delete This User...?')">
+                                                    <a href="{{ route('admin.userspost.destroy', ['id' => $post->id]) }}" class="btn btn-danger btn-sm">
                                                     <i class="far fa-trash-alt"></i>
                                                         Delete
                                                     </a> 
-                                                    
+                            
+                                                    <a href="{{ route('admin.userspost.show', ['id' => $post->id]) }}" class="btn btn-info btn-sm">
+                                                        <i class="far fa-question-circle"></i>
+                                                        Details
+                                                    </a>
                                                 </div>
-                                            </td>
 
+                                            </td>
+                                        
                                         </tr>
-                                @endforeach
+                                        @endforeach
 
                                     </tbody>
                                 </table>
@@ -74,11 +73,15 @@
                     </div>
                 </div>
 
+                {{-- paginate --}}
+
             </div>
         </div>
     </div>
+        
     <!-- close content-->
 @endsection
 
 @section('scripts')
+
 @endsection

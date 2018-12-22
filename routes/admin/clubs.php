@@ -25,6 +25,6 @@ Route::group([
 
     Route::put('update/{id}', ['uses' => 'ClubController@update', 'as' => 'admin.club.update']);
 
-    Route::post('destroy/{id}', ['uses' => 'ClubController@destroy', 'as' => 'admin.club.destroy']);
+    Route::get('destroy/{id}', ['uses' => 'ClubController@destroy', 'as' => 'admin.club.destroy']);
     
 });
