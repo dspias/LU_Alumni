@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h2 class="card-title float-left">Departments</h2>
-                            <a href="{{ route('admin.departments.create') }}"><button class="btn btn-info float-right">Add New</button></a>
+                            <a href="{{ route('admin.departments.create') }}"><button class="btn btn-info float-right">Add New Department</button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -31,25 +31,33 @@
 
                                     </thead>
                                     <tbody>
+                                @foreach($depths as $key => $depth)
                                         <tr>
                                             <td>
-                                                01
+                                                {{ $key+1 }}
                                             </td>
                                             <td>
-                                                <a href="#">Department Of Computer Science & Engineering</a>
+                                                {{ $depth->name }}
                                             </td>
-                                            <td>
-                                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                    <label class="btn btn-danger btn-sm">
-                                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>Delete
-                                                    </label>
-                                                    <label class="btn btn-info btn-sm">
-                                                        <input type="radio" name="options" id="option2" autocomplete="off">Details
-                                                    </label>
+
+                                            <td class="text-primary">
+
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ route('admin.departments.show', ['id' => $depth->id]) }}" class="btn btn-info btn-sm">
+                                                            <i class="far fa-question-circle"></i>
+                                                            view
+                                                        </a>
+                                                    <a href="{{ route('admin.departments.destroy', ['id' => $depth->id]) }}" class="btn btn-danger btn-sm" onclick="confirm('Are You Sure to Delete This User...?')">
+                                                    <i class="far fa-trash-alt"></i>
+                                                        Delete
+                                                    </a> 
+                            
+                                                    
                                                 </div>
                                             </td>
 
                                         </tr>
+                                @endforeach
 
                                     </tbody>
                                 </table>

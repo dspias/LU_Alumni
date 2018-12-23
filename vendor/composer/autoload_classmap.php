@@ -61,6 +61,7 @@ return array(
     'App\\Models\\Comment\\Comment' => $baseDir . '/app/Models/Comment/Comment.php',
     'App\\Models\\Comment\\Traits\\CommentRelations' => $baseDir . '/app/Models/Comment/Traits/CommentRelations.php',
     'App\\Models\\Comment\\Traits\\CommentScopes' => $baseDir . '/app/Models/Comment/Traits/CommentScopes.php',
+    'App\\Models\\Department\\Department' => $baseDir . '/app/Models/Department/Department.php',
     'App\\Models\\Event\\Event' => $baseDir . '/app/Models/Event/Event.php',
     'App\\Models\\Event\\Traits\\EventRelations' => $baseDir . '/app/Models/Event/Traits/EventRelations.php',
     'App\\Models\\Event\\Traits\\EventScopes' => $baseDir . '/app/Models/Event/Traits/EventScopes.php',

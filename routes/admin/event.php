@@ -21,5 +21,5 @@ Route::group([
 
     Route::put('update/{id}', ['uses' => 'EventsController@update', 'as' => 'admin.events.update']);
 
-    Route::post('destroy/{id}', ['uses' => 'EventsController@destroy', 'as' => 'admin.events.destroy']);
+    Route::get('destroy/{id}', ['uses' => 'EventsController@destroy', 'as' => 'admin.events.destroy']);
 });

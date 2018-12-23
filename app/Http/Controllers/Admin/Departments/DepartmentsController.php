@@ -5,8 +5,16 @@ namespace App\Http\Controllers\Admin\Departments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Department\Department;
+
 class DepartmentsController extends Controller
 {
+    private $depth;
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->depth = new Department();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +22,9 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
+        $depths = $this->depth->all();
         //return a view and pass in the above variable
-        return view('admin.backend.department.index');
+        return view('admin.backend.department.index')->withDepths($depths);
     }
 
     /**
@@ -26,7 +35,7 @@ class DepartmentsController extends Controller
     public function create()
     {
         //return a view and pass in the above variable
-        return view('admin.backend.clubs.create');
+        return view('admin.backend.department.create');
     }
 
     /**
@@ -37,7 +46,19 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'name' => 'required|string|max:50',
+            'details' => 'required|string',
+        ));
+
+        $depth = new Department();
+
+        $depth->name = $request->name;
+        $depth->details = $request->details;
+
+        $depth->save();
+
+        return redirect()->route('admin.departments.index');
     }
 
     /**
@@ -48,7 +69,9 @@ class DepartmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $depth = $this->depth->find($id);
+
+        return view('admin.backend.department.show')->withDepth($depth);
     }
 
     /**
@@ -82,6 +105,10 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $depth = $this->depth->find($id);
+
+        $depth->delete();
+
+        return redirect()->back();
     }
 }

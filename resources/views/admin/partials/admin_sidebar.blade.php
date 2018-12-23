@@ -5,7 +5,7 @@
     Tip 2: you can also add an image using data-image tag
     -->
     <div class="logo">
-        <a href="#" class="simple-text logo-normal">LU_Alumni</a>
+        <a href="{{ route('admin.dashboard.index') }}" class="simple-text logo-normal">LU_Alumni</a>
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">

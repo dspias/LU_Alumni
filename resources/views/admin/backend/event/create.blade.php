@@ -4,6 +4,10 @@
 
 @section('navhead', 'ADD Programs or Events')
 
+@section('stylesheet')
+<link rel="stylesheet" href="{{ asset('admin_file/css/nice-select.css') }}" />
+@endsection
+
 @section('content')
     <!-- Start content -->
 	      <div class="content">
@@ -15,36 +19,47 @@
                   <h4 class="card-title">Add Any Program/Event</h4>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form action="{{ route('admin.events.store') }}" method="POST">
+                    @csrf
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Event Title</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" name="event_name">
                         </div>
                       </div>
 					  <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Organized By</label>
-                          <input type="text" class="form-control">
+                          <select name="club_id">
+                            <option data-display="Select">Nothing</option>
+                          @foreach($clubs as $club)
+                            <option value="{{ $club->id }}">{{ $club->club_name }}</option>
+                          @endforeach       
+                          </select>
+                      
                         </div>
                       </div>
 					  <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Event Date</label>
-                          <input type="text" class="form-control">
+                          <div class='input-group date' id='datetimepicker1'>
+                              <input type='text' class="form-control" name="event_date" />
+                              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
                         </div>
                       </div>
 					  <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Event Location</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" name="event_location">
                         </div>
                       </div>
 					  <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Event's Facebook Link</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" name="event_fb_link">
                         </div>
                       </div>
 					  
@@ -52,7 +67,7 @@
                         <div class="form-group">
                           <div class="form-group">
                             <label class="bmd-label-floating">Some Info About This Program/Event</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" name="event_details"></textarea>
                           </div>
                         </div>
                       </div>
@@ -74,4 +89,60 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('admin_file/js/jquery.nice-select.min.js') }}"></script>
+<script>
+$(document).ready(function() {
+  $('select').niceSelect();
+});
+</script>
+
+{{-- <script>
+ $(function () {
+   var bindDatePicker = function() {
+		$(".date").datetimepicker({
+        format:'YYYY-MM-DD',
+			icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-arrow-up",
+				down: "fa fa-arrow-down"
+			}
+		}).find('input:first').on("blur",function () {
+			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+			// update the format if it's yyyy-mm-dd
+			var date = parseDate($(this).val());
+
+			if (! isValidDate(date)) {
+				//create date based on momentjs (we have that)
+				date = moment().format('YYYY-MM-DD');
+			}
+
+			$(this).val(date);
+		});
+	}
+   
+   var isValidDate = function(value, format) {
+		format = format || false;
+		// lets parse the date to the best of our knowledge
+		if (format) {
+			value = parseDate(value);
+		}
+
+		var timestamp = Date.parse(value);
+
+		return isNaN(timestamp) == false;
+   }
+   
+   var parseDate = function(value) {
+		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+		if (m)
+			value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+
+		return value;
+   }
+   
+   bindDatePicker();
+ });
+
+</script> --}}
 @endsection

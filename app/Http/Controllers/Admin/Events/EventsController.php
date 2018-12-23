@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Admin\Events;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Event\Event;
+use App\Models\Club\Club;
+
 class EventsController extends Controller
 {
+    private $event;
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->event = new Event();
     }
     /**
      * Display a listing of the resource.
@@ -18,8 +23,9 @@ class EventsController extends Controller
      */
     public function index()
     {
+        $events = $this->event->all();
         //return a view and pass in the above variable
-        return view('admin.backend.event.index');
+        return view('admin.backend.event.index')->withEvents($events);
     }
 
     /**
@@ -29,8 +35,9 @@ class EventsController extends Controller
      */
     public function create()
     {
+        $clubs = Club::all();
         //return a view and pass in the above variable
-        return view('admin.backend.event.create');
+        return view('admin.backend.event.create')->withClubs($clubs);
     }
 
     /**
@@ -41,7 +48,7 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

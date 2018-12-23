@@ -401,6 +401,7 @@ class ComposerStaticInit90f8790d4568d4ed49ff7b442ff79473
         'App\\Models\\Comment\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment/Comment.php',
         'App\\Models\\Comment\\Traits\\CommentRelations' => __DIR__ . '/../..' . '/app/Models/Comment/Traits/CommentRelations.php',
         'App\\Models\\Comment\\Traits\\CommentScopes' => __DIR__ . '/../..' . '/app/Models/Comment/Traits/CommentScopes.php',
+        'App\\Models\\Department\\Department' => __DIR__ . '/../..' . '/app/Models/Department/Department.php',
         'App\\Models\\Event\\Event' => __DIR__ . '/../..' . '/app/Models/Event/Event.php',
         'App\\Models\\Event\\Traits\\EventRelations' => __DIR__ . '/../..' . '/app/Models/Event/Traits/EventRelations.php',
         'App\\Models\\Event\\Traits\\EventScopes' => __DIR__ . '/../..' . '/app/Models/Event/Traits/EventScopes.php',

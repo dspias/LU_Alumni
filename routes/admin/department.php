@@ -13,7 +13,7 @@ Route::group([
 
     Route::get('create', ['uses' => 'DepartmentsController@create', 'as' => 'admin.departments.create']);
 
-    Route::post('', ['uses' => 'DepartmentsController@store', 'as' => 'admin.departments.store']);
+    Route::post('create', ['uses' => 'DepartmentsController@store', 'as' => 'admin.departments.store']);
 
     Route::get('show/{id}', ['uses' => 'DepartmentsController@show', 'as' => 'admin.departments.show']);
 
@@ -21,5 +21,5 @@ Route::group([
 
     Route::put('update/{id}', ['uses' => 'DepartmentsController@update', 'as' => 'admin.departments.update']);
 
-    Route::post('destroy/{id}', ['uses' => 'DepartmentsController@destroy', 'as' => 'admin.departments.destroy']);
+    Route::get('destroy/{id}', ['uses' => 'DepartmentsController@destroy', 'as' => 'admin.departments.destroy']);
 });
