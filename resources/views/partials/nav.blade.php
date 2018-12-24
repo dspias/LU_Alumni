@@ -47,11 +47,17 @@
                 </li>
             @else
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/graduate.png') }}" style="max-width: 30px; border-radius: 50%;"></a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if(isset(Auth::user()->avatar))
+                        <img src="{{ asset('images/'.Auth::user()->avatar) }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc;">
+                    @else
+                        <img src="{{ asset('images/graduate.png') }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc; padding:1px;">
+                    @endif
+                    </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('user_profile.index') }}" >{{ Auth::user()->first_name }} Profile</a>
-                        <a class="dropdown-item" href="#">Profile Setting</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        {{-- <a class="dropdown-item" href="#">Profile Setting</a> --}}
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout <i style="margin-left:5px;" class="fas fa-sign-out-alt"></i></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

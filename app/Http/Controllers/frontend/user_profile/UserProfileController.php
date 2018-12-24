@@ -5,11 +5,18 @@ namespace App\Http\Controllers\frontend\user_profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\User\User;
+use App\Models\Category\Category;
+use App\Models\Post\Post;
+use Auth;
+
 class UserProfileController extends Controller
 {
+    private $user;
     public function __construct(){
                 
         $this->middleware('auth');        
+        $this->user = new User();
     }
     /**
      * Display a listing of the resource.
@@ -18,7 +25,15 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        return view('frontend.user_profile.index');
+        $user = $this->user->find(Auth::user()->id);
+        $categories = Category::all();
+        $posts = Post::with(['user', 'category', 'likes', 'comments'])->orderBy('id', 'desc')->paginate(10);
+
+        // dd($posts);
+
+        return view('frontend.user_profile.index')->withUser($user)
+                                                ->withCategories($categories)
+                                                ->withPosts($posts);
     }
 
     /**

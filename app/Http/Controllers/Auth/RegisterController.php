@@ -52,7 +52,9 @@ class RegisterController extends Controller
 
             'first_name' => 'required|string|max:191',                          /*=== Validation First name ===*/
             'last_name' => 'required|string|max:191',                           /*=== Validation Last name ===*/
-            'uniStudentId' => 'string|min:10|max:10|unique:users',     /*=== Validation University Student Id ===*/
+            'uniStudentId' => 'required|string|min:10|max:10|unique:users',     /*=== Validation University Student Id ===*/
+            'department' => 'required|string',                                  /*=== Validation user departement ===*/
+            'university_batch' => 'required|integer',                            /*=== Validation user university batch ===*/
             'email' => 'required|string|email|max:191|unique:users',            /*=== Validation eamil ===*/
             'password' => 'required|string|min:8|confirmed',                    /*=== Validation password ===*/
 
@@ -77,6 +79,8 @@ class RegisterController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'uniStudentId' => $data['uniStudentId'],
+            'department' => $data['department'],
+            'university_batch' => $data['university_batch'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'graduation_year' => $year,

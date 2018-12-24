@@ -19,6 +19,8 @@ Route::group([
 
     Route::get('show/{id}', ['uses' => 'PostsContrller@show', 'as' => 'posts.show']);
 
+    Route::get('download/{filename}', ['uses' => 'PostsContrller@download', 'as' => 'posts.file.download']);
+
     Route::get('edit/{id}', ['uses' => 'PostsContrller@edit', 'as' => 'posts.edit']);
 
     Route::put('update/{id}', ['uses' => 'PostsContrller@update', 'as' => 'posts.update']);

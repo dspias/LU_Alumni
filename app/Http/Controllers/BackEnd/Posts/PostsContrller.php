@@ -14,7 +14,6 @@ use App\Models\Category\Category;
 use App\Models\Tag\Tag;
 use Session;
 use Auth;
-use Image;
 use App\Http\Requests\PostRequest;
 
 
@@ -67,22 +66,26 @@ class PostsContrller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store()
-    {
-        
+    {        
         // validate user posting data
+        $this->validate($this->request,array(
+            'title'         =>  'required|string|max:191',
+            'cat_id'        =>  'required|integer',
+            'body'          =>  'required|string',
+        ));
          
         if($this->request->hasFile('avatar')){
 
             $avatar = $this->request->file('avatar');
             $mime = $avatar->getMimeType();
 
-            if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv") {
+            // if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv") {
 
-                $this->validate($this->request,array(
-                    'avatar'    =>  'max:2000|mimes:mp4,mov,ogg,qt,mkv,ts,ogv,mpeg,avi,flv,3gpp,webm',
-                ));
+            //     $this->validate($this->request,array(
+            //         'avatar'    =>  'max:2000|mimes:mp4,mov,ogg,qt,mkv,ts,ogv,mpeg,avi,flv,3gpp,webm',
+            //     ));
                               
-            }
+            // }
 
             if ( $mime == "application/msword" || $mime == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || $mime == "application/pdf" ) {
                 
@@ -101,11 +104,6 @@ class PostsContrller extends Controller
             }
            
         }
-
-
-        // $this->validate($this->request,array(
-            
-        // ));
         
         
         //create post model object
@@ -119,15 +117,17 @@ class PostsContrller extends Controller
 
         // if avatar is present
         if($this->request->hasFile('avatar')){
-          $path = Storage::putFile('avatars', $this->request->file('avatar'));
-          $post->avatar = $path;
+            $path = time().'.'.$this->request->avatar->getClientOriginalExtension();
+            $this->request->avatar->move(public_path('postsfiles'), $path);
+        
+            $post->avatar = $path;
         }
 
         $post->save();
 
         Session::flash('success', 'Your post was successfully save!');
 
-        return $this->index();
+        return redirect()->back();
     }
 
     /**
@@ -135,10 +135,11 @@ class PostsContrller extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     
+    */
+
     public function show($id)
     {
-        $post = Posts::find($id);
+        $post = Post::find($id);
         return view('backend.posts.show')->withPost($post);
     }
 
@@ -174,12 +175,12 @@ class PostsContrller extends Controller
             $avatar = $request->file('avatar');
             $mime = $avatar->getMimeType();
 
-            if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv") {
+            // if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv") {
 
-                $this->validate($this->request,array(
-                    'avatar'    =>  'mimes:mp4,mov,ogg,qt,mkv,ts,ogv,mpeg,avi,flv,3gpp,webm|max:20000',
-                ));                
-            }
+            //     $this->validate($this->request,array(
+            //         'avatar'    =>  'mimes:mp4,mov,ogg,qt,mkv,ts,ogv,mpeg,avi,flv,3gpp,webm|max:20000',
+            //     ));                
+            // }
 
             if ( $mime == "application/msword" || $mime == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || $mime == "application/pdf" ) {
                 
@@ -200,11 +201,11 @@ class PostsContrller extends Controller
         }
 
 
-        // $this->validate($this->request,array(
-        //     'title'         =>  'required|string|max:191',
-        //     'cat_id'        =>  'required|integer',
-        //     'body'          =>  'required|string',
-        // ));
+        $this->validate($this->request,array(
+            'title'         =>  'required|string|max:191',
+            'cat_id'        =>  'required|integer',
+            'body'          =>  'required|string',
+        ));
         
         
         //create post model object
@@ -219,8 +220,10 @@ class PostsContrller extends Controller
 
         //if avatar is present
         if($this->request->hasFile('avatar')){
-          $path = Storage::putFile('avatars', $this->request->file('avatar'));
-          $post->avatar = $path;
+            $path = time().'.'.$this->request->avatar->getClientOriginalExtension();
+            $this->request->avatar->move(public_path('postsfiles'), $path);
+        
+            $post->avatar = $path;
         }
 
         $post->save();
@@ -245,5 +248,16 @@ class PostsContrller extends Controller
          }
 
         return redirect()->route('index');
+    }
+
+    public function download($filename){
+        
+        $file = public_path()."/postsfiles/".$filename;
+
+        $headers = array(
+                'Content-Type: application',
+                );
+
+        return \Response::download($file, $filename, $headers);
     }
 }

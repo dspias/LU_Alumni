@@ -77,7 +77,7 @@
                        
 
                         <div class="wrap-input100 ">
-                            <input id="uniStudentId" class="input100 form-control{{ $errors->has('uniStudentId') ? ' is-invalid' : '' }} " type="text" name="uniStudentId" placeholder="Student ID 'If you know'" value="{{ old('uniStudentId') }}">
+                            <input id="uniStudentId" class="input100 form-control{{ $errors->has('uniStudentId') ? ' is-invalid' : '' }} " type="text" name="uniStudentId" placeholder="Student ID" value="{{ old('uniStudentId') }}" required>
 
                             <span class="focus-input100"></span>
 
@@ -88,6 +88,42 @@
                             @if ($errors->has('uniStudentId'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('uniStudentId') }}</strong>
+                                </span>
+                            @endif                            
+
+                        </div>
+
+
+                        <div class="wrap-input100 ">
+                            <input id="department" class="input100 form-control{{ $errors->has('department') ? ' is-invalid' : '' }} " type="text" name="department" placeholder="Department" value="{{ old('department') }}" required>
+
+                            <span class="focus-input100"></span>
+
+                            <span class="symbol-input100">
+                                <i class="fa fa-qrcode" aria-hidden="true"></i>
+                            </span>
+
+                            @if ($errors->has('department'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('department') }}</strong>
+                                </span>
+                            @endif                            
+
+                        </div>
+
+
+                        <div class="wrap-input100 ">
+                            <input id="university_batch" class="input100 form-control{{ $errors->has('university_batch') ? ' is-invalid' : '' }} " type="number" name="university_batch" placeholder="Batch" value="{{ old('university_batch') }}" required>
+
+                            <span class="focus-input100"></span>
+
+                            <span class="symbol-input100">
+                                <i class="fa fa-qrcode" aria-hidden="true"></i>
+                            </span>
+
+                            @if ($errors->has('university_batch'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('university_batch') }}</strong>
                                 </span>
                             @endif                            
 
