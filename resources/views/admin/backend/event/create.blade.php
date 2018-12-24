@@ -58,7 +58,7 @@
                       </div>
 					  <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Program/Event's Facebook Link</label>
+                          <label class="bmd-label-floating">Program/Events Facebook Link</label>
                           <input type="text" class="form-control" name="event_fb_link">
                         </div>
                       </div>

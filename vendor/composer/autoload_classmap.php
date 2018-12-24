@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
+    'AdminTableSeeder' => $baseDir . '/database/seeds/AdminTableSeeder.php',
     'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -62,6 +64,8 @@ return array(
     'App\\Models\\Comment\\Traits\\CommentRelations' => $baseDir . '/app/Models/Comment/Traits/CommentRelations.php',
     'App\\Models\\Comment\\Traits\\CommentScopes' => $baseDir . '/app/Models/Comment/Traits/CommentScopes.php',
     'App\\Models\\Department\\Department' => $baseDir . '/app/Models/Department/Department.php',
+    'App\\Models\\Department\\Traits\\DepartmentRelations' => $baseDir . '/app/Models/Department/Traits/DepartmentRelations.php',
+    'App\\Models\\Department\\Traits\\DepartmentScopes' => $baseDir . '/app/Models/Department/Traits/DepartmentScopes.php',
     'App\\Models\\Event\\Event' => $baseDir . '/app/Models/Event/Event.php',
     'App\\Models\\Event\\Traits\\EventRelations' => $baseDir . '/app/Models/Event/Traits/EventRelations.php',
     'App\\Models\\Event\\Traits\\EventScopes' => $baseDir . '/app/Models/Event/Traits/EventScopes.php',
@@ -71,7 +75,7 @@ return array(
     'App\\Models\\Post\\Post' => $baseDir . '/app/Models/Post/Post.php',
     'App\\Models\\Post\\Traits\\PostRelations' => $baseDir . '/app/Models/Post/Traits/PostRelations.php',
     'App\\Models\\Post\\Traits\\PostScopes' => $baseDir . '/app/Models/Post/Traits/PostScopes.php',
-    'App\\Models\\Post_Tag\\Post_Tag' => $baseDir . '/app/Models/Post_Tag/Post_Tag.php',
+    'App\\Models\\Post_Tag\\Post_Tag' => $baseDir . '/app/Models/Post_tag/Post_tag.php',
     'App\\Models\\Tag\\Tag' => $baseDir . '/app/Models/Tag/Tag.php',
     'App\\Models\\Tag\\Traits\\TagRelations' => $baseDir . '/app/Models/Tag/Traits/TagRelations.php',
     'App\\Models\\Tag\\Traits\\TagScopes' => $baseDir . '/app/Models/Tag/Traits/TagScopes.php',

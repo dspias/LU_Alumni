@@ -1,61 +1,56 @@
-<footer class="footer-distributed">
-
-			<div class="footer-left">
-
-				<h3>Company<span>logo</span></h3>
-
-				<p class="footer-links">
-					<a href="#">Home</a>
-					·
-					<a href="#">Blog</a>
-					·
-					<a href="#">Pricing</a>
-					·
-					<a href="#">About</a>
-					·
-					<a href="#">Faq</a>
-					·
-					<a href="#">Contact</a>
-				</p>
-
-				<p class="footer-company-name">Company Name &copy; 2015</p>
+<footer class="footer-part p-t-40 p-b-40">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="logo-part text-center">
+					{{-- <figure><img src="{{ asset('files/images/logo02.png') }}" alt="" class="img-responsive"></figure> --}}
+					<h3><a href="">L O G O</a></h3>
+					<p class="footer-info text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui optio tempora magnam soluta ipsa. Tenetur at soluta nemo, ipsum deserunt quasi asperiores temporibus architecto consequuntur atque illum a aliquam vel?</p>
+				</div>
 			</div>
-
-			<div class="footer-center">
-
-				<div>
-					<i class="fa fa-map-marker"></i>
-					<p><span>21 Revolution Street</span> Paris, France</p>
+			<div class="col-3 col-md-2">
+				<div class="resources">
+					<h5>Rerources</h5>
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Our Vision</a></li>
+						<li><a href="#">Top Alumni</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
 				</div>
-
-				<div>
-					<i class="fa fa-phone"></i>
-					<p>+1 555 123456</p>
-				</div>
-
-				<div>
-					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">support@company.com</a></p>
-				</div>
-
 			</div>
-
-			<div class="footer-right">
-
-				<p class="footer-company-about">
-					<span>About the company</span>
-					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-				</p>
-
-				<div class="footer-icons">
-
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="#"><i class="fa fa-github"></i></a>
-
+			<div class="col-3 col-md-2">
+				<div class="important-links">
+					<h5>Important Links</h5>
+					<ul>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Help Center</a></li>
+						<li><a href="#">Community</a></li>
+						<li><a href="#">Marketplace</a></li>
+						<li><a href="#">Career</a></li>
+					</ul>
 				</div>
-
 			</div>
-
-		</footer>
+			<div class="col-6 col-md-4">
+				<div class="connection">
+					<h5>Contact Us</h5>
+					<ul>
+						<li>
+							<i class="fas fa-map-marker-alt"></i>
+							Leading University, Kamalbazar <span>Sylhet, Bangladesh</span>
+						</li>
+						<li>
+							<i class="fas fa-phone-volume"></i>
+							+880 1712 345678 <span>+880 1712 345679</span>
+						</li>
+						<li>
+							<i class="far fa-envelope"></i>
+							info@lu_alumni.com
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

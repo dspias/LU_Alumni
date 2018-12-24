@@ -346,6 +346,8 @@ class ComposerStaticInit90f8790d4568d4ed49ff7b442ff79473
     );
 
     public static $classMap = array (
+        'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
+        'AdminTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminTableSeeder.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -402,6 +404,8 @@ class ComposerStaticInit90f8790d4568d4ed49ff7b442ff79473
         'App\\Models\\Comment\\Traits\\CommentRelations' => __DIR__ . '/../..' . '/app/Models/Comment/Traits/CommentRelations.php',
         'App\\Models\\Comment\\Traits\\CommentScopes' => __DIR__ . '/../..' . '/app/Models/Comment/Traits/CommentScopes.php',
         'App\\Models\\Department\\Department' => __DIR__ . '/../..' . '/app/Models/Department/Department.php',
+        'App\\Models\\Department\\Traits\\DepartmentRelations' => __DIR__ . '/../..' . '/app/Models/Department/Traits/DepartmentRelations.php',
+        'App\\Models\\Department\\Traits\\DepartmentScopes' => __DIR__ . '/../..' . '/app/Models/Department/Traits/DepartmentScopes.php',
         'App\\Models\\Event\\Event' => __DIR__ . '/../..' . '/app/Models/Event/Event.php',
         'App\\Models\\Event\\Traits\\EventRelations' => __DIR__ . '/../..' . '/app/Models/Event/Traits/EventRelations.php',
         'App\\Models\\Event\\Traits\\EventScopes' => __DIR__ . '/../..' . '/app/Models/Event/Traits/EventScopes.php',
@@ -411,7 +415,7 @@ class ComposerStaticInit90f8790d4568d4ed49ff7b442ff79473
         'App\\Models\\Post\\Post' => __DIR__ . '/../..' . '/app/Models/Post/Post.php',
         'App\\Models\\Post\\Traits\\PostRelations' => __DIR__ . '/../..' . '/app/Models/Post/Traits/PostRelations.php',
         'App\\Models\\Post\\Traits\\PostScopes' => __DIR__ . '/../..' . '/app/Models/Post/Traits/PostScopes.php',
-        'App\\Models\\Post_Tag\\Post_Tag' => __DIR__ . '/../..' . '/app/Models/Post_Tag/Post_Tag.php',
+        'App\\Models\\Post_Tag\\Post_Tag' => __DIR__ . '/../..' . '/app/Models/Post_tag/Post_tag.php',
         'App\\Models\\Tag\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag/Tag.php',
         'App\\Models\\Tag\\Traits\\TagRelations' => __DIR__ . '/../..' . '/app/Models/Tag/Traits/TagRelations.php',
         'App\\Models\\Tag\\Traits\\TagScopes' => __DIR__ . '/../..' . '/app/Models/Tag/Traits/TagScopes.php',
