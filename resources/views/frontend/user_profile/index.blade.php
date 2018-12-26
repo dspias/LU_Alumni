@@ -153,12 +153,12 @@
                                         </div>
                                     </div>
                                     <div class="edit-btn">
-                                        <button class="btn btn-light btn-sm" id="editBtn"><i class="fas fa-pencil-alt"></i></button>
+                                        <button class="btn btn-light btn-sm editbtn" id="editBtn{{ $post->id }}"><i class="fas fa-pencil-alt"></i></button>
                                     </div>
                                 </div>
-                                <div class="card-body" id="viewPost">
+                                <div class="card-body" id="viewPost{{ $post->id }}">
                                     
-                                    <h5 class="card-title">{{ $post->title }}</h5>
+                                    <h5 class="card-title">{{ $post->title }} ( {{ \App\Models\Category\Category::find($post->cat_id)->category_name }} )</h5>
 
                                     <p class="card-text">
                                         {{ $post->body }}
@@ -182,8 +182,8 @@
                                     
                             @endif
                                 </div>
-                                <div class="card-body d-none" id="editPost">
-                                    <form action="" method="PUT" enctype="multipart/form-data">
+                                <div class="card-body d-none" id="editPost{{ $post->id }}">
+                                    <form action="{{ route('posts.update',['id' => $post->id]) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="new-post">
                                             <div class="row">
@@ -203,10 +203,11 @@
                                             </div>
                                             <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?" name="body">{{ $post->body }}</textarea>
 
-                                            <input accept="image/*, image/heic, image/heif, .pdf, .doc, .docx" type="file" class="hide inputfile" id="upload" data-multiple-caption="{count} files selected" multiple name="avatar" value="{{ $post->avatar }}"/>
-                                            <label for="upload"><span><i class="fas fa-file-medical"></i> File</span> </label>
+                                            <input accept="image/*, image/heic, image/heif, .pdf, .doc, .docx" type="file" class="hide inputfilepost" id="upload{{ $post->id }}" data-multiple-caption="{count} files selected" multiple name="avatar" value="{{ $post->avatar }}"/>
+                                            <label for="upload{{ $post->id }}" id="inputstyle"><span id="span{{ $post->id }}"><i class="fas fa-file-medical"></i> File</span> </label>
+
                                             <button class="btn btn-outline-info btn-share float-right btn-sm" type="submit">Update</button>
-                                            <button class="btn btn-info btn-share float-right btn-sm" style="margin-right: 5px;" id="cancelBtn" type="button">Cancel</button>
+                                            <button class="btn btn-info btn-share float-right btn-sm cancelbtn" style="margin-right: 5px;" id="cancelBtn{{ $post->id }}" type="button">Cancel</button>
                                             
                                         </div>
                                     </form>
@@ -214,7 +215,7 @@
                                 <div class="card-footer">
                                     <div class="float-left">
                                         <a href="#" class="card-link"><i class="far fa-heart"></i> Like <sup>(50)</sup></a>
-                                        <a href="#" class="card-link comment"><i class="far fa-comments"></i> Comment <sup>(122)</sup></a>
+                                        <a href="#" class="card-link comment" id="comment{{ $post->id }}"><i class="far fa-comments"></i> Comment <sup>(122)</sup></a>
                                     </div>
                                     <div class="float-right">
 
@@ -227,7 +228,7 @@
                                         <strong class="post-time-date">{{ $myDateTime->format('d-m-Y | H:i A') }}</strong>
                                     </div>
                                 </div>
-                                <div class="card-body post-comment">
+                                <div class="card-body post-comment" id="post-comment{{ $post->id }}">
                                     <div class="new-comment">
                                         <textarea class="form-control" id="postComment" rows="1" placeholder="Post a comment"></textarea>
                                         <button class="btn btn-primary btn-sm btn-block btn-comment">Comment</button>

@@ -20,7 +20,7 @@ use App\Http\Requests\PostRequest;
 class PostsContrller extends Controller
 {
     public $request = null;
-    public $model = null;
+    public $post = null;
 
 
     public function __construct(PostRequest $request){
@@ -28,7 +28,7 @@ class PostsContrller extends Controller
         $this->middleware('auth');
 
         $this->request = $request;
-        $this->model = new Post();
+        $this->post = new Post();
 
     }
 
@@ -40,7 +40,7 @@ class PostsContrller extends Controller
     public function index()
     {
         //create a variable and store all the post in database
-        $posts = $this->model->inRandomOrder()->paginate(10);
+        $posts = $this->post->inRandomOrder()->paginate(10);
         return $posts;
         //return a view and pass in the above variable
         return view('backend.posts.index')->withPost($posts);
@@ -106,7 +106,7 @@ class PostsContrller extends Controller
         }
         
         
-        //create post model object
+        //create post post object
         $post = new Post();
 
         //set request data to post data        
@@ -169,10 +169,10 @@ class PostsContrller extends Controller
     public function update($id)
     {
         // validate user posting data
-         
+
         if($this->request->hasFile('avatar')){
 
-            $avatar = $request->file('avatar');
+            $avatar = $this->request->file('avatar');
             $mime = $avatar->getMimeType();
 
             // if ($mime == "video/x-flv" || $mime == "video/mp4" || $mime == "application/x-mpegURL" || $mime == "video/MP2T" || $mime == "video/3gpp" || $mime == "video/quicktime" || $mime == "video/x-msvideo" || $mime == "video/x-ms-wmv") {
@@ -219,7 +219,7 @@ class PostsContrller extends Controller
         $post->body = $this->request->body;
 
         //if avatar is present
-        if($this->request->hasFile('avatar')){
+        if($this->request->hasFile('avatar') && $post->avatar != $this->request->avatar){
             $path = time().'.'.$this->request->avatar->getClientOriginalExtension();
             $this->request->avatar->move(public_path('postsfiles'), $path);
         
@@ -230,7 +230,7 @@ class PostsContrller extends Controller
 
         Session::flash('success', 'Your post was successfully save!');
 
-        return $this->index();
+        return redirect()->route('user_profile.index');
     }
 
     /**
@@ -247,7 +247,7 @@ class PostsContrller extends Controller
             Session::flash('success', "This post was successfully deleted");
          }
 
-        return redirect()->route('index');
+        return redirect()->route('user_profile.index');
     }
 
     public function download($filename){

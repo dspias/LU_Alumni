@@ -13,32 +13,32 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Community</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">About</a>
+                        <a class="dropdown-item" href="{{ route('about.index') }}">About</a>
                         <a class="dropdown-item" href="{{ route('departments.index') }}">Departments</a>
-                        <a class="dropdown-item" href="#">Clubs</a>
-                        <a class="dropdown-item" href="#">Volentiers</a>
+                        <a class="dropdown-item" href="{{ route('clubs.index') }}">Clubs</a>
+                        <a class="dropdown-item" href="{{ route('volunteers.index') }}">Volunteers</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Career & Networking</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('career_advice.index') }}">Career Advice</a>
-                        <a class="dropdown-item" href="#">Study Abroad</a>
-                        <a class="dropdown-item" href="#">General Advice</a>
+                        <a class="dropdown-item" href="{{ route('study_abroad.index') }}">Study Abroad</a>
+                        <a class="dropdown-item" href="{{ route('general_advice.index') }}">General Advice</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Programs & Events</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Upcoming Events</a>
-                        <a class="dropdown-item" href="#">Successful Events</a>
+                        <a class="dropdown-item" href="{{ route('upcomming_events.index') }}">Upcoming Events</a>
+                        <a class="dropdown-item" href="{{ route('successfull_events.index') }}">Successful Events</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Stories</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Success Stories</a>
-                        <a class="dropdown-item" href="#">Career Expert</a>
+                        <a class="dropdown-item" href="{{ route('success_stories.index') }}">Success Stories</a>
+                        <a class="dropdown-item" href="{{ route('career_expert.index') }}">Career Expert</a>
                     </div>
                 </li>
             @guest

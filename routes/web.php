@@ -36,6 +36,15 @@ Route::group([
 
 
     include_once 'frontend/departments.php';
+    include_once 'frontend/about.php';
+    include_once 'frontend/career_expert.php';
+    include_once 'frontend/general_advice.php';
+    include_once 'frontend/study_abroad.php';
+    include_once 'frontend/success_stories.php';
+    include_once 'frontend/successfull_events.php';
+    include_once 'frontend/upcomming_events.php';
+    include_once 'frontend/volunteers.php';
+    include_once 'frontend/clubs.php';
     include_once 'frontend/career_advice.php';
     include_once 'frontend/user_profile.php';
 

@@ -23,9 +23,9 @@ Route::group([
 
     Route::get('edit/{id}', ['uses' => 'PostsContrller@edit', 'as' => 'posts.edit']);
 
-    Route::put('update/{id}', ['uses' => 'PostsContrller@update', 'as' => 'posts.update']);
+    Route::post('update/{id}', ['uses' => 'PostsContrller@update', 'as' => 'posts.update']);
 
-    Route::post('destroy/{id}', ['uses' => 'PostsContrller@destroy', 'as' => 'posts.destroy']);
+    Route::get('destroy/{id}', ['uses' => 'PostsContrller@destroy', 'as' => 'posts.destroy']);
 
     
 });
