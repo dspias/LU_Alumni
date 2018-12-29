@@ -6,6 +6,65 @@
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/fire-css/assets/faq.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}">
+    <style>
+        .avatar-upload {
+            position: relative;
+            max-width: 205px;
+            margin: 50px auto;
+        }
+        
+        .avatar-upload .avatar-edit {
+            position: absolute;
+            right: 12px;
+            z-index: 1;
+            top: 10px;
+        }
+        
+        .avatar-upload .avatar-edit input {
+            display: none;
+        }
+        
+        .avatar-upload .avatar-edit input + label {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            border-radius: 100%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .avatar-upload .avatar-edit input + label:hover {
+            background: #f1f1f1;
+            border-color: #d6d6d6;
+        }
+        
+        .avatar-upload .avatar-edit input + label i.fas.fa-pencil-alt {
+            padding: 9px;
+        }
+        
+        .avatar-upload .avatar-preview {
+            width: 192px;
+            height: 192px;
+            position: relative;
+            border-radius: 100%;
+            border: 6px solid #F8F8F8;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .avatar-upload .avatar-preview > div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -14,7 +73,7 @@
     <div class="container">
         <div class="row">
             {{--  Left Part  --}}
-            <div class="col-md-4">
+            <div class="col-md-4 user-details-show">
                 <div class="user-profile">
                     <figure class="profile-pic">
                     @if(isset($user->avatar))
@@ -23,47 +82,47 @@
                         <img src="{{ asset('images/cover_pic.jpg') }}" alt="user image" class="img-responsive">
                     @endif
                     </figure>
-                    <div class="btn-group">
-                        <a href="#" class="btn btn-outline-dark btn-add-post">Add Post</a>
-                        <a href="#" class="btn btn-outline-dark btn-edit-profile">Edit Profile</a>
-                    </div>
+
+                    <a href="#" class="btn btn-outline-dark btn-block btn-edit-profile" id="editProfileBtn" style="border-radius: 0px;">Edit Profile</a>
+
+                    @if (isset($user->company_name))
                     <div class="work-link">
                         <h6 class="text-muted">WORK LINKS</h6>
-                        {{--  <ul>
-                            <li><a href="#">Company Website</a></li>
-                            <li><a href="#">Work Profile</a></li>
-                            <li><a href="#">Portfolio</a></li>
-                        </ul>  --}}
                         <table class="table table-bordered">
                             <tr>
                                 <th class="text-muted">Company</th>
-                            @if (isset($user->company_name))
-                                <td><a href="#">{{ $user->company_name }}</a></td>
-                            @else
-                                <td>empty</td>
-                            @endif
-                                
+                                @if (isset($user->company_name))
+                                    <td><a href="#">{{ $user->company_name }}</a></td>
+                                @else
+                                    <td class="d-none">Nothing To Display...</td>
+                                @endif
                             </tr>
                             <tr>
-                                <th class="text-muted">Work Profile</th>
-                            @if (isset($user->company_name))
-                                <td><a href="#">{{ $user->designation }}</a></td>
-                            @else
-                                <td>empty</td>
-                            @endif
+                                <th class="text-muted">Designation</th>
+                                @if (isset($user->company_name))
+                                    <td><a href="#">{{ $user->designation }}</a></td>
+                                @else
+                                    <td class="d-none">Nothing To Display...</td>
+                                @endif
                             </tr>
                         </table>
                     </div>
+                    @else
+                        <div class="d-none">
+                            <p>If There is no information, it will be hidden...</p>
+                        </div>
+                    @endif
+
                     <div class="personal-info">
                         <h6 class="text-muted">PERSONAL INFO</h6>
                         <table class="table table-bordered">
                             <tr>
                                 <th class="text-muted">Current Living Place</th>
-                            @if (isset($user->bio))
-                                <td><a href="#">{{ $user->bio }}</a></td>
-                            @else
-                                <td>empty</td>
-                            @endif
+                                @if (isset($user->bio))
+                                    <td><a href="#">{{ $user->bio }}</a></td>
+                                @else
+                                    <td class="d-none">Nothing To Display...</td>
+                                @endif
                             </tr>
                             <tr>
                                 <th class="text-muted">Department</th>
@@ -83,14 +142,85 @@
                             </tr>
                             <tr>
                                 <th class="text-muted">Mobile</th>
-                            @if (isset($user->mobile))
-                                <td><a href="#">{{ $user->mobile }}</a></td>
-                            @else
-                                <td>empty</td>
-                            @endif
+                                @if (isset($user->mobile))
+                                    <td><a href="#">{{ $user->mobile }}</a></td>
+                                @else
+                                    <td class="d-none">Nothing To Display...</td>
+                                @endif
+                            </tr>
+                        </table>
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="col-md-4 user-details-edit d-none">
+                <div class="user-profile">
+                    <div class="group" style="padding-top: 1px;">
+                        <div class="avatar-upload about">
+                            <div class="avatar-edit">
+                                <input type='file' name="avatar" id="profilePictureUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="profilePictureUpload"><i class="fas fa-pencil-alt"></i></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="profilePicturePreview" style="background-image: url(' {{ asset('images/cover_pic.jpg') }} '); background-size: cover;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-link" style="padding-top: 0px !important;">
+                        <h6 class="text-muted">WORK LINKS</h6>
+                        <table class="table table-bordered">
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Company Name">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Designation">
+                                </div>
                             </tr>
                         </table>
                     </div>
+
+                    <div class="personal-info" style="padding-top: 0px !important;">
+                        <h6 class="text-muted">PERSONAL INFO</h6>
+                        <table class="table table-bordered">
+                            <tr>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="2" placeholder="Present Address"></textarea>
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Department">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Batch">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Graduation Year">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Email">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Mobile">
+                                </div>
+                            </tr>
+                        </table>
+                        
+                        <button type="submit" class="btn btn-outline-dark btn-block btn-update-profile" id="updateProfileBtn" style="border-radius: 30px;">Update Profile</button>
+                        
+                    </div>                    
                 </div>
             </div>
 
@@ -312,4 +442,30 @@
     });
 </script>
 
+<script>
+    $(function(){
+        $("#editProfileBtn").click(function(){
+            $('.user-details-edit').removeClass('d-none');
+            $('.user-details-show').addClass('d-none');
+        });
+    });
+</script>
+
+<script>
+    //For Changing About Image
+    $(".avatar-upload.about").ready(function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#profilePicturePreview').css('background-image', 'url('+e.target.result +')');
+                    $('#profilePicturePreview').hide();
+                    $('#profilePicturePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        $("#profilePictureUpload").change(function() {
+            readURL(this);
+        });
+    });
+</script>
 @endsection
