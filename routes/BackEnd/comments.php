@@ -15,7 +15,7 @@ Route::group([
 
     Route::get('create', ['uses' => 'CommentsContrller@create', 'as' => 'comments.create']);
 
-    Route::post('', ['uses' => 'CommentsContrller@store', 'as' => 'comments.store']);
+    Route::post('/{id}', ['uses' => 'CommentsContrller@store', 'as' => 'comments.store']);
 
     Route::get('show/{id}', ['uses' => 'CommentsContrller@show', 'as' => 'comments.show']);
 

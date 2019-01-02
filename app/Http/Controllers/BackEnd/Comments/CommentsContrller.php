@@ -5,8 +5,20 @@ namespace App\Http\Controllers\BackEnd\Comments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\User\User;
+use App\Models\Comment\Comment;
+use Auth;
+
 class CommentsContrller extends Controller
 {
+    private $user;
+    private $comment;
+    public function __construct(){
+                
+        $this->middleware('auth');        
+        $this->user = new User();
+        $this->comment = new Comment();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +45,22 @@ class CommentsContrller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $this->validate($request,array(
+            'postComment'   =>  'required|string|max:191',
+        ));
+
+        $comment = new Comment();
+
+        $comment->post_id   =  $id;
+        $comment->user_id   =  Auth::user()->id;
+        $comment->comment   =  $request->postComment;
+
+        $comment->save();
+
+        return redirect()->back();
+
     }
 
     /**

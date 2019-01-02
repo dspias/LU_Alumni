@@ -10,7 +10,7 @@ trait CommentRelations
      */
     public function post()
     {
-        return $this->belongsTo('App\Models\Post');
+        return $this->belongsTo('App\Models\Post\Post');
     }
 
     /**
@@ -18,7 +18,7 @@ trait CommentRelations
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User\User');
     }
 
 }

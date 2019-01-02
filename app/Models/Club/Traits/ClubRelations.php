@@ -10,6 +10,6 @@ trait ClubRelations
      */
     public function events()
     {
-        return $this->hasMany('App\Models\Event');
+        return $this->hasMany('App\Models\Event\Event');
     }
 }

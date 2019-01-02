@@ -18,7 +18,8 @@ trait PostRelations
      */
     public function category()
     {
-        return $this->belongsTo('App\Models\Category\Category');
+        // return $this->belongsTo('App\Models\Category\Category');
+        return $this->belongsTo('App\Models\Category\Category', 'cat_id', 'id');
     }
 
     /**

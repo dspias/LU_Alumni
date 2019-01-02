@@ -10,7 +10,7 @@ trait LikeRelations
      */
     public function post()
     {
-        return $this->belongsTo('App\Models\Post');
+        return $this->belongsTo('App\Models\Post\Post');
     }
 
 }

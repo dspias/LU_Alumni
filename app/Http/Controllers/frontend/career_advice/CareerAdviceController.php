@@ -5,8 +5,25 @@ namespace App\Http\Controllers\frontend\career_advice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\User\User;
+use App\Models\Category\Category;
+use App\Models\Post\Post;
+use Auth;
+
+
 class CareerAdviceController extends Controller
 {
+
+    private $user;
+    private $posts;
+    private $category;
+    public function __construct(){
+                
+        $this->middleware('auth');        
+        $this->user = new User();
+        $this->posts = new Post();
+        $this->category = new Category();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +31,41 @@ class CareerAdviceController extends Controller
      */
     public function index()
     {
-        return view('frontend.career_advice.index');
+        $itjobs     = $this->category->find(1);
+        $govtjobs   = $this->category->find(2);
+        $bcss        = $this->category->find(3);
+        $ideas      = $this->category->find(4);
+
+        $itjobs = $this->posts->where('cat_id', $itjobs->id)
+                        ->with(['user', 'category', 'likes', 'comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
+        $govtjobs = $this->posts->where('cat_id', $govtjobs->id)
+                        ->with(['user', 'category', 'likes', 'comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
+        $bcss = $this->posts->where('cat_id', $bcss->id)
+                        ->with(['user', 'category', 'likes', 'comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
+        $ideas = $this->posts->where('cat_id', $ideas->id)
+                        ->with(['user', 'category', 'likes', 'comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
+
+        return view('frontend.career_advice.index')
+                        ->withItjobs($itjobs)
+                        ->withGovtjobs($govtjobs)
+                        ->withBcss($bcss)
+                        ->withIdeas($ideas);
     }
 
     /**

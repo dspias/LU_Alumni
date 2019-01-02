@@ -10,7 +10,7 @@ trait EventRelations
      */
     public function club()
     {
-        return $this->belongsTo('App\Models\Club');
+        return $this->belongsTo('App\Models\Club\Club');
     }
 
     /**
@@ -18,7 +18,7 @@ trait EventRelations
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User\User');
     }
 
 }

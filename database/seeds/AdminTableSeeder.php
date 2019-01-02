@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Admin;
+use App\Models\Category\Category;
 
 class AdminTableSeeder extends Seeder
 {
@@ -22,5 +23,23 @@ class AdminTableSeeder extends Seeder
             // 'admin' => 1,
             // 'approved_at' => now(),
         ]);
+
+        $arr = [
+            'IT JOBS',
+            'GOVT JOBS',
+            'BCS',
+            'IDEAS',
+            'GRE',
+            'IELTS ADVISE',
+            'UNIVERSITY INFORMATION',
+            'GANERAL ADVICE',
+            'SUCESS STORIES',
+            'CAREER EXPERT',
+        ];
+        for( $i=0; $i < sizeof($arr); $i++){
+            Category::create([
+                'category_name' => $arr[$i],
+            ]);
+        }
     }
 }

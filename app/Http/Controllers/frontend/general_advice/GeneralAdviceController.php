@@ -5,8 +5,24 @@ namespace App\Http\Controllers\frontend\general_advice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\User\User;
+use App\Models\Category\Category;
+use App\Models\Post\Post;
+use Auth;
+
 class GeneralAdviceController extends Controller
 {
+
+    private $user;
+    private $posts;
+    private $category;
+    public function __construct(){
+                
+        $this->middleware('auth');        
+        $this->user = new User();
+        $this->posts = new Post();
+        $this->category = new Category();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,15 @@ class GeneralAdviceController extends Controller
      */
     public function index()
     {
-        return view('frontend.general_advice.index');
+        $genAdvices     = $this->category->find(8);
+
+        $genAdvices = $this->posts->where('cat_id', $genAdvices->id)
+                        ->with(['user', 'category', 'likes', 'comments'])
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
+
+        return view('frontend.general_advice.index')
+                        ->withGenAdvices($genAdvices);
     }
 
     /**

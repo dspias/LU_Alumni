@@ -27,7 +27,9 @@ class UserProfileController extends Controller
     {
         $user = $this->user->find(Auth::user()->id);
         $categories = Category::all();
-        $posts = Post::with(['user', 'category', 'likes', 'comments'])->orderBy('id', 'desc')->paginate(10);
+        $posts = Post::where('user_id', Auth::user()->id)->with(['user', 'category', 'likes', 'comments.user' => function($query){
+            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+        } ])->orderBy('id', 'desc')->paginate(10);
 
         // dd($posts);
 
