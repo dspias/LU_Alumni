@@ -167,6 +167,10 @@
                         </div>
                     </div>
 
+                    <div class="cancle-btn">
+                        <button class="btn btn-outline-light btn-cancle"><i class="fas fa-undo-alt"></i></button>
+                    </div>
+
                     <div class="work-link" style="padding-top: 0px !important;">
                         <h6 class="text-muted">WORK LINKS</h6>
                         <table class="table table-bordered">
@@ -284,6 +288,9 @@
                                     </div>
                                     <div class="edit-btn">
                                         <button class="btn btn-light btn-sm editbtn" id="editBtn{{ $post->id }}"><i class="fas fa-pencil-alt"></i></button>
+                                    </div>
+                                    <div class="delete-btn">
+                                        <button class="btn btn-light btn-sm deleteBtn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
                                     </div>
                                 </div>
                                 <div class="card-body" id="viewPost{{ $post->id }}">
@@ -456,6 +463,10 @@
         $("#editProfileBtn").click(function(){
             $('.user-details-edit').removeClass('d-none');
             $('.user-details-show').addClass('d-none');
+        });
+        $(".btn-cancle").click(function(){
+            $('.user-details-edit').addClass('d-none');
+            $('.user-details-show').removeClass('d-none');
         });
     });
 </script>

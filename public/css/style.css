@@ -611,6 +611,23 @@ a.btn.btn-outline-dark.btn-edit-profile{
     color: #666;
     border-radius: 30px;
   }
+  .delete-btn button{
+	position: absolute;
+    right: 60px;
+	top: 20px;
+	border: 1px solid #eee;
+    color: #666;
+    border-radius: 30px;
+  }
+  .cancle-btn .btn-cancle{
+	position: absolute;
+    top: 110px;
+    right: 26px;
+	border: 1px solid #ddd;
+    color: #666;
+	border-radius: 30px;
+	padding: 6px 10px;
+  }
 /*====================< Profile Part Ends >===============*/
 
 /*===================<  Part Starts >==============*/
