@@ -33,12 +33,19 @@ class GeneralAdviceController extends Controller
         $genAdvices     = $this->category->find(8);
 
         $genAdvices = $this->posts->where('cat_id', $genAdvices->id)
-                        ->with(['user', 'category', 'likes', 'comments'])
+                        ->with(['user', 'category', 'likes','comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
+		
+		$alumni = $this->posts->where('cat_id', 8)
+                                ->with('user')->get();
+								
 
         return view('frontend.general_advice.index')
-                        ->withGenAdvices($genAdvices);
+                        ->withGenAdvices($genAdvices)
+                        ->withAlumnis($alumni);
     }
 
     /**

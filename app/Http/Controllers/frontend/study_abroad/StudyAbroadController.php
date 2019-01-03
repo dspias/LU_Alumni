@@ -35,15 +35,21 @@ class StudyAbroadController extends Controller
         $uniInfos = $this->category->find(7);
 
         $gres = $this->posts->where('cat_id', $gres->id)
-                        ->with(['user', 'category', 'likes', 'comments'])
+                        ->with(['user', 'category', 'likes', 'comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
         $ieltss = $this->posts->where('cat_id', $ieltss->id)
-                        ->with(['user', 'category', 'likes', 'comments'])
+                        ->with(['user', 'category', 'likes','comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
         $uniInfos = $this->posts->where('cat_id', $uniInfos->id)
-                        ->with(['user', 'category', 'likes', 'comments'])
+                        ->with(['user', 'category', 'likes','comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
         $alumni = $this->posts->where('cat_id', 5)

@@ -1,4 +1,4 @@
-@extends('layouts.withnav') @section('title', '| Home') @section('stylesheet')
+@extends('layouts.withnav') @section('title', '| Career Advice') @section('stylesheet')
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/owl.theme.default.css') }}"> @endsection @section('content')
