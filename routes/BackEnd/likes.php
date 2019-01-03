@@ -15,7 +15,7 @@ Route::group([
 
     Route::get('create', ['uses' => 'LikesContrller@create', 'as' => 'likes.create']);
 
-    Route::post('', ['uses' => 'LikesContrller@store', 'as' => 'likes.store']);
+    Route::get('{id}', ['uses' => 'LikesContrller@store', 'as' => 'likes.store']);
 
     Route::get('show/{id}', ['uses' => 'LikesContrller@show', 'as' => 'likes.show']);
 
@@ -23,6 +23,6 @@ Route::group([
 
     Route::put('update/{id}', ['uses' => 'LikesContrller@update', 'as' => 'likes.update']);
 
-    Route::post('destroy/{id}', ['uses' => 'LikesContrller@destroy', 'as' => 'likes.destroy']);
+    Route::get('destroy/{id}', ['uses' => 'LikesContrller@destroy', 'as' => 'likes.destroy']);
     
 });

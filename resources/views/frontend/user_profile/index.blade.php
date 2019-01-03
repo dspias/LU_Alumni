@@ -346,7 +346,13 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-left">
-                                        <a href="#" class="card-link"><i class="far fa-heart"></i> Like <sup>(50)</sup></a>
+                                    
+                                    @if(!App\Models\Like\Like::where(['user_id' => Auth::user()->id, 'post_id' => $post->id])->first())
+                                        <a href="{{ route('likes.store', ['id' => $post->id]) }}" class="card-link"><i class="far fa-heart"></i> Like <sup>({{ sizeof($post->likes) }})</sup></a>
+                                    @else
+                                        <a href="{{ route('likes.destroy', ['id' => $post->id]) }}" class="card-link"><i class="fas fa-heart" style="color:red;"></i> Unlike <sup>({{ sizeof($post->likes) }})</sup></a>
+                                    @endif
+
                                         <a href="#" class="card-link comment" id="comment{{ $post->id }}"><i class="far fa-comments"></i> Comment <sup>({{ sizeof($post->comments) }})</sup></a>
                                     </div>
                                     <div class="float-right">

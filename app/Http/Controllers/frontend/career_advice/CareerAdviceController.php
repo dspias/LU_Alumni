@@ -60,12 +60,18 @@ class CareerAdviceController extends Controller
                         }])
                         ->orderBy('id', 'desc')
                         ->paginate(10);
+        $alumni = $this->posts->where('cat_id', 1)
+                        ->orWhere('cat_id', 2)
+                        ->orWhere('cat_id', 3)
+                        ->orWhere('cat_id', 4)
+                        ->with('user')->get();
 
         return view('frontend.career_advice.index')
                         ->withItjobs($itjobs)
                         ->withGovtjobs($govtjobs)
                         ->withBcss($bcss)
-                        ->withIdeas($ideas);
+                        ->withIdeas($ideas)
+                        ->withAlumnis($alumni);
     }
 
     /**

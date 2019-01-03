@@ -5,8 +5,21 @@ namespace App\Http\Controllers\BackEnd\Likes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\User\User;
+use App\Models\Like\Like;
+use Auth;
+
 class LikesContrller extends Controller
 {
+
+    private $user;
+    private $like;
+    public function __construct(){
+                
+        $this->middleware('auth');        
+        $this->user = new User();
+        $this->like = new Like();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +46,16 @@ class LikesContrller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        $like = new Like();
+
+        $like->user_id = Auth::user()->id;
+        $like->post_id = $id;
+
+        $like->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -46,7 +66,9 @@ class LikesContrller extends Controller
      */
     public function show($id)
     {
-        //
+        $like = $this->like->where(['user_id' => Auth::user()->id, 'post_id' => $id])->first();
+        if($like) return 1;
+        return 0;
     }
 
     /**
@@ -80,6 +102,9 @@ class LikesContrller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $like = $this->like->where(['user_id' => Auth::user()->id, 'post_id' => $id])->first();
+        $like->delete();
+
+        return redirect()->back();
     }
 }

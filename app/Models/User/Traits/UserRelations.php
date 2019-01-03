@@ -23,6 +23,14 @@ trait UserRelations
     }
 
     /**
+     * Get the comments for the blog user.
+     */
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Like\Like');
+    }
+
+    /**
      * Get the events for the blog user.
      */
     public function events()

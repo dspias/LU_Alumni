@@ -13,4 +13,12 @@ trait LikeRelations
         return $this->belongsTo('App\Models\Post\Post');
     }
 
+    /**
+     * Get the user that owns the Comment.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User\User');
+    }
+
 }

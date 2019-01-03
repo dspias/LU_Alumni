@@ -91,3 +91,8 @@ $(document).ready(function() {
     });
     
 });
+
+// // ==============< Like check >==================
+// $(document).ready(function(){
+
+// });
