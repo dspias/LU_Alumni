@@ -611,7 +611,7 @@ a.btn.btn-outline-dark.btn-edit-profile{
     color: #666;
     border-radius: 30px;
   }
-  .delete-btn button{
+  .delete-btn .deleteBtn{
 	position: absolute;
     right: 60px;
 	top: 20px;

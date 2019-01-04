@@ -290,7 +290,7 @@
                                         <button class="btn btn-light btn-sm editbtn" id="editBtn{{ $post->id }}"><i class="fas fa-pencil-alt"></i></button>
                                     </div>
                                     <div class="delete-btn">
-                                        <button class="btn btn-light btn-sm deleteBtn" id="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+                                        <a href="{{ route('posts.destroy', ['id' => $post->id]) }}" class="btn btn-light btn-sm deleteBtn" id="deleteBtn"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </div>
                                 <div class="card-body" id="viewPost{{ $post->id }}">

@@ -16,6 +16,9 @@ use Session;
 use Auth;
 use App\Http\Requests\PostRequest;
 
+use App\Models\Like\Like;
+use App\Models\Comment\Comment;
+
 
 class PostsContrller extends Controller
 {
@@ -241,15 +244,25 @@ class PostsContrller extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        if(Auth::user()->id == $post->user_id) { 
-            $post->delete();
-            Session::flash('success', "This post was successfully deleted");
-         }
+        $post = Post::where('id', $id)->with(['likes', 'comments'])->first();
+
+        foreach($post->likes as $like){
+            $lik = Like::find($like->id);
+            $lik->delete();
+        }
+
+        foreach($post->comments as $comment){
+            $coment = Comment::find($comment->id);
+            $coment->delete();
+        }
+        $post->delete();
+        Session::flash('success', "This post was successfully deleted");
+         
 
         return redirect()->route('user_profile.index');
     }
 
+    // download file
     public function download($filename){
         
         $file = public_path()."/postsfiles/".$filename;
