@@ -64,6 +64,40 @@
             background-repeat: no-repeat;
             background-position: center;
         }
+        .social-icon-links a:nth-child(1){
+            color: #0077B5;
+            border: 1px solid #0077B5;
+            font-weight: 100;
+        }
+        .social-icon-links a:nth-child(1):hover{
+            background-color: #0077B5;
+            color: #ffffff;
+            border: 1px solid #0077B5;
+            font-weight: 100;
+        }
+        .social-icon-links a:nth-child(2){
+            padding: 4px 11px;
+            color: #3b5999;
+            border: 1px solid #3b5999;
+            font-weight: 100;
+        }
+        .social-icon-links a:nth-child(2):hover{
+            background-color: #3b5999;
+            color: #ffffff;
+            border: 1px solid #3b5999;
+            font-weight: 100;
+        }
+        .social-icon-links a:nth-child(3){
+            color: #55acee;
+            border: 1px solid #55acee;
+            font-weight: 100;
+        }
+        .social-icon-links a:nth-child(3):hover{
+            background-color: #55acee;
+            color: #ffffff;
+            border: 1px solid #55acee;
+            font-weight: 100;
+        }
     </style>
 @endsection
 
@@ -148,6 +182,14 @@
                                     <td class="d-none">Nothing To Display...</td>
                                 @endif
                             </tr>
+                            <tr>
+                                <th class="text-muted">Social</th>
+                                <td class="social-icon-links">
+                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-twitter"></i></a>
+                                </td>
+                            </tr>
                         </table>
                     </div>                    
                 </div>
@@ -218,6 +260,21 @@
                             <tr>
                                 <div class="form-group">
                                     <input class="form-control" type="text" placeholder="Mobile">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="https://www.linkedin.com/in/user-name/">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="https://www.facebook.com/user.name">
+                                </div>
+                            </tr>
+                            <tr>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="https://twitter.com/user_name">
                                 </div>
                             </tr>
                         </table>
