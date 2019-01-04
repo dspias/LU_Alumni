@@ -377,14 +377,23 @@
                                     <div class="new-comment">
                                         <form action="{{ route('comments.store', ['id' => $post->id]) }}" method="POST">
                                             @csrf
-                                            <textarea class="form-control" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
-                                            <button type="sumbit" class="btn btn-primary btn-sm btn-block btn-comment">Comment</button>
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <textarea class="form-control comment-area" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="sumbit" class="btn btn-primary btn-lg btn-block btn-comment">Comment</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
-                                @foreach($post->comments as $comment)
+                                    @foreach($post->comments as $comment)
                                     <div class="user-comments">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex justify-content-between align-items-center">
+                                                @if(Auth::user()->id == $post->id || Auth::user()->id == $comment->user->id)
+                                                <a href="{{ route('comments.destroy', ['id'=>$comment->id]) }}" class="btn btn-light btn-sm comment-delete" id="dltCmnt"><i class="fas fa-trash-alt"></i></a>
+                                                @endif
                                                 <div class="mr-2">
                                                 @if($comment->user->avatar)
                                                     <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
@@ -406,8 +415,7 @@
                                         </div>
                                         <div class="comnt">{{ $comment->comment }}</div>
                                     </div>
-                                @endforeach
-                                    
+                                    @endforeach
                                 </div>
                             </div>
                             

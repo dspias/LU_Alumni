@@ -109,40 +109,49 @@
                                 </div>
                             </div>
                             <div class="card-body post-comment" id="post-comment{{ $gre->id }}">
-                                <div class="new-comment">
-                                    <form action="{{ route('comments.store', ['id' => $gre->id]) }}" method="POST">
-                                        @csrf
-                                        <textarea class="form-control" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
-                                        <button type="sumbit" class="btn btn-primary btn-sm btn-block btn-comment">Comment</button>
-                                    </form>
-                                </div>
-                            @foreach($gre->comments as $comment)
-                                <div class="user-comments">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="mr-2">
-                                            @if($comment->user->avatar)
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
-                                            @else
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
-                                            @endif
+                                    <div class="new-comment">
+                                        <form action="{{ route('comments.store', ['id' => $gre->id]) }}" method="POST">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <textarea class="form-control comment-area" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="sumbit" class="btn btn-primary btn-lg btn-block btn-comment">Comment</button>
+                                                </div>
                                             </div>
-                                            <div class="ml-2">
-                                                <div class="h5 m-0"><a href="#">{{ $comment->user->first_name. " ". $comment->user->last_name }}</a></div>
-                                            <?php
-                                                // $date = date_create($post->updated_at);
-                                                $commentDate = new DateTime($comment->updated_at);
-                                                $commentDate->setTimezone(new DateTimeZone('GMT+06:00'));
-                                                
-                                            ?>
-                                                <div class="text-muted">{{ $commentDate->format('d-m-Y | h:i A') }}</div>
+                                        </form>
+                                    </div>
+                                    @foreach($gre->comments as $comment)
+                                    <div class="user-comments">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                    @if(Auth::user()->id == $gre->id || Auth::user()->id == $comment->user->id)
+                                                    <a href="{{ route('comments.destroy', ['id'=>$comment->id]) }}" class="btn btn-light btn-sm comment-delete" id="dltCmnt"><i class="fas fa-trash-alt"></i></a>
+                                                    @endif
+                                                <div class="mr-2">
+                                                @if($comment->user->avatar)
+                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
+                                                @else
+                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
+                                                @endif
+                                                </div>
+                                                <div class="ml-2">
+                                                    <div class="h5 m-0"><a href="#">{{ $comment->user->first_name. " ". $comment->user->last_name }}</a></div>
+                                                <?php
+                                                    // $date = date_create($post->updated_at);
+                                                    $commentDate = new DateTime($comment->updated_at);
+                                                    $commentDate->setTimezone(new DateTimeZone('GMT+06:00'));
+                                                    
+                                                ?>
+                                                    <div class="text-muted">{{ $commentDate->format('d-m-Y | h:i A') }}</div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="comnt">{{ $comment->comment }}</div>
                                     </div>
-                                    <div class="comnt">{{ $comment->comment }}</div>
+                                    @endforeach
                                 </div>
-                            @endforeach
-                            </div>
                         </div>
                     @endforeach
                         <div class="col-md-12">
@@ -243,40 +252,49 @@
                                 </div>
                             </div>
                             <div class="card-body post-comment" id="post-comment{{ $ielts->id }}">
-                                <div class="new-comment">
-                                    <form action="{{ route('comments.store', ['id' => $ielts->id]) }}" method="POST">
-                                        @csrf
-                                        <textarea class="form-control" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
-                                        <button type="sumbit" class="btn btn-primary btn-sm btn-block btn-comment">Comment</button>
-                                    </form>
-                                </div>
-                            @foreach($ielts->comments as $comment)
-                                <div class="user-comments">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="mr-2">
-                                            @if($comment->user->avatar)
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
-                                            @else
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
-                                            @endif
+                                    <div class="new-comment">
+                                        <form action="{{ route('comments.store', ['id' => $ielts->id]) }}" method="POST">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <textarea class="form-control comment-area" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="sumbit" class="btn btn-primary btn-lg btn-block btn-comment">Comment</button>
+                                                </div>
                                             </div>
-                                            <div class="ml-2">
-                                                <div class="h5 m-0"><a href="#">{{ $comment->user->first_name. " ". $comment->user->last_name }}</a></div>
-                                            <?php
-                                                // $date = date_create($post->updated_at);
-                                                $commentDate = new DateTime($comment->updated_at);
-                                                $commentDate->setTimezone(new DateTimeZone('GMT+06:00'));
-                                                
-                                            ?>
-                                                <div class="text-muted">{{ $commentDate->format('d-m-Y | h:i A') }}</div>
+                                        </form>
+                                    </div>
+                                    @foreach($ielts->comments as $comment)
+                                    <div class="user-comments">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                    @if(Auth::user()->id == $ielts->id || Auth::user()->id == $comment->user->id)
+                                                    <a href="{{ route('comments.destroy', ['id'=>$comment->id]) }}" class="btn btn-light btn-sm comment-delete" id="dltCmnt"><i class="fas fa-trash-alt"></i></a>
+                                                    @endif
+                                                <div class="mr-2">
+                                                @if($comment->user->avatar)
+                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
+                                                @else
+                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
+                                                @endif
+                                                </div>
+                                                <div class="ml-2">
+                                                    <div class="h5 m-0"><a href="#">{{ $comment->user->first_name. " ". $comment->user->last_name }}</a></div>
+                                                <?php
+                                                    // $date = date_create($post->updated_at);
+                                                    $commentDate = new DateTime($comment->updated_at);
+                                                    $commentDate->setTimezone(new DateTimeZone('GMT+06:00'));
+                                                    
+                                                ?>
+                                                    <div class="text-muted">{{ $commentDate->format('d-m-Y | h:i A') }}</div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="comnt">{{ $comment->comment }}</div>
                                     </div>
-                                    <div class="comnt">{{ $comment->comment }}</div>
+                                    @endforeach
                                 </div>
-                            @endforeach
-							</div>
                         </div>
                     @endforeach
                         <div class="col-md-12">
@@ -379,40 +397,49 @@
                                 </div>
                             </div>
                             <div class="card-body post-comment" id="post-comment{{ $uniInfo->id }}">
-                           <div class="new-comment">
-                                    <form action="{{ route('comments.store', ['id' => $uniInfo->id]) }}" method="POST">
-                                        @csrf
-                                        <textarea class="form-control" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
-                                        <button type="sumbit" class="btn btn-primary btn-sm btn-block btn-comment">Comment</button>
-                                    </form>
-                                </div>
-                            @foreach($uniInfo->comments as $comment)
-                                <div class="user-comments">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="mr-2">
-                                            @if($comment->user->avatar)
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
-                                            @else
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
-                                            @endif
+                                    <div class="new-comment">
+                                        <form action="{{ route('comments.store', ['id' => $uniInfo->id]) }}" method="POST">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <textarea class="form-control comment-area" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="sumbit" class="btn btn-primary btn-lg btn-block btn-comment">Comment</button>
+                                                </div>
                                             </div>
-                                            <div class="ml-2">
-                                                <div class="h5 m-0"><a href="#">{{ $comment->user->first_name. " ". $comment->user->last_name }}</a></div>
-                                            <?php
-                                                // $date = date_create($post->updated_at);
-                                                $commentDate = new DateTime($comment->updated_at);
-                                                $commentDate->setTimezone(new DateTimeZone('GMT+06:00'));
-                                                
-                                            ?>
-                                                <div class="text-muted">{{ $commentDate->format('d-m-Y | h:i A') }}</div>
+                                        </form>
+                                    </div>
+                                    @foreach($uniInfo->comments as $comment)
+                                    <div class="user-comments">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                    @if(Auth::user()->id == $uniInfo->id || Auth::user()->id == $comment->user->id)
+                                                    <a href="{{ route('comments.destroy', ['id'=>$comment->id]) }}" class="btn btn-light btn-sm comment-delete" id="dltCmnt"><i class="fas fa-trash-alt"></i></a>
+                                                    @endif
+                                                <div class="mr-2">
+                                                @if($comment->user->avatar)
+                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
+                                                @else
+                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
+                                                @endif
+                                                </div>
+                                                <div class="ml-2">
+                                                    <div class="h5 m-0"><a href="#">{{ $comment->user->first_name. " ". $comment->user->last_name }}</a></div>
+                                                <?php
+                                                    // $date = date_create($post->updated_at);
+                                                    $commentDate = new DateTime($comment->updated_at);
+                                                    $commentDate->setTimezone(new DateTimeZone('GMT+06:00'));
+                                                    
+                                                ?>
+                                                    <div class="text-muted">{{ $commentDate->format('d-m-Y | h:i A') }}</div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="comnt">{{ $comment->comment }}</div>
                                     </div>
-                                    <div class="comnt">{{ $comment->comment }}</div>
+                                    @endforeach
                                 </div>
-                            @endforeach
-                            </div>
                         </div>
                     @endforeach
                         <div class="col-md-12">

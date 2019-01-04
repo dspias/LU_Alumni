@@ -23,6 +23,6 @@ Route::group([
 
     Route::put('update/{id}', ['uses' => 'CommentsContrller@update', 'as' => 'comments.update']);
 
-    Route::post('destroy/{id}', ['uses' => 'CommentsContrller@destroy', 'as' => 'comments.destroy']);
+    Route::get('destroy/{id}', ['uses' => 'CommentsContrller@destroy', 'as' => 'comments.destroy']);
     
 });
