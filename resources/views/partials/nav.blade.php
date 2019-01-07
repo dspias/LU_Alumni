@@ -56,7 +56,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('user_profile.index') }}" >{{ Auth::user()->first_name }} Profile</a>
-                        {{-- <a class="dropdown-item" href="#">Profile Setting</a> --}}
+                        <a class="dropdown-item" href="{{ route('message.index') }}">your Messages</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout <i style="margin-left:5px;" class="fas fa-sign-out-alt"></i></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

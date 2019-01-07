@@ -17,8 +17,8 @@ window.Vue = require('vue');
 
 Vue.component('articles', require('./components/Articles.vue'));
 Vue.component('navbar', require('./components/Navbar.vue'));
+Vue.component('chat-app', require('./components/ChatApp.vue'));
 
 const app = new Vue({
-    el: '#app',
-    render: h => h(App)
+    el: '#app'
 });

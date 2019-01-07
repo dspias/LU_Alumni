@@ -710,7 +710,7 @@ class TestCaseTest extends TestCase
         $mock = $this->createConfiguredMock(
             \Mockable::class,
             [
-                'mockableMethod' => false
+                'mockableMethod' => false,
             ]
         );
 
@@ -723,7 +723,7 @@ class TestCaseTest extends TestCase
         $test = new \TestAutoreferenced('testJsonEncodeException', $this->getAutoreferencedArray());
         $test->runBare();
 
-        $this->assertInternalType('array', $test->myTestData);
+        $this->assertIsArray($test->myTestData);
         $this->assertArrayHasKey('data', $test->myTestData);
         $this->assertEquals($test->myTestData['data'][0], $test->myTestData['data']);
     }
@@ -739,13 +739,13 @@ class TestCaseTest extends TestCase
         $test = new \TestAutoreferenced('testJsonEncodeException', [$data]);
         $test->runBare();
 
-        $this->assertInternalType('array', $test->myTestData);
+        $this->assertIsArray($test->myTestData);
         $this->assertSame($data, $test->myTestData);
     }
 
     public function testGettingNullTestResultObject(): void
     {
-        $test = new \Success();
+        $test = new \Success;
         $this->assertNull($test->getTestResultObject());
     }
 
@@ -759,8 +759,8 @@ class TestCaseTest extends TestCase
 
         return [
             'RECURSION' => [
-                'data' => $recursionData
-            ]
+                'data' => $recursionData,
+            ],
         ];
     }
 }

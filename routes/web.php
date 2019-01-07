@@ -47,6 +47,7 @@ Route::group([
     include_once 'frontend/clubs.php';
     include_once 'frontend/career_advice.php';
     include_once 'frontend/user_profile.php';
+    include_once 'frontend/message.php';
 
 
 });
