@@ -42,9 +42,9 @@
 <style lang="scss" scoped>
 .feed {
     background: #f0f0f0;
-    height: 100%;
-    max-height: 470px;
-    overflow: scroll;
+    // height: 100%;
+    height: 60vh;
+    overflow-y: scroll;
     ul {
         list-style-type: none;
         padding: 5px;
@@ -61,7 +61,7 @@
                 &.received {
                     text-align: left;
                     .text {
-                        background: #b2b2b2;
+                        background: #abc624;
                     }
                 }
                 &.sent {

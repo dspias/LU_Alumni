@@ -1,7 +1,16 @@
 <template>
     <div class="chat-app">
-        <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
-        <ContactsList :contacts="contacts" @selected="startConversationWith"/>
+        <div class="row">
+            <div class="col-md-5 chat-list">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="searchContact" placeholder="Search Contact">
+                </div>
+                <ContactsList :contacts="contacts" @selected="startConversationWith"/>
+            </div>
+            <div class="col-md-7 message-box">
+                <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -69,8 +78,14 @@
 </script>
 
 
-<style lang="scss" scoped>
-.chat-app {
-    display: flex;
+<style lang="css" scoped>
+.chat-list {
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
+  /* border-left: 1px solid #a6a6a6; */
 }
+
+
 </style>

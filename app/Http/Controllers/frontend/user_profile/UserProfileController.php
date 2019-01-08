@@ -67,7 +67,15 @@ class UserProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = $this->user->find($id);
+        $posts = Post::where('user_id', $id)->with(['user', 'category', 'likes', 'comments.user' => function($query){
+            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+        } ])->orderBy('id', 'desc')->paginate(10);
+
+        // dd($posts);
+
+        return view('frontend.user_profile.show')->withUser($user)
+                                                ->withPosts($posts);
     }
 
     /**

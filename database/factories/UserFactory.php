@@ -18,12 +18,13 @@ $factory->define(App\Models\User\User::class, function (Faker $faker) {
     $random = rand(38,99);
     $depth = $faker->randomElement(['CSE', 'EEE', 'BUA', 'LAW']);
     $year = $faker->randomElement(['2017', '2018', '2019']);
+    $stId = '151'.(string)rand(1,9).(string)rand(1,9).(string)rand(1,9).(string)rand(1,9).(string)rand(1,9).(string)rand(1,9).(string)rand(1,9);
 
 
     return [
         'first_name' => $faker->name,
         'last_name' => $faker->name,
-        'uniStudentId' => $faker->unique()->randomNumber,
+        'uniStudentId' => $stId,
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$xoolJUZ5CpgPspAjnQt//ufafJocUEkm2BVMee0e6bhV.1yekkiea', // secret
         'department' => $depth,
