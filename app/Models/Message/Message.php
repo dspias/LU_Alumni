@@ -10,6 +10,6 @@ class Message extends Model
     
     public function fromContact()
     {
-        return $this->hasOne(App\Models\User\User::class, 'id', 'from');
+        return $this->hasOne('App\Models\User\User', 'id', 'from');
     }
 }

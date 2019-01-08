@@ -36,13 +36,27 @@ $factory->define(App\Models\User\User::class, function (Faker $faker) {
 
 $factory->define(App\Models\Message\Message::class, function (Faker $faker) {
     do{
-        $from = rand(1, 15);
-        $to = rand(1, 15);
+        $from = rand(1, 30);
+        $to = rand(1, 30);
     }while($from === $to);
 
     return [
         'from' => $from,
         'to' => $to,
         'text' => $faker->sentence,
+    ];
+});
+
+
+$factory->define(App\Models\Post\Post::class, function (Faker $faker) {
+
+    $user_id = rand(1, 30);
+    $cat_id = rand(1,10);
+
+    return [
+        'user_id' => $user_id,
+        'cat_id' => $cat_id,
+        'title' => $faker->sentence,
+        'body' => $faker->sentence,
     ];
 });

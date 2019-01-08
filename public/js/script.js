@@ -2,7 +2,7 @@
 $(document).ready(function() {
     $("a.comment").click(function() {
         var comment = '#' + $(this).attr('id');
-        var postComment = '#post-comment' + comment[comment.length - 1];
+        var postComment = '#post-comment' + comment.substring(8, comment.length);
         $(postComment).slideToggle();
         return false;
     });
@@ -71,9 +71,10 @@ $(document).ready(function() {
     var editbtn;
     $(".editbtn").click(function(){
         editbtn = '#' + $(this).attr("id");
-        var editPost = '#editPost' +editbtn[editbtn.length - 1];
-        var viewPost = '#viewPost' +editbtn[editbtn.length - 1];
-        var cancelbtn = '#cancelBtn' + editbtn[editbtn.length - 1];
+        
+        var editPost = '#editPost' + editbtn.substring(8, editbtn.length);
+        var viewPost = '#viewPost' + editbtn.substring(8, editbtn.length);
+        var cancelbtn = '#cancelBtn' +  editbtn.substring(8, editbtn.length);
         
         $(editbtn).ready(function(){
             $(viewPost).addClass('d-none');

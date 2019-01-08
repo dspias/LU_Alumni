@@ -7,9 +7,6 @@
 
 <title>LU_ALumni @yield('title')</title>
 
-<!-- Scripts -->
-{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-
 {{-- If Importent to add some css files --}}
 
 
