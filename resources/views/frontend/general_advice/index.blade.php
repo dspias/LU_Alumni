@@ -160,22 +160,45 @@
                 <h3 class="color-two">Suggested Alumni</h3>
                 <hr>
                 <div class="owl-carousel owl-theme suggested-alumni text-center" id="sugestedAlumni">
-                    {{--  @@foreach ($collection as $item)  --}}
+                    <?php $aliId = '9999999'; ?>
+                    @foreach ($alumnis as $key => $alumni)
+                    <?php
+
+                        if($key == 0 ) $aliId = $alumni->user->id;
+                        
+                        if( $key != 0 && $aliId == $alumni->user->id){
+                            $aliId = $alumni->user->id;
+                            continue;
+                        }
+                    ?> 
                     <div class="item team-member ">
-                        <div class="card text-center" style="width: 18rem;">
-                            <a href="#"><img class="card-img-top" src="{{ asset('images/profile_pic.jpg') }}" alt="Card image cap"></a>
+                        <div class="card text-center" style="width: 100%;">
+                        @if($alumni->user->avatar)
+                            <a href="{{ route('user_profile.show', ['id' => $alumni->user->id]) }}"><img class="card-img-top" src="{{ asset('user_files/'.$alumni->user->avatar) }}" alt="Card image cap"></a>
+                        @else
+                            <a href="{{ route('user_profile.show', ['id' => $alumni->user->id]) }}"><img class="card-img-top" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="Card image cap"></a>
+                        @endif
+                            
                             <div class="card-body">
-                                <h5 class="card-title color-two" style="margin-bottom: 0px;"><a href="#" class="user-title">Sabbir Ahmed</a></h5>
-                                <p class="card-text text-center" style="font-size: 14px; font-weight: bold; color: #666;">32nd Batch, CSE Department</p>
+                                <h5 class="card-title color-two" style="margin-bottom: 0px;"><a href="{{ route('user_profile.show', ['id' => $alumni->user->id]) }}" class="user-title">{{ $alumni->user->first_name." ".$alumni->user->last_name }}</a></h5>
+                                <p class="card-text text-center" style="font-size: 14px; font-weight: bold; color: #666;">{{ $alumni->user->university_batch }} Batch, {{ $alumni->user->department }} Department</p>
                                 <ul class="social-list">
-                                    <li><a href="#" target="_blank"<i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" target="_blank"<i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"<i class="fab fa-linkedin-in"></i></a></li>
+                                @isset($alumni->user->fb_link)
+                                    <li><a href="{{ $alumni->user->fb_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                @endisset
+
+                                @isset($alumni->user->tw_link)
+                                    <li><a href="{{ $alumni->user->tw_link }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                @endisset
+
+                                @isset($alumni->user->li_link)
+                                    <li><a href="{{ $alumni->user->li_link }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                @endisset
                                 </ul>
                             </div>
                         </div>
                     </div>                        
-                    {{--  @endforeach --}}
+                        @endforeach
                 </div>
             </div>
         </div>

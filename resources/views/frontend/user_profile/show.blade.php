@@ -1,6 +1,6 @@
 @extends('layouts.withnav')
 
-@section('title', '| your profile')
+@section('title', '| view profile')
 
 @section('stylesheet')
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -111,13 +111,11 @@
                 <div class="user-profile">
                     <figure class="profile-pic">
                     @if(isset($user->avatar))
-                        <img src="{{ asset('images/'.$user->avatar) }}" alt="user image" class="img-responsive">
+                        <img src="{{ asset('user_profile/'.$user->avatar) }}" alt="user image" class="img-responsive">
                     @else
                         <img src="{{ asset('images/cover_pic.jpg') }}" alt="user image" class="img-responsive">
                     @endif
                     </figure>
-
-                    <a href="#" class="btn btn-outline-dark btn-block btn-edit-profile" id="editProfileBtn" style="border-radius: 0px;">Edit Profile</a>
 
                     @if (isset($user->company_name))
                     <div class="work-link">
@@ -185,106 +183,27 @@
                             <tr>
                                 <th class="text-muted">Social</th>
                                 <td class="social-icon-links">
-                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-twitter"></i></a>
+                                    @if (isset($user->li_link))
+                                    <a href="{{ $user->li_link }}" target="_blank" class="btn btn-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
+                                    @else
+                                        <td class="d-none">Nothing To Display...</td>
+                                    @endif
+
+                                    @if (isset($user->fb_link))
+                                    <a href="{{ $user->fb_link }}" target="_blank" class="btn btn-light btn-sm"><i class="fab fa-facebook-f"></i></a>
+                                    @else
+                                        <td class="d-none">Nothing To Display...</td>
+                                    @endif
+
+                                    @if (isset($user->tw_link))
+                                    <a href="{{ $user->tw_link }}" target="_blank" class="btn btn-light btn-sm"><i class="fab fa-twitter"></i></a>
+                                    @else
+                                        <td class="d-none">Nothing To Display...</td>
+                                    @endif
                                 </td>
                             </tr>
                         </table>
                     </div>                    
-                </div>
-            </div>
-
-            <div class="col-md-4 user-details-edit d-none">
-                <div class="user-profile">
-                    <form action="{{ route('user_profile.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="group" style="padding-top: 1px;">
-                            <div class="avatar-upload about">
-                                <div class="avatar-edit">
-                                    <input type='file' name="avatar" id="profilePictureUpload" accept=".png, .jpg, .jpeg" />
-                                    <label for="profilePictureUpload"><i class="fas fa-pencil-alt"></i></label>
-                                </div>
-                                <div class="avatar-preview">
-                                    <div id="profilePicturePreview" style="background-image: url(' {{ asset('images/cover_pic.jpg') }} '); background-size: cover;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cancle-btn">
-                            <button class="btn btn-outline-light btn-cancle"><i class="fas fa-undo-alt"></i></button>
-                        </div>
-
-                        <div class="work-link" style="padding-top: 0px !important;">
-                            <h6 class="text-muted">WORK LINKS</h6>
-                            <table class="table table-bordered">
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Company Name">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Designation">
-                                    </div>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div class="personal-info" style="padding-top: 0px !important;">
-                            <h6 class="text-muted">PERSONAL INFO</h6>
-                            <table class="table table-bordered">
-                                <tr>
-                                    <div class="form-group">
-                                        <textarea class="form-control" rows="2" placeholder="Present Address"></textarea>
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Department">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Batch">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Graduation Year">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Email">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Mobile">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="https://www.linkedin.com/in/user-name/">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="https://www.facebook.com/user.name">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="https://twitter.com/user_name">
-                                    </div>
-                                </tr>
-                            </table>
-                            
-                            <button type="submit" class="btn btn-outline-dark btn-block btn-update-profile" id="updateProfileBtn" style="border-radius: 30px;">Update Profile</button>
-                            
-                        </div>
-                    </form>                    
                 </div>
             </div>
 
@@ -295,37 +214,6 @@
                 <div class="profile-details">
                     <div class="row">
                         <div class="col-md-12">
-
-                            <div class="posts card gedf-card alumni-post">
-                                <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="card-body">
-                                        <div class="new-post">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" id="postTitle" placeholder="Your Post Title" name="title" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select name="cat_id" required>
-                                                        <option data-display="Select Category">Select Category</option>
-                                                    @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                                    @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?" name="body" required></textarea>
-
-                                            <input accept="image/*, image/heic, image/heif, .pdf, .doc, .docx" type="file" class="hide inputfile" id="upload" data-multiple-caption="{count} files selected" multiple name="avatar" />
-                                            <label for="upload"><span><i class="fas fa-file-medical"></i> File</span> </label>
-                                            <button type="submit" class="btn btn-outline-info btn-share float-right">Share</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
 
                         @foreach($posts as $post)
                             <div class="posts card gedf-card alumni-post">
@@ -345,12 +233,6 @@
                                                 <div class="text-muted">{{ $post->user->department." ".$post->user->university_batch }} Batch</div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="edit-btn">
-                                        <button class="btn btn-light btn-sm editbtn" id="editBtn{{ $post->id }}"><i class="fas fa-pencil-alt"></i></button>
-                                    </div>
-                                    <div class="delete-btn">
-                                        <a href="{{ route('posts.destroy', ['id' => $post->id]) }}" class="btn btn-light btn-sm deleteBtn" id="deleteBtn"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </div>
                                 <div class="card-body" id="viewPost{{ $post->id }}">
@@ -380,36 +262,6 @@
                                     
                             @endif                            
                         @endisset
-                                </div>
-                                <div class="card-body d-none" id="editPost{{ $post->id }}">
-                                    <form action="{{ route('posts.update',['id' => $post->id]) }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="new-post">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" id="postTitle" placeholder="Your Post Title" name="title" value="{{ $post->title }}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select name="cat_id">
-                                                        <option data-display="Select Category">Select Category</option>
-                                                    @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}" @if($post->cat_id == $category->id) selected @endif>{{ $category->category_name }}</option>
-                                                    @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?" name="body">{{ $post->body }}</textarea>
-
-                                            <input accept="image/*, image/heic, image/heif, .pdf, .doc, .docx" type="file" class="hide inputfilepost" id="upload{{ $post->id }}" data-multiple-caption="{count} files selected" multiple name="avatar" value="{{ $post->avatar }}"/>
-                                            <label for="upload{{ $post->id }}" id="inputstyle"><span id="span{{ $post->id }}"><i class="fas fa-file-medical"></i> File</span> </label>
-
-                                            <button class="btn btn-outline-info btn-share float-right btn-sm" type="submit">Update</button>
-                                            <button class="btn btn-info btn-share float-right btn-sm cancelbtn" style="margin-right: 5px;" id="cancelBtn{{ $post->id }}" type="button">Cancel</button>
-                                            
-                                        </div>
-                                    </form>
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-left">

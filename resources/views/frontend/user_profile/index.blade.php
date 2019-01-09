@@ -111,7 +111,7 @@
                 <div class="user-profile">
                     <figure class="profile-pic">
                     @if(isset($user->avatar))
-                        <img src="{{ asset('images/'.$user->avatar) }}" alt="user image" class="img-responsive">
+                        <img src="{{ asset('user_files/'.$user->avatar) }}" alt="user image" class="img-responsive">
                     @else
                         <img src="{{ asset('images/cover_pic.jpg') }}" alt="user image" class="img-responsive">
                     @endif
@@ -206,7 +206,11 @@
                                     <label for="profilePictureUpload"><i class="fas fa-pencil-alt"></i></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <div id="profilePicturePreview" style="background-image: url(' {{ asset('images/cover_pic.jpg') }} '); background-size: cover;"></div>
+                                    @if(isset($user->avatar))
+                                        <div id="profilePicturePreview" style="background-image: url(' {{ asset('user_files/'.$user->avatar) }} '); background-size: cover;"></div>
+                                    @else
+                                        <div id="profilePicturePreview" style="background-image: url(' {{ asset('images/cover_pic.jpg') }} '); background-size: cover;"></div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -220,12 +224,22 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Company Name">
+                                        <input class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ $user->company_name }}" type="text" placeholder="Company Name">
+                                        @if ($errors->has('company_name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('company_name') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Designation">
+                                        <input class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation" value="{{ $user->designation }}" type="text" placeholder="Designation">
+                                        @if ($errors->has('designation'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('designation') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                             </table>
@@ -236,47 +250,87 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="2" placeholder="Present Address"></textarea>
+                                        <textarea class="form-control{{ $errors->has('bio') ? ' is-invalid' : '' }}" name="bio" rows="2" placeholder="Present Address">{{ $user->bio }}"</textarea>
+                                        @if ($errors->has('bio'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('bio') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Department">
+                                        <input class="form-control{{ $errors->has('department') ? ' is-invalid' : '' }}" name="department" value="{{ $user->department }}" type="text" placeholder="Department">
+                                        @if ($errors->has('department'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('department') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Batch">
+                                        <input class="form-control{{ $errors->has('university_batch') ? ' is-invalid' : '' }}" name="university_batch" value="{{ $user->university_batch }}" type="text" placeholder="Batch">
+                                        @if ($errors->has('university_batch'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('university_batch') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </tr>
+                                {{-- <tr>
+                                    <div class="form-group">
+                                        <input class="form-control" name="graduation_year" value="{{ $user->graduation_year }}" type="text" placeholder="Graduation Year">
+                                    </div>
+                                </tr> --}}
+                                <tr>
+                                    <div class="form-group">
+                                        <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" type="text" placeholder="Email">
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Graduation Year">
+                                        <input class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" value="{{ $user->mobile }}" type="text" placeholder="Mobile">
+                                        @if ($errors->has('mobile'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('mobile') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Email">
+                                        <input class="form-control{{ $errors->has('li_link') ? ' is-invalid' : '' }}" name="li_link" value="{{ $user->li_link }}" type="text" placeholder="https://www.linkedin.com/in/user-name/">
+                                        @if ($errors->has('li_link'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('li_link') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Mobile">
+                                        <input class="form-control{{ $errors->has('fb_link') ? ' is-invalid' : '' }}" name="fb_link" value="{{ $user->fb_link }}" type="text" placeholder="https://www.facebook.com/user.name">
+                                        @if ($errors->has('fb_link'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('fb_link') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                                 <tr>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="https://www.linkedin.com/in/user-name/">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="https://www.facebook.com/user.name">
-                                    </div>
-                                </tr>
-                                <tr>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="https://twitter.com/user_name">
+                                        <input class="form-control{{ $errors->has('tw_link') ? ' is-invalid' : '' }}" name="tw_link" value="{{ $user->tw_link }}" type="text" placeholder="https://twitter.com/user_name">
+                                        @if ($errors->has('tw_link'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('tw_link') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </tr>
                             </table>
@@ -334,7 +388,7 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="mr-2">
                                                 @if($post->user->avatar)
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$post->avatar) }}" alt="">
+                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('user_files/'.$post->user->avatar) }}" alt="">
                                                 @else
                                                 <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">
                                                 @endif
@@ -456,7 +510,7 @@
                                                 @endif
                                                 <div class="mr-2">
                                                 @if($comment->user->avatar)
-                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
+                                                    <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('user_files/'.$comment->user->avatar) }}" alt="">
                                                 @else
                                                     <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
                                                 @endif

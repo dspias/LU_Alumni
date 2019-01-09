@@ -13,8 +13,7 @@ use Auth;
 class UserProfileController extends Controller
 {
     private $user;
-    public function __construct(){
-                
+    public function __construct(){                
         $this->middleware('auth');        
         $this->user = new User();
     }
@@ -56,7 +55,54 @@ class UserProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'company_name'      =>  'string|max:50',
+            'designation'       =>  'string|max:50',
+            'bio'               =>  'string|max:191',
+            'department'        =>  'string|max:50',
+            'university_batch'  =>  'string|max:4',
+            // 'graduation_year'   =>  'string|max:4',
+            'email'             =>  'string|max:50',
+            'mobile'            =>  'string|max:13',
+            'li_link'           =>  'string|max:191',
+            'fb_link'           =>  'string|max:191',
+            'tw_link'           =>  'string|max:191',
+        ));
+
+        if( $request->hasFile('avatar') ){
+
+            $avatar = $request->file('avatar');
+            $mime = $avatar->getMimeType();
+            if ($mime == "image/jpeg" || $mime == "image/png" || $mime == "image/svg+xml") {
+                $this->validate($request,array(
+                    'avatar'    =>  'image|mimes:jpeg,png,jpg,svg|max:1024',
+                ));
+            }
+        }
+
+        $user = $this->user->find(Auth::user()->id);
+
+        $user->company_name     = $request->company_name;
+        $user->designation      = $request->designation;
+        $user->bio              = $request->bio;
+        $user->department       = $request->department;
+        $user->university_batch = $request->university_batch;
+        $user->email            = $request->email;
+        $user->mobile           = $request->mobile;
+        $user->li_link          = $request->li_link;
+        $user->fb_link          = $request->fb_link;
+        $user->tw_link          = $request->tw_link;
+
+        if($request->hasFile('avatar') && $user->avatar != $request->avatar){
+            $path = time().'.'.$request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('user_files'), $path);
+        
+            $user->avatar = $path;
+        }
+
+        $user->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -74,8 +120,7 @@ class UserProfileController extends Controller
 
         // dd($posts);
 
-        return view('frontend.user_profile.show')->withUser($user)
-                                                ->withPosts($posts);
+        return view('frontend.user_profile.show')->withUser($user)->withPosts($posts);
     }
 
     /**

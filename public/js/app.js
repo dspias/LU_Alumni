@@ -60601,7 +60601,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             selectedContact: null,
             messages: [],
-            contacts: []
+            contacts: [],
+            search: ''
         };
     },
     mounted: function mounted() {
@@ -61267,12 +61268,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         contacts: {
             type: Array,
             default: []
+        },
+        search: {
+            type: String,
+            default: ''
         }
     },
     data: function data() {
@@ -61297,6 +61303,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 return contact.unread;
             }]).reverse();
+        },
+        filterContacts: function filterContacts() {
+            var _this2 = this;
+
+            return this.contacts.filter(function (contact) {
+                return contact.first_name.toLowerCase().match(_this2.search.toLowerCase());
+            });
         }
     }
 });
@@ -61380,10 +61393,36 @@ var render = function() {
         "div",
         { staticClass: "col-md-5 chat-list" },
         [
-          _vm._m(0),
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "name",
+                placeholder: "Search Contact"
+              },
+              domProps: { value: _vm.search },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
           _c("ContactsList", {
-            attrs: { contacts: _vm.contacts },
+            attrs: { contacts: _vm.contacts, search: _vm.search },
             on: { selected: _vm.startConversationWith }
           })
         ],
@@ -61404,23 +61443,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          id: "searchContact",
-          placeholder: "Search Contact"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

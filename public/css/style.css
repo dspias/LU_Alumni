@@ -475,11 +475,15 @@ a.user-title:hover{
 .profile-part .user-profile .profile-pic{
 	margin-bottom: 0px;
 }
-.profile-part .user-profile .profile-pic img{
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border: 1px solid #343a40;
-	border-bottom: 0px solid #343a40;
+.profile-part .user-profile .profile-pic img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #343a40;
+    border-bottom: 0px solid #343a40;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 250px;
+    min-height: 250px;
 }
 .profile-part .user-profile .btn-group{
 	width: 100.5%;

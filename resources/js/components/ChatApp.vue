@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-md-5 chat-list">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="searchContact" placeholder="Search Contact">
+                    <input type="text" class="form-control" name="name" v-model="search" placeholder="Search Contact">
                 </div>
-                <ContactsList :contacts="contacts" @selected="startConversationWith"/>
+                <ContactsList :contacts="contacts" :search="search" @selected="startConversationWith"/>
             </div>
             <div class="col-md-7 message-box">
                 <Conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"/>
@@ -28,7 +28,8 @@
             return {
                 selectedContact: null,
                 messages: [],
-                contacts: []
+                contacts: [],
+                search: ''
             };
         },
         mounted() {

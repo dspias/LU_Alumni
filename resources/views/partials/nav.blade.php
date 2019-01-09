@@ -49,7 +49,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if(isset(Auth::user()->avatar))
-                        <img src="{{ asset('images/'.Auth::user()->avatar) }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc;">
+                        <img src="{{ asset('user_files/'.Auth::user()->avatar) }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc;">
                     @else
                         <img src="{{ asset('images/graduate.png') }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc; padding:1px;">
                     @endif

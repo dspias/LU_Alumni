@@ -3,6 +3,7 @@
         
         <div class="row">
             <div class="col-md-12">
+                
                 <ul>
                     <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
                         <div class="avatar">
@@ -26,6 +27,10 @@
             contacts: {
                 type: Array,
                 default: []
+            },
+            search: {
+                type:String,
+                default: ''
             }
         },
         data() {
@@ -47,6 +52,11 @@
                     }
                     return contact.unread;
                 }]).reverse();
+            },
+            filterContacts() {
+                return this.contacts.filter(contact => {
+                    return contact.first_name.toLowerCase().match(this.search.toLowerCase());
+                });
             }
         }
     }

@@ -35,7 +35,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="mr-2">
                                             @if($expert->user->avatar)
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$expert->avatar) }}" alt="">
+                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('user_files/'.$expert->user->avatar) }}" alt="">
                                             @else
                                                 <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">
                                             @endif
@@ -123,7 +123,7 @@
                                                 @endif
                                             <div class="mr-2">
                                             @if($comment->user->avatar)
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$comment->user->avatar) }}" alt="">
+                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('user_files/'.$comment->user->avatar) }}" alt="">
                                             @else
                                                 <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
                                             @endif
@@ -182,25 +182,25 @@
                     <div class="item team-member ">
                         <div class="card text-center" style="width: 100%;">
                         @if($alumni->user->avatar)
-                            <a href="#"><img class="card-img-top" src="{{ asset('images/'.$alumni->user->avatar) }}" alt="Card image cap"></a>
+                            <a href="{{ route('user_profile.show', ['id' => $alumni->user->id]) }}"><img class="card-img-top" src="{{ asset('user_files/'.$alumni->user->avatar) }}" alt="Card image cap"></a>
                         @else
-                            <a href="#"><img class="card-img-top" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="Card image cap"></a>
+                            <a href="{{ route('user_profile.show', ['id' => $alumni->user->id]) }}"><img class="card-img-top" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="Card image cap"></a>
                         @endif
                             
                             <div class="card-body">
-                                <h5 class="card-title color-two" style="margin-bottom: 0px;"><a href="#" class="user-title">{{ $alumni->user->first_name." ".$alumni->user->last_name }}</a></h5>
+                                <h5 class="card-title color-two" style="margin-bottom: 0px;"><a href="{{ route('user_profile.show', ['id' => $alumni->user->id]) }}" class="user-title">{{ $alumni->user->first_name." ".$alumni->user->last_name }}</a></h5>
                                 <p class="card-text text-center" style="font-size: 14px; font-weight: bold; color: #666;">{{ $alumni->user->university_batch }} Batch, {{ $alumni->user->department }} Department</p>
                                 <ul class="social-list">
                                 @isset($alumni->user->fb_link)
-                                    <li><a href="{{ $alumni->user->fb_link }}" target="_blank"<i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ $alumni->user->fb_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                                 @endisset
 
                                 @isset($alumni->user->tw_link)
-                                    <li><a href="{{ $alumni->user->tw_link }}" target="_blank"<i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{ $alumni->user->tw_link }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
                                 @endisset
 
                                 @isset($alumni->user->li_link)
-                                    <li><a href="{{ $alumni->user->li_link }}" target="_blank"<i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="{{ $alumni->user->li_link }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                                 @endisset
                                 </ul>
                             </div>

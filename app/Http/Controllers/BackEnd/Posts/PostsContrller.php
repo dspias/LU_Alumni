@@ -190,8 +190,6 @@ class PostsContrller extends Controller
                 $this->validate($this->request,array(
                     'avatar'    => 'mimes:doc,pdf,docx,zip|max:2024'
                 ));
-
-
             }
 
             if ($mime == "image/jpeg" || $mime == "image/png" || $mime == "image/svg+xml") {
