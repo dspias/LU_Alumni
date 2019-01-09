@@ -17,6 +17,7 @@
                         <a class="dropdown-item" href="{{ route('departments.index') }}">Departments</a>
                         <a class="dropdown-item" href="{{ route('clubs.index') }}">Clubs</a>
                         <a class="dropdown-item" href="{{ route('volunteers.index') }}">Volunteers</a>
+                        <a class="dropdown-item" href="#">User's</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

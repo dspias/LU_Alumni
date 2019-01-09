@@ -20,7 +20,7 @@
             <div class="shadow">
                 <div class="wrap-login100">
                     <div class="login100-pic js-tilt" data-tilt>
-                        <img src="{{ asset('images/img-01.png') }}" alt="IMG">
+                        <img src="{{ asset('images/img-02.png') }}" alt="IMG">
                     </div>
 
                     <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
