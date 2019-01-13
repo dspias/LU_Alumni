@@ -13,12 +13,12 @@ trait EventRelations
         return $this->belongsTo('App\Models\Club\Club');
     }
 
-    /**
-     * Get the user that owns the evnet.
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User\User');
-    }
+    // /**
+    //  * Get the user that owns the evnet.
+    //  */
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\Models\User\User');
+    // }
 
 }

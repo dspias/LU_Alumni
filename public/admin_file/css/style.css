@@ -54,12 +54,24 @@
 .social-list li:nth-child(1) a {
   padding: 4px 12px;
   color: #3b5999;
-  border-color: #1d2035;
+  border-color: #ffffff;
   border: 1px solid;
   border-radius: 4px;
+  background: #fff;
 }
 .social-list li:nth-child(1) a:hover {
   color: #fff;
   background-color: #3b5999;
   border-color: #3b5999;
+}
+
+input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"] {
+  -webkit-appearance: listbox;
+  width: 100%;
+  background: #202940;
+  color: #fff;
+  border: 1px solid #2f374c;
+  height: 41px;
+  border-radius: 5px;
+  padding-left: 14px;
 }

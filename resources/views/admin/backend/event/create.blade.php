@@ -25,13 +25,13 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Event Title</label>
-                          <input type="text" class="form-control" name="event_name">
+                          <input type="text" class="form-control" name="event_name" required>
                         </div>
                       </div>
 					  <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Organized By</label>
-                          <select name="club_id">
+                          <select name="club_id" required>
                             <option data-display="Select">Nothing</option>
                           @foreach($clubs as $club)
                             <option value="{{ $club->id }}">{{ $club->club_name }}</option>
@@ -44,22 +44,23 @@
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Event Date</label>
                           <div class='input-group date' id='datetimepicker1'>
-                              <input type='text' class="form-control" name="event_date" />
+                              {{-- <input type='text' class="form-control" name="event_date" required />
                               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                              </span>
+                              </span> --}}
+                              <input type="date" id="start" name="event_date" value="2018-07-22" min="2001-01-01" max="2050-12-31" width="100%">
                           </div>
                         </div>
                       </div>
 					  <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Event Location</label>
-                          <input type="text" class="form-control" name="event_location">
+                          <input type="text" class="form-control" name="event_location" required>
                         </div>
                       </div>
 					  <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Program/Events Facebook Link</label>
-                          <input type="text" class="form-control" name="event_fb_link">
+                          <input type="text" class="form-control" name="event_fb_link" required>
                         </div>
                       </div>
 					  
@@ -67,7 +68,7 @@
                         <div class="form-group">
                           <div class="form-group">
                             <label class="bmd-label-floating">Some Info About This Program/Event</label>
-                            <textarea class="form-control" rows="3" name="event_details"></textarea>
+                            <textarea class="form-control" rows="3" name="event_details" required></textarea>
                           </div>
                         </div>
                       </div>

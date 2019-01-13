@@ -36,14 +36,14 @@
 
                         <hr>
 
-                    @foreach($genAdvices as $genAdvice)
+                        @foreach($genAdvices as $genAdvice)
                         <div class="posts card gedf-card alumni-post">
                             <div class="card-header">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="mr-2">
                                             @if($genAdvice->user->avatar)
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('images/'.$genAdvice->avatar) }}" alt="">
+                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('user_files/'.$genAdvice->user->avatar) }}" alt="">
                                             @else
                                                 <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">
                                             @endif
@@ -63,78 +63,94 @@
                                 <p class="card-text">
                                     {{ $genAdvice->body }}
                                 </p>
-                    @isset($genAdvice->avatar)
-                        <?php
-                        
-                            $mime = null;
-                            if(isset($genAdvice->avatar)){
-                                $info = new SplFileInfo($genAdvice->avatar);
-                                $mime = $info->getExtension();
-                            }
-                        ?>
-                        @if($mime == "jpeg" || $mime == "png" || $mime == "jpg" || $mime == "svg")
-                                <figure class="card-image text-center">
-                                    <img src="{{ asset('postsfiles/'.$genAdvice->avatar) }}" target="_blank" alt="post image" class="img-responsive" style="border:1px solid #ccc;">
-                                </figure>
-                        @else
-                                <div class="card-file">
-                                    <a href="{{ route('posts.file.download', ['filename' => $genAdvice->avatar]) }}" class="btn btn-default btn-block btn-lg"><i class="fas fa-file-download"></i> {{ $genAdvice->title }}.{{ $mime }}</a>
-                                </div>
-                                
-                        @endif                            
-                    @endisset
+                        @isset($genAdvice->avatar)
+                            <?php
+                            
+                                $mime = null;
+                                if(isset($genAdvice->avatar)){
+                                    $info = new SplFileInfo($genAdvice->avatar);
+                                    $mime = $info->getExtension();
+                                }
+                            ?>
+                            @if($mime == "jpeg" || $mime == "png" || $mime == "jpg" || $mime == "svg")
+                                    <figure class="card-image text-center">
+                                        <img src="{{ asset('postsfiles/'.$genAdvice->avatar) }}" target="_blank" alt="post image" class="img-responsive" style="border:1px solid #ccc;">
+                                    </figure>
+                            @else
+                                    <div class="card-file">
+                                        <a href="{{ route('posts.file.download', ['filename' => $genAdvice->avatar]) }}" class="btn btn-default btn-block btn-lg"><i class="fas fa-file-download"></i> {{ $genAdvice->title }}.{{ $mime }}</a>
+                                    </div>
+                                    
+                            @endif                            
+                        @endisset
                             </div>
 
                             <div class="card-footer">
-                                <div class="float-left">
-                                    <a href="#" class="card-link"><i class="far fa-heart"></i> Like <sup>(50)</sup></a>
-                                    <a href="#" class="card-link comment" id="comment{{ $genAdvice->id }}"><i class="far fa-comments"></i> Comment <sup>(122)</sup></a>
-                                </div>
-                                <div class="float-right">
-
-                                <?php
-                                    // $date = date_create($genAdvice->updated_at);
-                                    $myDateTime = new DateTime($genAdvice->updated_at);
-                                    $myDateTime->setTimezone(new DateTimeZone('GMT+06:00'));
+                                    <div class="float-left">
                                     
-                                ?>
-                                    <strong class="post-time-date">{{ $myDateTime->format('d-m-Y | h:i A') }}</strong>
-                                </div>
+                                    @if(!App\Models\Like\Like::where(['user_id' => Auth::user()->id, 'post_id' => $genAdvice->id])->first())
+                                        <a href="{{ route('likes.store', ['id' => $genAdvice->id]) }}" class="card-link"><i class="far fa-heart"></i> Like <sup>({{ sizeof($genAdvice->likes) }})</sup></a>
+                                    @else
+                                        <a href="{{ route('likes.destroy', ['id' => $genAdvice->id]) }}" class="card-link"><i class="fas fa-heart" style="color:red;"></i> Unlike <sup>({{ sizeof($genAdvice->likes) }})</sup></a>
+                                    @endif
+    
+                                        <a href="#" class="card-link comment" id="comment{{ $genAdvice->id }}"><i class="far fa-comments"></i> Comment <sup>({{ sizeof($genAdvice->comments) }})</sup></a>
+                                    </div>
+                                    <div class="float-right">
+    
+                                    <?php
+                                        // $date = date_create($genAdvice->updated_at);
+                                        $myDateTime = new DateTime($genAdvice->updated_at);
+                                        $myDateTime->setTimezone(new DateTimeZone('GMT+06:00'));
+                                        
+                                    ?>
+                                        <strong class="post-time-date">{{ $myDateTime->format('d-m-Y | h:i A') }}</strong>
+                                    </div>
                             </div>
+
                             <div class="card-body post-comment" id="post-comment{{ $genAdvice->id }}">
                                 <div class="new-comment">
-                                    <textarea class="form-control" id="postComment" rows="1" placeholder="Post a comment"></textarea>
-                                    <button class="btn btn-primary btn-sm btn-block btn-comment">Comment</button>
+                                    <form action="{{ route('comments.store', ['id' => $genAdvice->id]) }}" method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <textarea class="form-control comment-area" id="postComment" rows="1" placeholder="Post a comment" name="postComment"></textarea>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="sumbit" class="btn btn-primary btn-lg btn-block btn-comment">Comment</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-
+                                @foreach($genAdvice->comments as $comment)
                                 <div class="user-comments">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex justify-content-between align-items-center">
+                                                @if(Auth::user()->id == $genAdvice->id || Auth::user()->id == $comment->user->id)
+                                                <a href="{{ route('comments.destroy', ['id'=>$comment->id]) }}" class="btn btn-light btn-sm comment-delete" id="dltCmnt"><i class="fas fa-trash-alt"></i></a>
+                                                @endif
                                             <div class="mr-2">
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="https://scontent.fdac6-1.fna.fbcdn.net/v/t1.0-9/41626289_2278594075706605_3080735949286539264_n.jpg?_nc_cat=100&_nc_eui2=AeHO6xpHzaTksOt0xAbgd1MQ9gUdaLA-7INu5nnmT-o5OcKUOG0ZSfTaclhIhjBSMafNrEGVfJTacM5DmSJa8nniGJ_o1qhfv7uafK7HOPsgVA&_nc_ht=scontent.fdac6-1.fna&oh=c4b68fd8c5d60b617d13f0d7f457d644&oe=5C731368" alt="">
+                                            @if($comment->user->avatar)
+                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="{{ asset('user_files/'.$comment->user->avatar) }}" alt="">
+                                            @else
+                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="http://www.juliehamilton.ca/resources/finance-icon-2.png" alt="">          
+                                            @endif
                                             </div>
                                             <div class="ml-2">
-                                                <div class="h5 m-0"><a href="#">Pias Das Raaj</a></div>
-                                                <div class="text-muted">10-10-2010 | 02.02pm</div>
+                                                <div class="h5 m-0"><a href="#">{{ $comment->user->first_name. " ". $comment->user->last_name }}</a></div>
+                                            <?php
+                                                // $date = date_create($post->updated_at);
+                                                $commentDate = new DateTime($comment->updated_at);
+                                                $commentDate->setTimezone(new DateTimeZone('GMT+06:00'));
+                                                
+                                            ?>
+                                                <div class="text-muted">{{ $commentDate->format('d-m-Y | h:i A') }}</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="comnt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, enim? Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, repudiandae.</div>
+                                    <div class="comnt">{{ $comment->comment }}</div>
                                 </div>
-                                <div class="user-comments">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="mr-2">
-                                                <img class="rounded-circle" style="width: 45px; height: 45px;" src="https://scontent.fdac6-1.fna.fbcdn.net/v/t1.0-9/24991333_704642113072260_4420828549095238564_n.jpg?_nc_cat=105&_nc_eui2=AeEtpqeU76QNLpOJD_duJ2QzB37M9RNVAdeQPXpzLecuesOJKqX39atPz3Q6fAJ0V4PgQaisK140uEBVuIdfiEGg40OO2W51ScXVLHd7wvq_EQ&_nc_ht=scontent.fdac6-1.fna&oh=a0a1d76621b96c2d8af8cb55dff73b4b&oe=5C676ACF" alt="">
-                                            </div>
-                                            <div class="ml-2">
-                                                <div class="h5 m-0"><a href="#">Raju Deb Rupok</a></div>
-                                                <div class="text-muted">10-10-2010 | 02.02am</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="comnt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, enim? Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, repudiandae.</div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     @endforeach
@@ -149,7 +165,7 @@
                         </div>
 
                     </div>
-                    {{-- close gre tab --}}
+                    {{-- close general advice tab --}}
 
                 </div>
             </div>

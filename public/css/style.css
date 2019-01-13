@@ -383,7 +383,7 @@ textarea.form-control.comment-area {
     text-align: justify;
 }
 .card{
-	margin-bottom: 20px;
+	margin-top: 9%;
 }
 .suggested-alumni .social-list{
 	padding-top: 0px;
@@ -478,8 +478,8 @@ a.user-title:hover{
 .profile-part .user-profile .profile-pic img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border: 1px solid #343a40;
-    border-bottom: 0px solid #343a40;
+    border: 1px solid #d2cece;
+    border-bottom: 0px solid #d2cece;
     max-width: 100%;
     min-width: 100%;
     max-height: 250px;
@@ -499,6 +499,9 @@ a.user-title:hover{
 a.btn.btn-outline-dark.btn-edit-profile{
 	border-bottom-right-radius: 10px !important;
 } */
+.btn-outline-dark {
+    border-color: #d2cece !important;
+}
 .btn-outline-dark:not(:disabled):not(.disabled).active:focus, 
 .btn-outline-dark:not(:disabled):not(.disabled):active:focus, 
 .show>.btn-outline-dark.dropdown-toggle:focus, .btn-outline-dark.focus, .btn-outline-dark:focus{

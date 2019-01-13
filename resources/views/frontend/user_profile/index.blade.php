@@ -113,13 +113,13 @@
                     @if(isset($user->avatar))
                         <img src="{{ asset('user_files/'.$user->avatar) }}" alt="user image" class="img-responsive">
                     @else
-                        <img src="{{ asset('images/cover_pic.jpg') }}" alt="user image" class="img-responsive">
+                        <img src="{{ asset('user_files/default.png') }}" alt="user image" class="img-responsive">
                     @endif
                     </figure>
 
                     <a href="#" class="btn btn-outline-dark btn-block btn-edit-profile" id="editProfileBtn" style="border-radius: 0px;">Edit Profile</a>
 
-                    @if (isset($user->company_name))
+                    @if (isset($user->company_name) || isset($user->designation))
                     <div class="work-link">
                         <h6 class="text-muted">WORK LINKS</h6>
                         <table class="table table-bordered">
@@ -133,7 +133,7 @@
                             </tr>
                             <tr>
                                 <th class="text-muted">Designation</th>
-                                @if (isset($user->company_name))
+                                @if (isset($user->designation))
                                     <td><a href="#">{{ $user->designation }}</a></td>
                                 @else
                                     <td class="d-none">Nothing To Display...</td>
@@ -209,14 +209,14 @@
                                     @if(isset($user->avatar))
                                         <div id="profilePicturePreview" style="background-image: url(' {{ asset('user_files/'.$user->avatar) }} '); background-size: cover;"></div>
                                     @else
-                                        <div id="profilePicturePreview" style="background-image: url(' {{ asset('images/cover_pic.jpg') }} '); background-size: cover;"></div>
+                                        <div id="profilePicturePreview" style="background-image: url(' {{ asset('user_files/default.png') }} '); background-size: cover;"></div>
                                     @endif
                                 </div>
                             </div>
                         </div>
 
                         <div class="cancle-btn">
-                            <button class="btn btn-outline-light btn-cancle"><i class="fas fa-undo-alt"></i></button>
+                            <a href="#" class="btn btn-outline-light btn-cancle"><i class="fas fa-undo-alt"></i></a>
                         </div>
 
                         <div class="work-link" style="padding-top: 0px !important;">

@@ -113,7 +113,7 @@
                     @if(isset($user->avatar))
                         <img src="{{ asset('user_profile/'.$user->avatar) }}" alt="user image" class="img-responsive">
                     @else
-                        <img src="{{ asset('images/cover_pic.jpg') }}" alt="user image" class="img-responsive">
+                        <img src="{{ asset('user_files/default.png') }}" alt="user image" class="img-responsive">
                     @endif
                     </figure>
 

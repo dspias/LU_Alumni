@@ -15,9 +15,9 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedInteger('club_id');
+            // $table->unsignedInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('club_id')->nullable();
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
             $table->string('event_name');
             $table->string('event_location');

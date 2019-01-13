@@ -4,7 +4,7 @@
       <ul>
         <li>
           <a href="https://www.lus.ac.bd">
-            LU_Alumni
+            Leading University
           </a>
         </li>
         <li>

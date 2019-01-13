@@ -10,7 +10,7 @@
 }
 .fire_faq .faq_tab_menu .nav>li>a {
     border-bottom: 1px solid #ddd;
-    color: #888888;
+    color: #000000;
     display: block;
     font-size: 16px;
     padding: 18px 15px;
@@ -39,7 +39,7 @@
     padding: 21px 30px 30px;
 }
 .fire_faq .faq_tab_content .tab_text>p {
-    color: #888888;
+    color: #000000;
     font-size: 16px;
     font-weight: 300;
     line-height: 28px;

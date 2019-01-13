@@ -30,12 +30,12 @@ trait UserRelations
         return $this->hasMany('App\Models\Like\Like');
     }
 
-    /**
-     * Get the events for the blog user.
-     */
-    public function events()
-    {
-        return $this->hasMany('App\Models\Event\Event');
-    }
+    // /**
+    //  * Get the events for the blog user.
+    //  */
+    // public function events()
+    // {
+    //     return $this->hasMany('App\Models\Event\Event');
+    // }
 
 }

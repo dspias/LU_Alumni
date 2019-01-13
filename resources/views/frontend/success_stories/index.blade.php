@@ -55,26 +55,26 @@
                                 <p class="card-text">
                                     {{ $story->body }}
                                 </p>
-                    @isset($story->avatar)
-                        <?php
-                        
-                            $mime = null;
-                            if(isset($story->avatar)){
-                                $info = new SplFileInfo($story->avatar);
-                                $mime = $info->getExtension();
-                            }
-                        ?>
-                        @if($mime == "jpeg" || $mime == "png" || $mime == "jpg" || $mime == "svg")
-                                <figure class="card-image text-center">
-                                    <img src="{{ asset('postsfiles/'.$story->avatar) }}" target="_blank" alt="post image" class="img-responsive" style="border:1px solid #ccc;">
-                                </figure>
-                        @else
-                                <div class="card-file">
-                                    <a href="{{ route('posts.file.download', ['filename' => $story->avatar]) }}" class="btn btn-default btn-block btn-lg"><i class="fas fa-file-download"></i> {{ $story->title }}.{{ $mime }}</a>
-                                </div>
-                                
-                        @endif                            
-                    @endisset
+                        @isset($story->avatar)
+                            <?php
+                            
+                                $mime = null;
+                                if(isset($story->avatar)){
+                                    $info = new SplFileInfo($story->avatar);
+                                    $mime = $info->getExtension();
+                                }
+                            ?>
+                            @if($mime == "jpeg" || $mime == "png" || $mime == "jpg" || $mime == "svg")
+                                    <figure class="card-image text-center">
+                                        <img src="{{ asset('postsfiles/'.$story->avatar) }}" target="_blank" alt="post image" class="img-responsive" style="border:1px solid #ccc;">
+                                    </figure>
+                            @else
+                                    <div class="card-file">
+                                        <a href="{{ route('posts.file.download', ['filename' => $story->avatar]) }}" class="btn btn-default btn-block btn-lg"><i class="fas fa-file-download"></i> {{ $story->title }}.{{ $mime }}</a>
+                                    </div>
+                                    
+                            @endif                            
+                        @endisset
                             </div>
 
                             <div class="card-footer">

@@ -31,6 +31,7 @@ class SuccessStoriesController extends Controller
     public function index()
     {
         $stories = $this->category->find(9);
+        
         $stories = $this->posts->where('cat_id', $stories->id)
                         ->with(['user', 'category', 'likes', 'comments.user' => function($query){
                             $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
