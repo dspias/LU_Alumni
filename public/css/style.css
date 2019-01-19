@@ -776,3 +776,17 @@ p.footer-info{
 	height: 44px;
 	border: 1px solid #ced4da;
 }
+
+.custom-form-style{
+	padding: 1.3rem 2rem;
+}
+
+.custom-form-style:focus{
+	box-shadow: 1px 1px 9px #0403031f !important;
+}
+.custom-card-style{
+	box-shadow: 0px 0px 15px 0px #564f4f;
+}
+.custom-btn{
+	background: #a6c82c;
+}

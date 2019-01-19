@@ -31,11 +31,11 @@
 					  <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Organized By</label>
-                          <select name="club_id" required>
+                          <select name="club_id">
                             <option data-display="Select">Nothing</option>
                           @foreach($clubs as $club)
                             <option value="{{ $club->id }}">{{ $club->club_name }}</option>
-                          @endforeach       
+                          @endforeach
                           </select>
                       
                         </div>
