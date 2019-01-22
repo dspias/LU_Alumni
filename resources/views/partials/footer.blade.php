@@ -12,11 +12,11 @@
 				<div class="resources">
 					<h5>Rerources</h5>
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Our Vision</a></li>
-						<li><a href="#">Top Alumni</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="/">Home</a></li>
+						<li><a href="{{ route('about.index') }}">About</a></li>
+						{{-- <li><a href="#">Our Vision</a></li> --}}
+						<li><a href="{{ route('search.index') }}">Top Alumni</a></li>
+						{{-- <li><a href="#">Contact</a></li> --}}
 					</ul>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 				<div class="important-links">
 					<h5>Important Links</h5>
 					<ul>
-						<li><a href="#">Blog</a></li>
+						{{-- <li><a href="#">Blog</a></li> --}}
 						<li><a href="#">Help Center</a></li>
 						<li><a href="#">Community</a></li>
 						<li><a href="#">Marketplace</a></li>
