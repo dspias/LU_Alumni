@@ -5,7 +5,7 @@
 				<div class="logo-part text-center">
 					<figure><img src="{{ asset('images/logo1.png') }}" alt="" class="img-responsive"></figure>
 					{{--  <h3><a href="">L O G O</a></h3>  --}}
-					<p class="footer-info text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis libero veritatis voluptatibus doloremque sed ut?</p>
+					<p class="footer-info text-justify">Student for short time alumni for life time</p>
 				</div>
 			</div>
 			<div class="col-3 col-md-2">

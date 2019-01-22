@@ -54,7 +54,7 @@
                     @if(isset(Auth::user()->avatar))
                         <img src="{{ asset('user_files/'.Auth::user()->avatar) }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc;">
                     @else
-                        <img src="{{ asset('images/graduate.png') }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc; padding:1px;">
+                        <img src="{{ asset('images/graduatation.png') }}" style="max-width: 30px; min-width:30px; min-height:30px; max-height:30px; border-radius: 50%; border:1px solid #ccc; padding:1px;">
                     @endif
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">

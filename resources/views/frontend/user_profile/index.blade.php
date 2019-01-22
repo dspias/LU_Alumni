@@ -569,7 +569,7 @@
                             <div class="posts card gedf-card alumni-post">
                                 <div class="card-body text-center">
                                     <h3>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, officiis ex optio eum quam temporibus commodi iste harum id sint!
+                                        You are not allowed to post yet. Thank you !!!
                                     </h3>
                                 </div>
                             </div>
