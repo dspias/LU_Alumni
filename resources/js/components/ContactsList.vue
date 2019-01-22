@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 
                 <ul>
-                    <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
+                    <li v-for="contact in filterContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
                         <div class="avatar">
                             <!-- <img :src="contact.avatar" :alt="contact.first_name"> -->
                         </div>
