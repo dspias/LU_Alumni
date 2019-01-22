@@ -75,3 +75,12 @@ input[type="date"], input[type="time"], input[type="datetime-local"], input[type
   border-radius: 5px;
   padding-left: 14px;
 }
+
+.admin-login {
+  background: url(http://ndpa.org/wp-content/uploads/loginBG2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 626px;
+}

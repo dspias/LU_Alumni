@@ -5,8 +5,16 @@ namespace App\Http\Controllers\frontend\upcomming_events;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Event\Event;
+
 class UpcommingEventsController extends Controller
 {
+    private $event;
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->event = new Event();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,8 @@ class UpcommingEventsController extends Controller
      */
     public function index()
     {
-        return view('frontend.upcomming_events.index');
+        $events = $this->event->all();
+        return view('frontend.successfull_events.index')->withEvents($events);
     }
 
     /**

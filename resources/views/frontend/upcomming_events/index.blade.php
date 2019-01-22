@@ -1,6 +1,6 @@
 @extends('layouts.withnav') 
 
-@section('title', '| general advice') 
+@section('title', '| upcomming events') 
 @section('stylesheet')
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
@@ -154,23 +154,29 @@
 <section class="upcoming-event-part">
     {{-- <div class="container-fluid"> --}}
     <div class="owl-carousel owl-theme text-center" id="upcomingEvent">
-        <div class="item slides active">
-            <div class="slide-1"></div>
-            <div class="hero">
-                <hgroup>
-                    <h1>LU Hackathon</h1>
-                    <h4>Leading University Computer Club</h4>
-                    <ul>
-                        <li><i class="fas fa-location-arrow"></i> Kazi Nazrul Islam Auditorium</li>
-                        <li><i class="far fa-calendar-check"></i> 12-12-2019</li>
-                        <li><i class="far fa-clock"></i> 03:30 PM</li>
-                    </ul>      
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio id ut odit adipisci corporis placeat nihil nemo sit et est inventore quisquam quae at veritatis illum quo aspernatur labore natus, temporibus velit alias. Dolorem adipisci facilis architecto a ea. Quisquam harum aliquam beatae architecto sint incidunt tempore quia eum hic.</p>
-                </hgroup>
-                <a href="#" class="btn btn-outline-info btn-lg">See Event Details</a>
+            @foreach($events as $event)
+            <div class="item slides active">
+                <div class="slide-1"></div>
+                <div class="hero">
+                    <hgroup>
+                        <h1>{{ $event->event_name }}</h1>
+                        @if(isset($event->club_id))
+                        <h4>{{ \App\Models\Club\Club::find($event->club_id)->club_name }}</h4>
+                        @else
+                        <h4>Organize by Leading University</h4>
+                        @endif
+                        <ul>
+                            <li><i class="fas fa-location-arrow"></i> {{ $event->event_location }}</li>
+                            <li><i class="far fa-calendar-check"></i> {{ $event->event_date }}</li>
+                            <li><i class="far fa-clock"></i> {{ $event->event_date }}</li>
+                        </ul>      
+                        <p>{{ $event->event_details }}</p>
+                    </hgroup>
+                    <a href="{{ $event->event_fb_link }}" target="_blank" class="btn btn-outline-info btn-lg">See Event Details</a>
+                </div>
             </div>
+            @endforeach
         </div>
-    </div>
 </section>
 
 @endsection @section('scripts')

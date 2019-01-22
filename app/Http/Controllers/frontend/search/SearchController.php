@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Events;
+namespace App\Http\Controllers\frontend\search;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Models\Event\Event;
-use App\Models\Club\Club;
+use App\Models\User\User;
 
-class EventsController extends Controller
+class SearchController extends Controller
 {
-    private $event;
+    private $user;
     public function __construct()
     {
-        $this->middleware('auth:admin');
-        $this->event = new Event();
+        $this->middleware('auth');
+        $this->user = new User();
     }
     /**
      * Display a listing of the resource.
@@ -23,9 +22,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = $this->event->all();
-        //return a view and pass in the above variable
-        return view('admin.backend.event.index')->withEvents($events);
+        //alumni search
+        $users = $this->user->inRandomOrder()->paginate(10);
+        return view('frontend.search.index')->withUsers($users);
     }
 
     /**
@@ -35,9 +34,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        $clubs = Club::all();
-        //return a view and pass in the above variable
-        return view('admin.backend.event.create')->withClubs($clubs);
+        //
     }
 
     /**
@@ -46,31 +43,25 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function search(Request $request)
     {
-
         $this->validate($request, array(
-            'event_name'        => 'required|string',
-            'event_date'        => 'required',
-            'event_location'    => 'required|string',
-            'event_fb_link'     => 'required|string',
-            'event_details'     => 'required|string',
+            'search' => 'required|string'
         ));
-        
-        $event = new Event();
 
-        if( $request->club_id ) $event->club_id = $request->club_id;
+        $users = $this->user->where('first_name', 'like', '%'.$request->search.'%')
+                        ->orWhere('last_name', 'like', '%'.$request->search.'%')
+                        ->orWhere('uniStudentId', 'like', '%'.$request->search.'%')
+                        ->orWhere('email', 'like', '%'.$request->search.'%')
+                        ->orWhere('department', 'like', '%'.$request->search.'%')
+                        ->orWhere('university_batch', 'like', '%'.$request->search.'%')
+                        ->orWhere('graduation_year', 'like', '%'.$request->search.'%')
+                        ->orWhere('designation', 'like', '%'.$request->search.'%')
+                        ->orWhere('company_name', 'like', '%'.$request->search.'%')
+                        ->orWhere('bio', 'like', '%'.$request->search.'%')
+                        ->orWhere('mobile', 'like', '%'.$request->search.'%')->paginate(10);
 
-        $event->event_name = $request->event_name;
-        $event->event_date = $request->event_date;
-        $event->event_location = $request->event_location;
-        $event->event_details = $request->event_details;
-        $event->event_fb_link = $request->event_fb_link;
-
-        $event->save();
-
-        return redirect()->route('admin.events.index');
-        
+        return view('frontend.search.search')->withUsers($users);
     }
 
     /**
@@ -81,9 +72,7 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        $event = $this->event->find($id);
-
-        return view('admin.backend.event.show')->withEvent($event);
+        //
     }
 
     /**

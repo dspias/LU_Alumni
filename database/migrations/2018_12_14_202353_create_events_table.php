@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->string('event_location');
             $table->dateTime('event_date');
             $table->string('event_details');
+            $table->string('event_fb_link');
             $table->timestamps();
             $table->softDeletes();
         });

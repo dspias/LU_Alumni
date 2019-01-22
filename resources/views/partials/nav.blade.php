@@ -17,7 +17,7 @@
                         <a class="dropdown-item" href="{{ route('departments.index') }}">Departments</a>
                         <a class="dropdown-item" href="{{ route('clubs.index') }}">Clubs</a>
                         <a class="dropdown-item" href="{{ route('volunteers.index') }}">Volunteers</a>
-                        <a class="dropdown-item" href="#">User's</a>
+                        <a class="dropdown-item" href="{{ route('search.index') }}">User's</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -67,8 +67,9 @@
                 </li>  
             @endguest
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 input-sm" type="search" placeholder="Search" aria-label="Search">
+            <form action="{{ route('search') }}" method="POST" class="form-inline my-2 my-lg-0">
+                @csrf
+                <input class="form-control mr-sm-2 input-sm" type="search" name="search" placeholder="Search" aria-label="Search">
                 {{-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> --}}
             </form>
         </div>

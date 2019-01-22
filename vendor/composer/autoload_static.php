@@ -475,6 +475,7 @@ class ComposerStaticInit90f8790d4568d4ed49ff7b442ff79473
         'App\\Http\\Controllers\\frontend\\general_advice\\GeneralAdviceController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/general_advice/GeneralAdviceController.php',
         'App\\Http\\Controllers\\frontend\\message\\ContactsController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/message/ContactsController.php',
         'App\\Http\\Controllers\\frontend\\message\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/message/MessagesController.php',
+        'App\\Http\\Controllers\\frontend\\search\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/search/SearchController.php',
         'App\\Http\\Controllers\\frontend\\study_abroad\\StudyAbroadController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/study_abroad/StudyAbroadController.php',
         'App\\Http\\Controllers\\frontend\\success_stories\\SuccessStoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/success_stories/SuccessStoriesController.php',
         'App\\Http\\Controllers\\frontend\\successfull_events\\SuccessfullEventsController' => __DIR__ . '/../..' . '/app/Http/Controllers/frontend/successfull_events/SuccessfullEventsController.php',

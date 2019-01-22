@@ -50,6 +50,7 @@ return array(
     'App\\Http\\Controllers\\frontend\\general_advice\\GeneralAdviceController' => $baseDir . '/app/Http/Controllers/frontend/general_advice/GeneralAdviceController.php',
     'App\\Http\\Controllers\\frontend\\message\\ContactsController' => $baseDir . '/app/Http/Controllers/frontend/message/ContactsController.php',
     'App\\Http\\Controllers\\frontend\\message\\MessagesController' => $baseDir . '/app/Http/Controllers/frontend/message/MessagesController.php',
+    'App\\Http\\Controllers\\frontend\\search\\SearchController' => $baseDir . '/app/Http/Controllers/frontend/search/SearchController.php',
     'App\\Http\\Controllers\\frontend\\study_abroad\\StudyAbroadController' => $baseDir . '/app/Http/Controllers/frontend/study_abroad/StudyAbroadController.php',
     'App\\Http\\Controllers\\frontend\\success_stories\\SuccessStoriesController' => $baseDir . '/app/Http/Controllers/frontend/success_stories/SuccessStoriesController.php',
     'App\\Http\\Controllers\\frontend\\successfull_events\\SuccessfullEventsController' => $baseDir . '/app/Http/Controllers/frontend/successfull_events/SuccessfullEventsController.php',

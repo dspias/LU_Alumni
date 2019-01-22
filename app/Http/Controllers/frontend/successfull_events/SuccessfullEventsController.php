@@ -4,9 +4,16 @@ namespace App\Http\Controllers\frontend\successfull_events;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Event\Event;
 
 class SuccessfullEventsController extends Controller
 {
+    private $event;
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->event = new Event();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class SuccessfullEventsController extends Controller
      */
     public function index()
     {
-        //
+        $events = $this->event->all();
+        return view('frontend.successfull_events.index')->withEvents($events);
     }
 
     /**
