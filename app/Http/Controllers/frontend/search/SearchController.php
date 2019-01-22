@@ -46,7 +46,7 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $this->validate($request, array(
-            'search' => 'required|string'
+            'search' => 'required|string',
         ));
 
         $users = $this->user->where('first_name', 'like', '%'.$request->search.'%')

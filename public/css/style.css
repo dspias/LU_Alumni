@@ -13,10 +13,10 @@ img{
 	max-width: 100%;
 }
 .color-one{
-	color: #017bae;
+	color: #ffc60b;
 }
 .color-two{
-	color: #a3c624;
+	color: #04a653;
 }
 .font-bold{
 	font-weight: bold;
@@ -35,7 +35,10 @@ p{
 /*===================< Navbar Part Starts >==============*/
 nav.fixed-top{
 	box-shadow: 0 0 10px rgba(0,0,0,0.14);
-	background-color: #fff;
+	background-color: #1f1f1f;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
 }
 .navbar-expand-lg .navbar-nav .nav-link{
 	padding-right: 13px;
@@ -49,11 +52,17 @@ nav.fixed-top{
 .navbar-light .navbar-nav .nav-link.active, 
 .navbar-light .navbar-nav .nav-link.show, 
 .navbar-light .navbar-nav .show>.nav-link{
-	color: #a3c624;
+	color: #ffc60b;
+    border-bottom: 2px solid #04a653;
 }
 .navbar-light .navbar-nav .nav-link:focus, 
 .navbar-light .navbar-nav .nav-link:hover{
-	color: #a3c624;
+	color: #ffc60b;
+}
+#navbarSupportedContent .form-control{
+	background-color: #252525;
+	border: 1px solid #252525;
+	color: #eee;
 }
 .dropdown-menu{
 	margin: 1.125rem 0 0;
@@ -64,84 +73,13 @@ nav.fixed-top{
 	font-weight: bold;
 }
 .dropdown-item:hover{
-	background-color: #a3c624;
+	background-color: #04a653;
 	color: #252733;
 	font-weight: bold;
 }
 /*====================< Navbar Part Ends >===============*/
 
 
-/*===================< Header Part Starts >==============*/
-.header-part{
-	height: 668px;
-	background-image: url('../images/background.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-    /* background-position: center; */
-}
-.overlay{
-	background-color: #ffffffdb;
-	/* opacity: 0.8; */
-	height: 668px;
-}
-.welcome-part{
-	padding-top: 150px;
-	font-family: 'Kurale', serif;
-}
-.welcome-part h2{
-	font-size: 42px; 
-	margin-bottom: 0rem;
-}
-.welcome-part h1{
-	font-family: 'El Messiri', sans-serif;
-	font-weight: Bold; 
-	font-size: 72px; 
-	color: #017bae;
-}
-.welcome-part p{
-	color: #555;
-	font-size: 18px;
-	text-align: justify;
-}
-.welcome-image img{
-	max-width: 100%;
-	padding-top: 100px;
-}
-.btn-outline-custom, .btn-custom{
-	border-radius: 50px;
-    width: 160px;
-}
-.btn-outline-custom{
-	color: #017bae !important;
-    border-color: #017bae !important;
-}
-.btn-outline-info.btn-outline-custom:hover,
-.btn-outline-info.btn-outline-custom:focus {
-	background-color: #017bae !important;
-	color: #fff !important;
-	box-shadow: none;
-}
-.btn-outline-info:not(:disabled):not(.disabled).active:focus, 
-.btn-outline-info:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-info.dropdown-toggle:focus{
-	box-shadow: none;
-}
-.btn-custom, .btn-custom:hover, .btn-custom:focus{
-	background-color: #a3c624;
-	border-color: #a3c624;
-	box-shadow: none !important;
-}
-.btn-info:not(:disabled):not(.disabled).active, 
-.btn-info:not(:disabled):not(.disabled):active, 
-.show>.btn-info.dropdown-toggle,
-.btn-info:not(:disabled):not(.disabled).active:focus, 
-.btn-info:not(:disabled):not(.disabled):active:focus, 
-.show>.btn-info.dropdown-toggle:focus{
-	background-color: #a3c624;
-	border-color: #a3c624;
-	box-shadow: none;
-}
-/*====================< Header Part Ends >===============*/
 
 /*===================< About Part Starts >==============*/
 .about-part{
@@ -241,7 +179,7 @@ nav.fixed-top{
 	margin-bottom: 0px;
 }
 .latest-news-part .card-body h4 a{
-	color: #a3c624;
+	color: #04a653;
 }
 .latest-news-part .card-body span.date{
 	font-size: 12px;
@@ -258,10 +196,10 @@ nav.fixed-top{
 	background-color: #fff;
 	border-color: rgba(0,0,0,.125);
 	border-radius: 50px;
-	color: #a3c624;
+	color: #04a653;
 }
 .latest-news-part .card:hover{
-	border-color: #a3c624;
+	border-color: #04a653;
 	box-shadow: 0px 0px 11px 1px rgba(0,0,0,0.1);
 	transition: all 0.4s ease-in-out;
 }
@@ -270,8 +208,8 @@ nav.fixed-top{
 	transition: all 0.4s ease-in-out;
 }
 .latest-news-part .card:hover .btn-outline-primary{
-	background-color: #a3c624;
-	border-color: #a3c624;
+	background-color: #04a653;
+	border-color: #04a653;
 	color: #fff;
 	transition: all 0.4s ease-in-out;
 }
@@ -290,14 +228,14 @@ nav.fixed-top{
 	left: -24px;
 	bottom: 160px;
 	padding: 6px 15px !important;
-    background: #a3c624 !important;
+    background: #04a653 !important;
 }
 .owl-next{
 	position: absolute;
 	right: -24px;
     bottom: 160px;
 	padding: 6px 15px !important;
-    background: #a3c624 !important;
+    background: #04a653 !important;
 }
 p.date {
     font-size: 14px;
@@ -334,7 +272,7 @@ p.date {
 	transition: 0.3s all ease-in-out;
 }
 .nav-pills .nav-link:hover{
-	color: #a3c624;
+	color: #04a653;
 	transition: 0.3s all ease-in-out;
 }
 .nav-pills .nav-link, .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
@@ -346,7 +284,7 @@ p.date {
 	transition: 0.3s all ease-in-out;
 }
 .nav-pills .nav-link.active{
-	color: #a3c624;
+	color: #04a653;
 	box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
 	transition: 0.3s all ease-in-out;
 }
@@ -383,7 +321,7 @@ textarea.form-control.comment-area {
     text-align: justify;
 }
 .card{
-	margin-top: 9%;
+	margin-bottom: 3%;
 }
 .suggested-alumni .social-list{
 	padding-top: 0px;
@@ -405,13 +343,13 @@ li.breadcrumb-item{
 	font-weight: 600;
 }
 li.breadcrumb-item{
-	color: #a3c624a3 !important;
+	color: #04a653a3 !important;
 }
 li.breadcrumb-item a{
-	color: #a3c624;
+	color: #04a653;
 }
 .breadcrumb-item+.breadcrumb-item::before{
-	color: #a3c624;
+	color: #04a653;
 }
 hr{
 	border-top: 1px solid #eeeeee88;
@@ -448,7 +386,7 @@ a.card-link{
 a.card-link:hover,
 a.card-link:active,
 a.card-link:focus{
-	color: #a3c624;
+	color: #04a653;
 	transition: 0.3s all ease-in-out;
 }
 a.user-title{
@@ -456,7 +394,7 @@ a.user-title{
 	transition: 0.3s all ease-in-out;
 }
 a.user-title:hover{
-	color: #a3c624;
+	color: #04a653;
 	transition: 0.3s all ease-in-out;
 }
 /*====================< Career Advice Part Ends >===============*/
@@ -676,7 +614,7 @@ p.footer-info{
 .footer-part .connection h5{
     font-weight: 900;
 	padding-bottom: 20px;
-	color: #c1e931;
+	color: #04a653;
 }
 .footer-part .important-links ul,
 .footer-part .resources ul{
@@ -695,7 +633,7 @@ p.footer-info{
 }
 .footer-part .important-links ul>li a:hover,
 .footer-part .resources ul>li a:hover{
-    color: #a3c624;
+    color: #04a653;
     padding-left: 20px;
     transition: 0.5s all ease-in-out;
 }
@@ -706,7 +644,7 @@ p.footer-info{
     content: " ";
     height: 2px;
     position: absolute;
-    background-color: #a3c624;
+    background-color: #04a653;
     width: 0;
     transition: 0.5s all ease-in-out;
 }

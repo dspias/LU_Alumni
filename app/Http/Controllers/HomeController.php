@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Models\User\User;
 use App\Models\Category\Category;
+use App\Models\Post\Post;
+use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -11,10 +16,16 @@ class HomeController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    private $user;
+    private $posts;
+    private $category;
+    public function __construct(){
+                
+        // $this->middleware('auth');        
+        $this->user = new User();
+        $this->posts = new Post();
+        $this->category = new Category();
+    }
 
     /**
      * Show the application dashboard.
@@ -23,9 +34,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        // $tags = Tags::all();
-        
-        return view('welcome')->withCategories($categories);
+
+        $genAdvices = $this->posts->inRandomOrder()
+                        ->with(['user', 'category', 'likes','comments.user' => function($query){
+                            $query->select('id', 'first_name', 'last_name', 'avatar', 'updated_at');
+                        }])
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
+		$alumni = $this->posts->inRandomOrder()
+                                ->with('user')->get();
+								
+
+        return view('welcome')
+                        ->withGenAdvices($genAdvices)
+                        ->withAlumnis($alumni);
     }
 }

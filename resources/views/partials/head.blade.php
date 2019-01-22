@@ -6,6 +6,7 @@
 
 
 <title>LU_ALumni @yield('title')</title>
+<link rel="shortcut icon" href="{{asset('images/logo1.png')}}" />
 
 {{-- If Importent to add some css files --}}
 
