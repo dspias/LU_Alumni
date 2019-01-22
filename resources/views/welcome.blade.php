@@ -3,9 +3,81 @@
 @section('title', '| Home')
 
 @section('stylesheet')
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        
+    /*===================< Header Part Starts >==============*/
+    .header-part{
+        height: 668px;
+        background-image: url('../images/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /* background-position: center; */
+    }
+    .overlay{
+        background-color: #000000a5;
+        height: 668px;
+    }
+    .welcome-part{
+        margin-top: 170px;
+        padding: 20px 50px;
+        font-family: 'Kurale', serif;
+    }
+    .welcome-part h2{
+        font-size: 56px; 
+        color: #fff;
+        margin-bottom: 0rem;
+    }
+    .welcome-part h1{
+        font-family: 'El Messiri', sans-serif;
+        font-weight: Bold; 
+        font-size: 100px; 
+        color: #ffc60b;
+        text-shadow: 2px 2px 0px #000000;
+    }
+    .welcome-image img{
+        max-width: 100%;
+        padding-top: 100px;
+    }
+    .btn-outline-custom, .btn-custom{
+        border-radius: 50px;
+        width: 160px;
+    }
+    .btn-outline-custom{
+        color: #ffc60b !important;
+        border-color: #ffc60b !important;
+    }
+    .btn-outline-info.btn-outline-custom:hover,
+    .btn-outline-info.btn-outline-custom:focus {
+        background-color: #ffc60b !important;
+        color: #fff !important;
+        box-shadow: none;
+    }
+    .btn-outline-info:not(:disabled):not(.disabled).active:focus, 
+    .btn-outline-info:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-info.dropdown-toggle:focus{
+        box-shadow: none;
+    }
+    .btn-custom, .btn-custom:hover, .btn-custom:focus{
+        background-color: #a3c624;
+        border-color: #a3c624;
+        box-shadow: none !important;
+    }
+    .btn-info:not(:disabled):not(.disabled).active, 
+    .btn-info:not(:disabled):not(.disabled):active, 
+    .show>.btn-info.dropdown-toggle,
+    .btn-info:not(:disabled):not(.disabled).active:focus, 
+    .btn-info:not(:disabled):not(.disabled):active:focus, 
+    .show>.btn-info.dropdown-toggle:focus{
+        background-color: #a3c624;
+        border-color: #a3c624;
+        box-shadow: none;
+    }
+    /*====================< Header Part Ends >===============*/
+    </style>
 @endsection
 
 @section('content')
@@ -13,29 +85,18 @@
 
 <section class="header-part">
     <div class="overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="welcome-part">
-                        <h2>Welcome To</h2>
-                        <h1>LU <span style="color: #a3c624;">ALUMNI</span></h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex atque impedit aliquid eveniet rem natus? Ut animi voluptates ipsa, illo labore eum dolorem itaque reprehenderit quam saepe totam placeat deleniti?</p>
-                        <div class="row">
-                            <div class="col-md-12" style="padding-top: 40px;">
-                                <button class="btn btn-info btn-outline-info btn-lg btn-outline-custom">See More</button>
-                                <button class="btn btn-info btn-lg btn-custom">Contact</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="welcome-image">
-                        <img class="img-responsive" src="{{ asset('images/right01.png') }}" alt="">
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="welcome-part text-center">
+                    <h2 data-aos="fade-left" data-aos-duration="6000">Welcome To</h2>
+                    <h1 data-aos="fade-right" data-aos-duration="6000">LU <span style="    color: #04a653">ALUMNI</span></h1>
+                    <h1 data-aos="fade-up" data-aos-duration="7000" style="font-size: 82px; margin-top: -42px;">ASSOCIATION</h1>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    </div>
 </section>
 
 <section class="about-part" id="about">
@@ -229,6 +290,10 @@
 
 @section('scripts')
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 <script>
     // ============< Event Part >===========
 

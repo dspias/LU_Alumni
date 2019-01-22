@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="padding: 0px;">
     <div class="container">
-        <a class="navbar-brand" href="/">L O G O</a>
+        <a class="navbar-brand" href="/">
+            <img src="{{asset('images/logo1.png')}}" alt="" class="img-responsive logo" style="max-width: 50px; padding: 5px 0px;">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,7 +19,7 @@
                         <a class="dropdown-item" href="{{ route('departments.index') }}">Departments</a>
                         <a class="dropdown-item" href="{{ route('clubs.index') }}">Clubs</a>
                         <a class="dropdown-item" href="{{ route('volunteers.index') }}">Volunteers</a>
-                        <a class="dropdown-item" href="{{ route('search.index') }}">User's</a>
+                        <a class="dropdown-item" href="{{ route('search.index') }}">Users</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -69,7 +71,7 @@
             </ul>
             <form action="{{ route('search') }}" method="POST" class="form-inline my-2 my-lg-0">
                 @csrf
-                <input class="form-control mr-sm-2 input-sm" type="search" name="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2 input-sm" type="search" name="search" placeholder="Search" aria-label="Search" required>
                 {{-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> --}}
             </form>
         </div>

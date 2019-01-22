@@ -3,9 +3,9 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="logo-part text-center">
-					{{-- <figure><img src="{{ asset('files/images/logo02.png') }}" alt="" class="img-responsive"></figure> --}}
-					<h3><a href="">L O G O</a></h3>
-					<p class="footer-info text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui optio tempora magnam soluta ipsa. Tenetur at soluta nemo, ipsum deserunt quasi asperiores temporibus architecto consequuntur atque illum a aliquam vel?</p>
+					<figure><img src="{{ asset('images/logo1.png') }}" alt="" class="img-responsive"></figure>
+					{{--  <h3><a href="">L O G O</a></h3>  --}}
+					<p class="footer-info text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis libero veritatis voluptatibus doloremque sed ut?</p>
 				</div>
 			</div>
 			<div class="col-3 col-md-2">
