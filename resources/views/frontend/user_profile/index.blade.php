@@ -185,9 +185,23 @@
                             <tr>
                                 <th class="text-muted">Social</th>
                                 <td class="social-icon-links">
-                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-twitter"></i></a>
+                                    @if (isset($user->li_link))
+                                    <a href="{{ $user->li_link }}" target="_blank" class="btn btn-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
+                                    @else
+                                        <td class="d-none">Nothing To Display...</td>
+                                    @endif
+
+                                    @if (isset($user->fb_link))
+                                    <a href="{{ $user->fb_link }}" target="_blank" class="btn btn-light btn-sm"><i class="fab fa-facebook-f"></i></a>
+                                    @else
+                                        <td class="d-none">Nothing To Display...</td>
+                                    @endif
+
+                                    @if (isset($user->tw_link))
+                                    <a href="{{ $user->tw_link }}" target="_blank" class="btn btn-light btn-sm"><i class="fab fa-twitter"></i></a>
+                                    @else
+                                        <td class="d-none">Nothing To Display...</td>
+                                    @endif
                                 </td>
                             </tr>
                         </table>
