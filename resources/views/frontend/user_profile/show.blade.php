@@ -213,7 +213,7 @@
             <div class="col-md-8">
                 <div class="profile-details">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="margin-top:-9%">
 
                         @foreach($posts as $post)
                             <div class="posts card gedf-card alumni-post">

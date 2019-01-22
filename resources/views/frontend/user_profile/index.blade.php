@@ -362,7 +362,7 @@
             <div class="col-md-8">
                 <div class="profile-details">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="margin-top:-9%">
 
                             <div class="posts card gedf-card alumni-post">
                                 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
