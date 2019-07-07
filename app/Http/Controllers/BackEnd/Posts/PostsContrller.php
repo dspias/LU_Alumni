@@ -44,7 +44,7 @@ class PostsContrller extends Controller
     {
         //create a variable and store all the post in database
         $posts = $this->post->inRandomOrder()->paginate(10);
-        return $posts;
+        //return $posts;
         //return a view and pass in the above variable
         return view('backend.posts.index')->withPost($posts);
     }
